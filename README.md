@@ -2,6 +2,10 @@
 
 A static, mobile-first field app for room-by-room inspection notes, repair follow-up, furniture decisions and printable reports.
 
+## Live app
+
+https://mushrath007.github.io/2700-dover-inspection-companion/
+
 ## Privacy model
 
 - The website and reference photos are public.
