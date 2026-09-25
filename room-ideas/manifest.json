@@ -1,0 +1,181 @@
+{
+  "version": 1,
+  "updated": "2026-09-25",
+  "purpose": "Privacy-safe, room-by-room image-generation handoff for family space planning.",
+  "sharedConstraints": [
+    "Use the source photo as the edit target, not only as style inspiration.",
+    "Remove existing movable furniture, rugs, wall decor, family photos and personal belongings.",
+    "Preserve the photographed architecture, camera angle, room proportions, walls, windows, doors, flooring, ceiling, fixed trim and natural-light direction.",
+    "Keep scale realistic and leave clear walking and emergency-exit paths.",
+    "Use only a few practical pieces, rounded edges, washable materials and anchored tall storage.",
+    "Use subtle Islamic-inspired arches or geometric patterns only. Do not generate Arabic, Qur'anic verses, sacred text or imitation calligraphy.",
+    "Do not include people, faces, names, addresses, family photographs, readable documents, logos, trademarks or watermarks.",
+    "Do not place bunk or loft beds beneath a ceiling fan.",
+    "Show plants only where they can be kept safely; verify the exact plant species before purchase.",
+    "If an aquarium is shown, use one lidded 10–20 gallon planted tank on a purpose-built stable stand, away from direct sunlight, with a safe cord drip loop and nearby GFCI protection."
+  ],
+  "rooms": [
+    {
+      "id": "family-room",
+      "title": "Family room — connection first",
+      "source": "listing-photos/photo-10.jpg",
+      "output": "room-ideas/generated/family-room-concept.webp",
+      "fallbackOutput": "room-ideas/generated/family-room-concept.png",
+      "budget": "$1,000–$2,000 planning range",
+      "priority": "Phase 2",
+      "summary": "A screen-light family gathering room with durable seating, books, floor play and the home’s single aquarium.",
+      "plan": [
+        "One compact washable three-seat sofa plus two movable floor cushions; no oversized sectional.",
+        "Low closed book and toy storage so cleanup is simple and the entry route remains open.",
+        "One lidded 10–20 gallon planted aquarium on a dedicated stable stand along an interior wall away from direct sun.",
+        "One child/pet-safer plant on a stable raised stand; verify the exact species before purchase.",
+        "Subtle arch-shaped shelf details or geometric textile accents, without generated sacred text."
+      ],
+      "prompt": "Use case: precise-object-edit\nAsset type: photorealistic interior redesign concept for family planning\nInput images: Image 1 is the edit target, the lower family-room listing photo\nPrimary request: Remove all existing movable furniture, rugs, decor, family photos and personal belongings, then redesign this exact room as a calm, cost-effective family connection space with one compact washable three-seat sofa, two movable floor cushions, low closed book and toy storage, and a clear central play area. Add the home’s only aquarium: one lidded 10–20 gallon planted freshwater tank on a purpose-built stable stand along an interior wall away from direct sunlight, with cables arranged as a safe drip loop and no accessible dangling cords. Add one child/pet-safer plant on a stable raised stand. Use restrained Islamic-inspired arches or geometric textile details only.\nStyle/medium: photorealistic, attainable mid-budget interior photography, real fabric and wood texture\nComposition/framing: preserve the exact camera position and wide room view; maintain an unobstructed route between the exterior door, stairs and room opening\nLighting/mood: preserve natural daylight; warm, peaceful and lived-in without clutter\nColor palette: warm ivory, natural oak, muted sage and dusty blue\nMaterials/textures: washable performance fabric, flat-weave rug, rounded wood edges, closed storage\nConstraints: change only movable furnishings and decor; preserve architecture, room proportions, walls, windows, doors, flooring, ceiling, vents, trim and natural-light direction; use realistic scale; anchor tall storage; no TV as the focal point; no people, faces, names, addresses, family photographs, readable documents, Arabic, Qur'anic verses, sacred text, imitation calligraphy, logos, trademarks or watermarks\nAvoid: oversized sectional, multiple aquariums, fish bowls, direct sunlight on the tank, unstable aquarium furniture, loose cords, sharp glass tables, excessive decor, visual clutter"
+    },
+    {
+      "id": "quiet-living-prayer",
+      "title": "Quiet living and prayer room",
+      "source": "listing-photos/photo-12.jpg",
+      "output": "room-ideas/generated/quiet-living-prayer-concept.webp",
+      "fallbackOutput": "room-ideas/generated/quiet-living-prayer-concept.png",
+      "budget": "$700–$1,500 planning range",
+      "priority": "Phase 2",
+      "summary": "A flexible reading, reflection and prayer room that stays open, quiet and easy to reset.",
+      "plan": [
+        "One modest sofa or two compact reading chairs, not a full matching furniture set.",
+        "A clear prayer area with roll-away mats stored in a closed bench; verify qibla direction on site.",
+        "Low book storage for children’s books and family reading.",
+        "Geometric screen or arch motif used as decor only, with no generated Arabic or sacred text.",
+        "Keep skylight paths, windows, stairs and room circulation unobstructed."
+      ],
+      "prompt": "Use case: precise-object-edit\nAsset type: photorealistic interior redesign concept for family planning\nInput images: Image 1 is the edit target, the vaulted upper living-room listing photo\nPrimary request: Remove all existing movable furniture, rugs, decor, family photos and personal belongings, then redesign this exact room as a calm shared reading, reflection and prayer space. Use either one modest low-profile sofa or two compact reading chairs, a low bookcase, a closed storage bench for roll-away prayer mats, and a generous uncluttered floor area. Add a simple arch-shaped wood detail or restrained Islamic geometric screen as non-text decor. Do not invent a qibla direction; the family will verify orientation on site.\nStyle/medium: photorealistic, attainable minimal interior photography with real material texture\nComposition/framing: preserve the exact wide camera view, vaulted volume, skylights, windows and stair relationship; keep walkways and stair access clear\nLighting/mood: preserve daylight from the skylights; quiet, warm and reflective\nColor palette: warm white, light oak, muted olive and soft indigo accents\nMaterials/textures: washable natural-look textiles, flat-weave rug, rounded wood furniture\nConstraints: change only movable furnishings and decor; preserve architecture, room proportions, walls, windows, stairs, flooring, ceiling, skylights, trim and natural-light direction; use realistic scale; anchor storage; no people, faces, names, addresses, family photographs, readable documents, Arabic, Qur'anic verses, sacred text, imitation calligraphy, logos, trademarks or watermarks\nAvoid: blocking stairs or windows, permanent religious text, oversized furniture, television focal point, excessive lanterns, visual clutter"
+    },
+    {
+      "id": "dining-room",
+      "title": "Dining room — six seats, simple storage",
+      "source": "listing-photos/photo-15.jpg",
+      "output": "room-ideas/generated/dining-room-concept.webp",
+      "fallbackOutput": "room-ideas/generated/dining-room-concept.png",
+      "budget": "$700–$1,600 new, or less if approved seller pieces are retained",
+      "priority": "Phase 1",
+      "summary": "A durable six-seat dining setup with one closed cabinet and a clear route to the sliding door.",
+      "plan": [
+        "A practical six-seat table sized for the household; avoid a larger formal set.",
+        "Washable wood or wipe-clean chairs rather than odor-holding upholstery.",
+        "One anchored closed cabinet for serving pieces and school supplies.",
+        "Keep the sliding-door path open and preserve comfortable chair pull-out clearance.",
+        "Use one restrained geometric runner or wall panel instead of many small decorations."
+      ],
+      "prompt": "Use case: precise-object-edit\nAsset type: photorealistic interior redesign concept for family planning\nInput images: Image 1 is the edit target, the dining-room listing photo\nPrimary request: Remove all existing movable furniture, rugs, decor, family photos and personal belongings, then redesign this exact dining room with one durable table and six wipe-clean wood chairs plus one anchored closed storage cabinet. Keep the layout simple and cost-effective. Use one restrained Islamic geometric runner or non-text wall panel as the only strong decorative accent.\nStyle/medium: photorealistic, attainable mid-budget interior photography, realistic furniture proportions\nComposition/framing: preserve the exact camera angle, vaulted ceiling and view to the sliding door; show comfortable chair clearance and an open route to the exterior door\nLighting/mood: preserve natural daylight; welcoming and calm\nColor palette: natural oak, warm white, muted blue-gray and small brass accents\nMaterials/textures: durable sealed wood, wipe-clean seats, washable runner\nConstraints: change only movable furnishings and decor; preserve architecture, room proportions, walls, openings, windows, sliding door, flooring, ceiling, trim and natural-light direction; anchor the cabinet; no people, faces, names, addresses, family photographs, readable documents, Arabic, Qur'anic verses, sacred text, imitation calligraphy, logos, trademarks or watermarks\nAvoid: upholstered dining chairs, oversized table, blocked slider, open display clutter, fragile glass furniture, excessive decor"
+    },
+    {
+      "id": "breakfast-nook",
+      "title": "Breakfast and homework nook",
+      "source": "listing-photos/photo-04.jpg",
+      "output": "room-ideas/generated/breakfast-nook-concept.webp",
+      "fallbackOutput": "room-ideas/generated/breakfast-nook-concept.png",
+      "budget": "$250–$650 planning range",
+      "priority": "Phase 3",
+      "summary": "A compact everyday table for breakfast, homework and crafts, with hidden supplies and no extra lounge furniture.",
+      "plan": [
+        "One compact wipe-clean table with a wall bench and two movable chairs.",
+        "Baskets or drawers below the bench for school and craft supplies.",
+        "A small raised plant near daylight but out of the main walkway.",
+        "Use the nook daily instead of buying a second full dining set.",
+        "Keep both wide room openings clear."
+      ],
+      "prompt": "Use case: precise-object-edit\nAsset type: photorealistic interior redesign concept for family planning\nInput images: Image 1 is the edit target, the breakfast-nook listing photo\nPrimary request: Remove all existing movable furniture, rugs, decor, family photos and personal belongings, then redesign this exact nook as a compact breakfast, homework and craft area. Use one wipe-clean rectangular table, a simple wall bench with closed basket storage below, and two light movable chairs. Add one small child/pet-safer plant on a stable raised surface. Include only a subtle geometric cushion pattern with no text.\nStyle/medium: photorealistic, practical low-cost interior photography\nComposition/framing: preserve the exact camera angle and both large openings; keep circulation through the nook clear\nLighting/mood: preserve natural daylight; cheerful, calm and focused\nColor palette: warm white, natural wood, muted green and soft blue\nMaterials/textures: sealed wood tabletop, washable cushions, woven closed baskets\nConstraints: change only movable furnishings and decor; preserve architecture, room proportions, walls, openings, flooring, ceiling, fixed trim and natural-light direction; use realistic scale; no people, faces, names, addresses, family photographs, readable documents, Arabic, Qur'anic verses, sacred text, imitation calligraphy, logos, trademarks or watermarks\nAvoid: second large dining set, bulky cabinets, blocked openings, wall-mounted screens, open craft clutter, floor plants in the walkway"
+    },
+    {
+      "id": "primary-bedroom",
+      "title": "Primary bedroom — restful essentials",
+      "source": "listing-photos/photo-20.jpg",
+      "output": "room-ideas/generated/primary-bedroom-concept.webp",
+      "fallbackOutput": "room-ideas/generated/primary-bedroom-concept.png",
+      "budget": "$1,200–$2,500 including a new mattress",
+      "priority": "Phase 1",
+      "summary": "A restful bedroom with only the bed, two compact nightstands, closed clothing storage and one plant.",
+      "plan": [
+        "One correctly scaled bed with a new mattress and simple washable bedding.",
+        "Two compact nightstands with safe charging, plus one closed dresser only if needed.",
+        "Keep baseboard heat, windows, doors and HVAC register unobstructed.",
+        "Use a single geometric textile accent rather than multiple wall pieces.",
+        "Resolve any ceiling moisture concern before arranging or purchasing furniture."
+      ],
+      "prompt": "Use case: precise-object-edit\nAsset type: photorealistic interior redesign concept for family planning\nInput images: Image 1 is the edit target, the primary-bedroom listing photo\nPrimary request: Remove all existing movable furniture, rugs, decor, family photos, television and personal belongings, then redesign this exact bedroom as a restful minimal space. Add one realistically scaled bed with simple washable bedding, two compact rounded nightstands, one low closed dresser only if it fits without crowding, and one child/pet-safer plant on a stable raised stand. Use one restrained Islamic geometric textile accent without text.\nStyle/medium: photorealistic, attainable warm-minimal interior photography\nComposition/framing: preserve the exact camera angle and relationship among the windows, door and ceiling; keep clear walking paths on both sides of the bed\nLighting/mood: preserve natural daylight; restful, warm and uncluttered\nColor palette: warm white, light walnut, sand and muted sage\nMaterials/textures: washable cotton-look bedding, wood grain, flat-weave rug\nConstraints: change only movable furnishings and decor; preserve architecture, room proportions, walls, windows, doors, flooring, ceiling seams and beams, fan, vents, baseboard heat, trim and natural-light direction; do not conceal the ceiling area that requires inspection; no people, faces, names, addresses, family photographs, readable documents, Arabic, Qur'anic verses, sacred text, imitation calligraphy, logos, trademarks or watermarks\nAvoid: television, bench at the foot of the bed, oversized dresser, blocked heat or windows, fragile decor, excessive pillows, clutter"
+    },
+    {
+      "id": "shared-kids-room-a",
+      "title": "Shared children’s room A — two real beds",
+      "source": "listing-photos/photo-23.jpg",
+      "output": "room-ideas/generated/shared-kids-room-a-concept.webp",
+      "fallbackOutput": "room-ideas/generated/shared-kids-room-a-concept.png",
+      "budget": "$1,200–$2,400 including two new mattresses",
+      "priority": "Phase 1",
+      "summary": "Two floor-level twin sleeping surfaces, shared storage and a small work zone without using a bunk beneath the fan.",
+      "plan": [
+        "Two genuine twin beds or one twin plus a verified roll-out trundle rated for nightly sleep.",
+        "No bunk or loft bed under the ceiling fan.",
+        "One shared anchored dresser and one compact two-place homework surface.",
+        "Use under-bed drawers and wall-mounted book ledges to avoid extra cabinets.",
+        "Keep both windows and the room exit usable."
+      ],
+      "prompt": "Use case: precise-object-edit\nAsset type: photorealistic interior redesign concept for family planning\nInput images: Image 1 is the edit target, the first children’s-bedroom listing photo\nPrimary request: Remove all existing movable furniture, rugs, decor, family photos and personal belongings, then redesign this exact room for two children with two genuine, comfortable sleeping surfaces. Use two low twin beds arranged to preserve the windows and exit, or one low twin bed plus a clearly visible pull-out trundle designed for nightly sleep. Add one shared anchored dresser, a compact two-place homework surface, under-bed storage and a few reachable book ledges. Use subtle star-and-geometry textile patterns without text.\nStyle/medium: photorealistic, attainable family interior photography, durable and age-flexible rather than themed\nComposition/framing: preserve the exact camera angle, windows, closet relationship and ceiling fan; show both sleeping surfaces clearly and keep the center walkway open\nLighting/mood: preserve natural daylight; calm, bright and organized\nColor palette: warm white, light oak, muted navy and sage accents\nMaterials/textures: washable cotton-look bedding, rounded wood edges, low-pile rug\nConstraints: change only movable furnishings and decor; preserve architecture, room proportions, walls, windows, flooring, ceiling, fan, vents, trim and natural-light direction; anchor dresser and shelves; keep beds safely away from fan blades; no people, faces, names, addresses, family photographs, readable documents, Arabic, Qur'anic verses, sacred text, imitation calligraphy, logos, trademarks or watermarks\nAvoid: bunk beds, loft beds, only one sleeping surface, blocking windows or exit, unanchored tall furniture, dangling cords, screens, fragile decor, visual clutter"
+    },
+    {
+      "id": "shared-kids-room-b",
+      "title": "Shared children’s room B — flexible twins",
+      "source": "listing-photos/photo-25.jpg",
+      "output": "room-ideas/generated/shared-kids-room-b-concept.webp",
+      "fallbackOutput": "room-ideas/generated/shared-kids-room-b-concept.png",
+      "budget": "$1,200–$2,400 including two new mattresses",
+      "priority": "Phase 1",
+      "summary": "Two low twin beds with storage, one shared desk and anchored essentials, leaving the fan and exit clear.",
+      "plan": [
+        "Two low twin beds with drawers, shown as two separate nightly sleeping surfaces.",
+        "No bunk or loft bed under the ceiling fan.",
+        "One shared desk, one anchored chest and a narrow book ledge instead of several storage units.",
+        "Keep window access, HVAC flow and the door route open.",
+        "Use calm age-flexible colors so the room does not need frequent replacement."
+      ],
+      "prompt": "Use case: precise-object-edit\nAsset type: photorealistic interior redesign concept for family planning\nInput images: Image 1 is the edit target, the second children’s-bedroom listing photo\nPrimary request: Remove all existing movable furniture, rugs, decor, family photos, television and personal belongings, then redesign this exact room for two children with two clearly separate low twin storage beds, one compact shared desk, one anchored low chest and a narrow book ledge. Use restrained Islamic geometric patterns in bedding or a small wall panel, without text. Make the room practical, calm and age-flexible.\nStyle/medium: photorealistic, attainable family interior photography with realistic furniture scale\nComposition/framing: preserve the exact camera position, window, door and ceiling fan; show both sleeping surfaces and a clear route between the door and window\nLighting/mood: preserve natural daylight; calm, organized and welcoming\nColor palette: warm white, medium oak, muted teal and clay accents\nMaterials/textures: washable bedding, rounded wood edges, low-pile rug\nConstraints: change only movable furnishings and decor; preserve architecture, room proportions, walls, window, door, flooring, ceiling, fan, vents, trim and natural-light direction; anchor storage; maintain safe fan clearance; no people, faces, names, addresses, family photographs, readable documents, Arabic, Qur'anic verses, sacred text, imitation calligraphy, logos, trademarks or watermarks\nAvoid: bunk beds, loft beds, only one sleeping surface, television, gaming chair, blocked window or exit, unanchored tall furniture, dangling cords, excessive furniture or decor"
+    },
+    {
+      "id": "lower-office",
+      "title": "Lower room — focused office",
+      "source": "listing-photos/photo-27.jpg",
+      "output": "room-ideas/generated/lower-office-concept.webp",
+      "fallbackOutput": "room-ideas/generated/lower-office-concept.png",
+      "budget": "$500–$1,200 planning range",
+      "priority": "After moisture clearance",
+      "summary": "A focused office with one desk, closed files and a small reading corner after the ceiling concern is resolved.",
+      "plan": [
+        "Remove the bed; use one ergonomic desk and chair with concealed cable management.",
+        "One low closed file cabinet and one narrow anchored bookshelf only.",
+        "A compact reading chair can double as a conversation seat without turning this into another bedroom.",
+        "Keep baseboard heat, door, window and HVAC routes clear.",
+        "Do not furnish until the ceiling discoloration or prior repair is moisture-checked and resolved."
+      ],
+      "prompt": "Use case: precise-object-edit\nAsset type: photorealistic interior redesign concept for family planning\nInput images: Image 1 is the edit target, the lower-room listing photo\nPrimary request: Remove the bed and all existing movable furniture, rugs, decor, family photos and personal belongings, then redesign this exact room as a focused home office. Use one 60-inch desk with an ergonomic chair, concealed cable management, one low closed file cabinet, one narrow anchored bookshelf and one compact reading chair. Add one child/pet-safer plant on a stable raised surface. Use a restrained arch detail or geometric desk mat without text.\nStyle/medium: photorealistic, practical mid-budget home-office photography\nComposition/framing: preserve the exact camera angle, window, door, ceiling fixture and room proportions; keep the doorway and circulation clear\nLighting/mood: preserve natural daylight; focused, warm and uncluttered\nColor palette: warm white, walnut, muted green and charcoal accents\nMaterials/textures: matte wood, washable upholstery, low-pile rug\nConstraints: change only movable furnishings and decor; preserve architecture, room proportions, walls, window, door, flooring, ceiling and visible discoloration/repair area, fixture, baseboard heat, vents, trim and natural-light direction; do not conceal or cosmetically erase the ceiling area that requires moisture verification; no bed; no people, faces, names, addresses, family photographs, readable documents, Arabic, Qur'anic verses, sacred text, imitation calligraphy, logos, trademarks or watermarks\nAvoid: hiding the ceiling concern, oversized executive desk, multiple monitors dominating the room, open cable clutter, blocked heat or doorway, excess shelving, bedroom furniture"
+    },
+    {
+      "id": "screened-porch",
+      "title": "Screened porch — simple nature room",
+      "source": "listing-photos/photo-29.jpg",
+      "output": "room-ideas/generated/screened-porch-concept.webp",
+      "fallbackOutput": "room-ideas/generated/screened-porch-concept.png",
+      "budget": "$400–$1,000 after repairs",
+      "priority": "After roof and moisture clearance",
+      "summary": "A weather-tolerant family nature and game space, furnished only after the roof and wood are cleared.",
+      "plan": [
+        "One weather-resistant table for meals, games and nature activities with six stackable chairs.",
+        "One storage bench for outdoor cushions and children’s nature supplies.",
+        "Two hanging or raised porch-suitable plants after checking species and placement.",
+        "No aquarium here because temperature swings and direct light make care harder.",
+        "Repair leaks, damaged wood, unsafe wiring or screens before furnishing."
+      ],
+      "prompt": "Use case: precise-object-edit\nAsset type: photorealistic interior redesign concept for family planning\nInput images: Image 1 is the edit target, the screened-porch listing photo\nPrimary request: Remove all existing movable furniture, rugs, string lights, decor and personal belongings, then redesign this exact screened porch as a simple family nature, board-game and meal space. Use one weather-resistant rectangular table, six lightweight stackable chairs, one closed storage bench and two safely placed porch-suitable plants. Add a restrained geometric outdoor cushion pattern without text. Keep the concept visibly practical and easy to clear for maintenance.\nStyle/medium: photorealistic, attainable outdoor-room photography with realistic weather-resistant materials\nComposition/framing: preserve the exact wide camera view, screened walls, exposed roof structure and skylight; leave all doors and walkways clear\nLighting/mood: preserve outdoor daylight; fresh, relaxed and uncluttered\nColor palette: natural wood, charcoal, warm white and muted green\nMaterials/textures: powder-coated metal, sealed wood, washable outdoor fabric\nConstraints: change only movable furnishings and decor; preserve architecture, room proportions, screens, doors, flooring, exposed roof boards, beams, skylight, fixed wiring and natural-light direction; do not conceal stains or areas requiring moisture inspection; no aquarium; no people, faces, names, addresses, family photographs, readable documents, Arabic, Qur'anic verses, sacred text, imitation calligraphy, logos, trademarks or watermarks\nAvoid: hiding roof-board concerns, permanent string-light wiring, indoor upholstery, bulky sectional, blocked exits, fish tank, excessive planters, visual clutter"
+    }
+  ]
+}

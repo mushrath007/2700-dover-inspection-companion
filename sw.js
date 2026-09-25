@@ -1,9 +1,11 @@
-const CACHE_NAME = "dover-inspection-v4";
+const CACHE_NAME = "dover-inspection-v5";
 const APP_SHELL = [
     "./",
     "./index.html",
     "./manifest.webmanifest",
     "./app-icon.svg",
+    "./new-room-ideas.html",
+    "./room-ideas/manifest.json",
     "./2700-dover-visual-inspection-report.html",
     "./2700-dover-printable-inspection-and-furniture-notebook.html"
 ];

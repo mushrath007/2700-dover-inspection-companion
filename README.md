@@ -1,6 +1,6 @@
 # Home Inspection Companion
 
-A static, mobile-first field app for room-by-room inspection notes, private photo evidence, repair follow-up, furniture decisions and printable reports.
+A static, mobile-first field app for room-by-room inspection notes, private photo evidence, repair follow-up, furniture decisions, room concepts and printable reports.
 
 ## Live app
 
@@ -23,6 +23,7 @@ https://mushrath007.github.io/2700-dover-inspection-companion/
 - Private camera/photo capture organized by inspection area
 - Offline IndexedDB photo storage with download, deletion and backup/restore
 - Photo-matched seller-furniture buying guide with IKEA/new-retail benchmarks, offer limits and an autosaved bundle calculator
+- Nine-room minimal furnishing plan with source/concept comparisons and copy-ready, privacy-safe image-editing prompts
 - 39-photo annotated visual assessment
 - 18-page printable notebook and PDF
 - Offline app shell and on-demand photo caching
@@ -36,3 +37,9 @@ Serve this directory with any local static server, then open the printed URL:
 ## Deployment
 
 The GitHub Actions workflow publishes the repository root to GitHub Pages.
+
+## Generate room concepts on another computer
+
+Open [`room-ideas/README.md`](room-ideas/README.md) for the exact source/output map, Codex handoff, privacy rules and acceptance checklist. The public page is [`new-room-ideas.html`](new-room-ideas.html); it automatically replaces each pending state when the correctly named WebP or PNG is added under `room-ideas/generated/`.
+
+Never commit API keys, `.env` files, browser backup exports, private inspection photos, personal notes, financial records or readable family material. The repository name, existing reports and listing photos identify the property and are public; fully anonymizing those existing artifacts would require a separate repository/file/history migration.

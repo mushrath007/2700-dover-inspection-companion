@@ -4,5 +4,11 @@ contact-sheet-*.jpg
 01-inspection-checklist.md
 02-listing-photo-review.md
 .DS_Store
+*.env
+*.env.*
+*.key
+*.pem
+*inspection-backup*.json
+private-inspection-photos/
 verify-*.cjs
 public-inspection-companion.html
