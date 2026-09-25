@@ -793,9 +793,115 @@
                 font-weight: 850;
             }
 
+            .furniture-guide-hero {
+                background: linear-gradient(135deg, var(--primary-soft), var(--surface));
+                border-color: #8cb5d8;
+                margin-bottom: 16px;
+            }
+
+            .furniture-guide-hero h3 {
+                font-size: 1.18rem;
+                margin-bottom: 5px;
+            }
+
+            .furniture-guide-hero p {
+                margin-bottom: 0;
+                max-width: 74ch;
+            }
+
+            .furniture-budget-grid {
+                display: grid;
+                gap: 10px;
+                grid-template-columns: repeat(4, minmax(0, 1fr));
+                margin-top: 16px;
+            }
+
+            .furniture-budget {
+                background: var(--surface);
+                border: 1px solid var(--line);
+                border-radius: 12px;
+                padding: 13px;
+            }
+
+            .furniture-budget span,
+            .furniture-budget small {
+                color: var(--muted);
+                display: block;
+            }
+
+            .furniture-budget span {
+                font-size: 0.75rem;
+                font-weight: 800;
+            }
+
+            .furniture-budget strong {
+                display: block;
+                font-size: 1.32rem;
+                font-variant-numeric: tabular-nums;
+                line-height: 1.2;
+                margin: 2px 0;
+            }
+
+            .furniture-budget small {
+                font-size: 0.7rem;
+            }
+
+            .furniture-budget.current {
+                border-color: var(--primary);
+            }
+
+            .furniture-budget.current.over-limit {
+                background: var(--danger-soft);
+                border-color: var(--danger);
+            }
+
+            .furniture-summary-note {
+                color: var(--muted);
+                font-size: 0.78rem;
+                margin: 10px 0 0;
+            }
+
             .furniture-card {
                 box-shadow: none;
-                padding: 17px;
+                display: grid;
+                grid-template-columns: minmax(230px, 0.8fr) minmax(0, 1.6fr);
+                padding: 0;
+            }
+
+            .furniture-photos {
+                background: var(--surface-2);
+                display: grid;
+                grid-auto-rows: minmax(150px, 1fr);
+                min-height: 310px;
+            }
+
+            .furniture-photos a {
+                min-height: 0;
+                overflow: hidden;
+                position: relative;
+            }
+
+            .furniture-photos img {
+                display: block;
+                height: 100%;
+                object-fit: cover;
+                width: 100%;
+            }
+
+            .furniture-photos span {
+                background: rgba(17, 24, 39, 0.86);
+                bottom: 8px;
+                color: white;
+                font-size: 0.72rem;
+                font-weight: 850;
+                left: 8px;
+                padding: 4px 7px;
+                position: absolute;
+            }
+
+            .furniture-card-body {
+                min-width: 0;
+                padding: 18px;
             }
 
             .furniture-head {
@@ -806,14 +912,85 @@
             }
 
             .furniture-head h3 {
-                font-size: 1rem;
+                font-size: 1.15rem;
                 margin-bottom: 2px;
             }
 
             .furniture-head p {
                 color: var(--muted);
-                font-size: 0.8rem;
+                font-size: 0.84rem;
                 margin-bottom: 0;
+            }
+
+            .price-grid {
+                display: grid;
+                gap: 8px;
+                grid-template-columns: repeat(4, minmax(0, 1fr));
+                margin-top: 14px;
+            }
+
+            .price-box {
+                background: var(--surface-2);
+                border: 1px solid var(--line);
+                border-radius: 10px;
+                min-width: 0;
+                padding: 10px;
+            }
+
+            .price-box span,
+            .price-box small {
+                color: var(--muted);
+                display: block;
+            }
+
+            .price-box span {
+                font-size: 0.7rem;
+                font-weight: 800;
+            }
+
+            .price-box strong {
+                display: block;
+                font-size: 1rem;
+                font-variant-numeric: tabular-nums;
+                line-height: 1.2;
+                margin-top: 3px;
+            }
+
+            .price-box small {
+                font-size: 0.67rem;
+                margin-top: 3px;
+            }
+
+            .price-box.offer {
+                background: var(--success-soft);
+                border-color: #8fc5a7;
+            }
+
+            .furniture-guidance {
+                display: grid;
+                gap: 10px;
+                grid-template-columns: 1fr 1fr;
+                margin-top: 14px;
+            }
+
+            .furniture-guidance div {
+                border-left: 4px solid var(--success);
+                padding-left: 10px;
+            }
+
+            .furniture-guidance div:last-child {
+                border-left-color: var(--danger);
+            }
+
+            .furniture-guidance strong,
+            .furniture-guidance span {
+                display: block;
+            }
+
+            .furniture-guidance span {
+                color: var(--muted);
+                font-size: 0.8rem;
+                margin-top: 2px;
             }
 
             .recommendation {
@@ -844,7 +1021,52 @@
                 display: grid;
                 gap: 12px;
                 grid-template-columns: 1fr 1fr 1fr;
-                margin-top: 12px;
+                margin-top: 16px;
+            }
+
+            .furniture-alternatives,
+            .negotiation-grid {
+                display: grid;
+                gap: 12px;
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+                margin-top: 14px;
+            }
+
+            .alternative-card {
+                background: var(--surface);
+                border: 1px solid var(--line);
+                border-radius: 12px;
+                padding: 15px;
+            }
+
+            .alternative-card h3 {
+                font-size: 1rem;
+                margin-bottom: 5px;
+            }
+
+            .alternative-card p {
+                color: var(--muted);
+                font-size: 0.84rem;
+                margin-bottom: 8px;
+            }
+
+            .alternative-card a {
+                display: inline-block;
+                font-weight: 850;
+                min-height: 44px;
+                padding: 10px 0;
+            }
+
+            .furniture-warning {
+                background: var(--warning-soft);
+                border: 1px solid #d8ad62;
+                border-radius: 12px;
+                margin: 16px 0;
+                padding: 14px;
+            }
+
+            .furniture-warning p:last-child {
+                margin-bottom: 0;
             }
 
             .photo-capture-grid {
@@ -1098,6 +1320,11 @@
                     grid-column: auto;
                 }
 
+                .furniture-budget-grid,
+                .price-grid {
+                    grid-template-columns: repeat(2, minmax(0, 1fr));
+                }
+
                 .furniture-fields {
                     grid-template-columns: 1fr 1fr;
                 }
@@ -1207,6 +1434,23 @@
                 .actions .action {
                     flex: 1 1 100%;
                 }
+
+                .furniture-card {
+                    grid-template-columns: 1fr;
+                }
+
+                .furniture-photos {
+                    grid-auto-flow: column;
+                    grid-auto-columns: 1fr;
+                    grid-auto-rows: 210px;
+                    min-height: 0;
+                }
+
+                .furniture-guidance,
+                .furniture-alternatives,
+                .negotiation-grid {
+                    grid-template-columns: 1fr;
+                }
             }
 
             @media (prefers-color-scheme: dark) {
@@ -1261,6 +1505,7 @@
                 .app-header,
                 .tab-nav,
                 .actions,
+                #print-furniture,
                 .toast {
                     display: none !important;
                 }
@@ -1285,6 +1530,15 @@
                 .furniture-card,
                 .visit-card {
                     box-shadow: none;
+                }
+
+                .furniture-card {
+                    break-inside: avoid;
+                    grid-template-columns: 180px 1fr;
+                }
+
+                .furniture-photos {
+                    min-height: 240px;
                 }
             }
         </style>
@@ -1599,15 +1853,66 @@
                 <section class="view" id="view-furniture" role="tabpanel" hidden>
                     <div class="section-heading">
                         <div>
-                            <h2>Seller furniture decisions</h2>
-                            <p>Availability and ownership are unverified. Inspect, measure and document every agreed item.</p>
+                            <h2>Furniture buying guide</h2>
+                            <p>Compare the furniture already fitted to this house with buying new, then record a reasonable offer.</p>
+                        </div>
+                        <button class="action secondary" id="print-furniture" type="button">Print this page</button>
+                    </div>
+
+                    <section class="panel furniture-guide-hero" aria-labelledby="furniture-budget-title">
+                        <p class="eyebrow">Recommended bundle strategy</p>
+                        <h3 id="furniture-budget-title">Start at $900 and protect a $1,400 ceiling</h3>
+                        <p>Prioritize the dining table, blue dining cabinet and hard furniture in both children’s rooms. The seller avoids moving costs, while you avoid delivery and assembly—so a fair price is still substantially below new retail.</p>
+                        <div class="furniture-budget-grid" aria-label="Furniture budget summary">
+                            <div class="furniture-budget"><span>Opening bundle offer</span><strong>$900</strong><small>Start here</small></div>
+                            <div class="furniture-budget"><span>Comfortable settlement</span><strong>$1,100–$1,200</strong><small>If condition is good</small></div>
+                            <div class="furniture-budget"><span>Hard ceiling</span><strong>$1,400</strong><small>$1,500 only if solid wood</small></div>
+                            <div class="furniture-budget current" id="furniture-offer-card"><span>Your entered offers</span><strong id="furniture-offer-total">$0</strong><small id="furniture-offer-status">Enter offers below</small></div>
+                        </div>
+                        <p class="furniture-summary-note"><span id="furniture-ask-total">Seller asking total: $0</span> · Benchmarks checked against IKEA US on <time datetime="2026-09-25">September 25, 2026</time>; other-retailer ranges are estimates and should be refreshed before purchase.</p>
+                    </section>
+
+                    <div class="furniture-warning">
+                        <strong>Dog-home rule:</strong>
+                        <p>Buy washable hard furniture. Decline sofas, mattresses, rugs, bedding, papasan chairs and gaming chairs. Treat the six upholstered dining chairs as a free or very low-value extra unless they are odor-free and professionally cleaned.</p>
+                        <p><strong>Sleeping-capacity check:</strong> each photographed children’s room shows only one visible bed. Because two children may share each room, confirm whether any lower unit is a true trundle; otherwise budget for a second safe sleeping surface in each room.</p>
+                    </div>
+
+                    <div class="section-heading">
+                        <div>
+                            <h2>Recommended pieces from this house</h2>
+                            <p>Open a listing photo, inspect the piece, and enter the seller’s price and your offer.</p>
                         </div>
                     </div>
-                    <div class="panel priority-box" style="margin-bottom:14px">
-                        <strong>Best first asks:</strong> dining set, clean gray sectional, hard bedroom furniture, desks and a dry porch set.
-                        Usually decline mattresses, pillows, questionable rugs/cushions and untested gas appliances.
-                    </div>
                     <div class="furniture-list" id="furniture-list"></div>
+
+                    <section class="panel" style="margin-top:16px" aria-labelledby="outside-title">
+                        <p class="eyebrow">Buy elsewhere comparison</p>
+                        <h2 id="outside-title">When a new or different used item is the better value</h2>
+                        <p class="panel-subtitle">Use these limits as walk-away points. IKEA links open current search results; local used listings should normally cost about 25%–40% of comparable new furniture.</p>
+                        <div class="furniture-alternatives" id="furniture-alternatives"></div>
+                    </section>
+
+                    <section class="panel" style="margin-top:16px" aria-labelledby="negotiation-title">
+                        <p class="eyebrow">Before agreeing</p>
+                        <h2 id="negotiation-title">Condition and purchase checklist</h2>
+                        <div class="negotiation-grid">
+                            <div>
+                                <label class="check-row" for="furniture-check-list"><input id="furniture-check-list" data-persist type="checkbox" />Seller provided an exact item-by-item list</label>
+                                <label class="check-row" for="furniture-check-labels"><input id="furniture-check-labels" data-persist type="checkbox" />Maker labels and solid wood versus particleboard checked</label>
+                                <label class="check-row" for="furniture-check-condition"><input id="furniture-check-condition" data-persist type="checkbox" />Drawers, doors, joints, bed slats and hardware tested</label>
+                            </div>
+                            <div>
+                                <label class="check-row" for="furniture-check-pets"><input id="furniture-check-pets" data-persist type="checkbox" />No pet odor, staining, fleas, bedbugs or chewing damage</label>
+                                <label class="check-row" for="furniture-check-size"><input id="furniture-check-size" data-persist type="checkbox" />Dimensions, doorway clearance and room layout confirmed</label>
+                                <label class="check-row" for="furniture-check-writing"><input id="furniture-check-writing" data-persist type="checkbox" />Separate written bill of sale reviewed with attorney</label>
+                            </div>
+                        </div>
+                        <div class="field" style="margin-top:12px">
+                            <label for="furniture-bundle-notes">Bundle negotiation notes</label>
+                            <textarea id="furniture-bundle-notes" data-persist placeholder="Seller’s total, included pieces, cleaning agreement, final amount and what must remain for final walkthrough…"></textarea>
+                        </div>
+                    </section>
                 </section>
 
                 <section class="view" id="view-backup" role="tabpanel" hidden>
@@ -1860,21 +2165,89 @@
             ];
 
             const furniture = [
-                ["dining-set", "Dining table + six chairs", "Photos 2, 15–16", "ask", "Strong family fit; already scaled to the room."],
-                ["gray-sectional", "Gray sectional / sofa", "Photos 9–11", "ask", "Practical for children if clean, odor-free and supportive."],
-                ["white-sofa", "White sofa + chairs", "Photos 12–14", "maybe", "Fits the room but light upholstery is less child-friendly."],
-                ["coffee-tables", "Coffee / side tables", "Photos 9–14", "maybe", "Consider only as low-cost bundle pieces without sharp hazards."],
-                ["dining-hutch", "Dining hutch / cabinet", "Photos 15–16", "maybe", "Useful storage if anchored and the walkway remains clear."],
-                ["twin-frames", "Twin / daybed frames", "Photos 23–25", "ask", "Good for shared kids' rooms after measuring; decline mattresses."],
-                ["dressers", "Dressers / nightstands", "Photos 20–25", "ask", "Good hard-furniture candidates if stable and anchorable."],
-                ["desks", "Desks / shelving", "Photos 5, 23, 25", "ask", "Useful for the office or children's study areas."],
-                ["desk-chairs", "Desk / gaming chairs", "Photos 5, 25", "maybe", "Use only if supportive, adjustable and correctly sized."],
-                ["primary-frame", "Primary bed frame", "Photos 20–22", "maybe", "Compare price with moving/disassembly cost; decline mattress."],
-                ["porch-set", "Porch table + chairs", "Photos 3, 29–30", "ask", "Good low-cost add-on if dry, sound and rust-free."],
-                ["deck-seating", "Deck seating / canopy items", "Photo 31", "maybe", "Buy only if dry and unrelated to structural deck work."],
-                ["grill", "Grill", "Photo 32", "maybe", "Only after appliance and gas connection are leak-tested."],
-                ["extra-fridge", "Second refrigerator", "Photos 17–18", "maybe", "Useful for a large family if efficient and reliable."],
-                ["soft-goods", "Mattresses, pillows, rugs & bedding", "Photos 20–27", "skip", "Hygiene, allergen, odor and pest risk outweigh convenience."]
+                {
+                    id: "dining-set",
+                    title: "Dining table + six chairs",
+                    photos: [15, 16],
+                    recommendation: "ask",
+                    fit: "The table is already scaled for the room and seats the six-person household.",
+                    ikea: "$330–$1,050",
+                    outside: "$1,200–$2,000 est.",
+                    opening: "$350–$400",
+                    maximum: "$500–$550",
+                    include: "Table, leaf, six matching chairs and all hardware. Table-only opening: $200–$250; maximum: $350.",
+                    exclude: "Value upholstered chairs at $0–$100 total unless odor-free, unstained and professionally cleaned."
+                },
+                {
+                    id: "dining-hutch",
+                    title: "Blue dining cabinet / hutch",
+                    photos: [15, 16],
+                    recommendation: "ask",
+                    fit: "Useful closed storage that already fits the dining wall; resale value is limited because it is large and difficult to move.",
+                    ikea: "$284–$798",
+                    outside: "$900–$1,500 est.",
+                    opening: "$175–$225",
+                    maximum: "$300–$350",
+                    include: "All shelves, glass panels, doors, drawers, keys and wall-anchor hardware.",
+                    exclude: "Pass if it smells, has moisture swelling, loose glass or cannot be safely anchored."
+                },
+                {
+                    id: "white-kids-bundle",
+                    title: "White children’s-room bundle",
+                    photos: [23, 24],
+                    recommendation: "ask",
+                    fit: "Twin bed frame, nightstand, wide dresser and desk/shelving already fit this upper bedroom.",
+                    ikea: "$500–$1,200",
+                    outside: "$900–$1,600 est.",
+                    opening: "$300–$350",
+                    maximum: "$500",
+                    include: "Bed frame and slats, nightstand, dresser, desk/shelving and every assembly fastener.",
+                    exclude: "No mattress, bedding, rug, papasan chair or upholstered desk chair. Confirm whether any lower unit is storage or a trundle."
+                },
+                {
+                    id: "dark-kids-bundle",
+                    title: "Dark children’s-room bundle",
+                    photos: [25],
+                    recommendation: "ask",
+                    fit: "Storage bed, chest and ladder desk/shelves use the room efficiently and avoid new assembly work.",
+                    ikea: "$550–$1,100",
+                    outside: "$900–$1,600 est.",
+                    opening: "$300–$350",
+                    maximum: "$500",
+                    include: "Bed frame, storage drawers, chest, ladder desk/shelves, slats and all mounting hardware.",
+                    exclude: "No mattress, rug, hand chair or gaming chair. Verify the drawers are storage—not a second sleeping surface."
+                }
+            ];
+
+            const furnitureAlternatives = [
+                {
+                    title: "Dining set",
+                    ikea: "VIHALS is about $330, HAUGA $470, ÅLHULT $640, TONSTAD $850 and ROSENTORP $1,050 for table-and-six-chair sets.",
+                    outside: "Comparable new mid-range sets are estimated around $1,200–$2,000.",
+                    trigger: "Buy elsewhere if the seller wants over $550, the table is damaged, or the fabric retains pet odor.",
+                    url: "https://www.ikea.com/us/en/search/?q=dining%20table%206%20chairs"
+                },
+                {
+                    title: "Dining cabinet / hutch",
+                    ikea: "BILLY/OXBERG starts near $284; LOMMARP is about $499 and HEMNES or TONSTAD-style storage about $798–$799.",
+                    outside: "Comparable new large cabinets are estimated around $900–$1,500.",
+                    trigger: "Buy elsewhere if the seller wants over $350 or the cabinet cannot be anchored safely.",
+                    url: "https://www.ikea.com/us/en/search/?q=china%20cabinet%20hutch"
+                },
+                {
+                    title: "Children’s beds",
+                    ikea: "VIHALS is about $189, BRIMNES $299, SLÄKT $360 sale/$450 regular and HEMNES $449 before mattresses.",
+                    outside: "Comparable new storage beds are estimated around $300–$700 each.",
+                    trigger: "Buy elsewhere if slats, fasteners or drawers are missing, or if one bed cannot support each child-room plan.",
+                    url: "https://www.ikea.com/us/en/search/?q=twin%20bed%20with%20storage"
+                },
+                {
+                    title: "Dressers and desks",
+                    ikea: "Dressers currently run about $100–$450; PÅHL desks about $100–$135 and LÄRANDE about $180.",
+                    outside: "Comparable new bedroom storage and desks are estimated around $500–$900 per room.",
+                    trigger: "Buy elsewhere if drawers bind, pieces wobble, or tall furniture cannot accept wall anchors.",
+                    url: "https://www.ikea.com/us/en/search/?q=kids%20dresser%20desk"
+                }
             ];
 
             const storageKey = "doverInspectionCompanionV1";
@@ -2132,16 +2505,60 @@
 
             function renderFurniture() {
                 document.getElementById("furniture-list").innerHTML = furniture.map(function (item) {
-                    const label = item[3] === "ask" ? "Ask first" : item[3] === "maybe" ? "Consider" : "Usually skip";
-                    return '<article class="furniture-card"><div class="furniture-head"><div><h3>' + escapeHtml(item[1]) + '</h3><p>' +
-                        escapeHtml(item[2]) + ' · ' + escapeHtml(item[4]) + '</p></div><span class="recommendation ' + item[3] + '">' + label + '</span></div>' +
-                        '<div class="furniture-fields"><div class="field"><label for="furniture-' + item[0] + '-decision">Decision</label><select id="furniture-' + item[0] + '-decision" data-persist>' +
+                    const label = item.recommendation === "ask" ? "Recommended" : item.recommendation === "maybe" ? "Consider" : "Usually skip";
+                    const photos = item.photos.map(function (number) {
+                        const photoNumber = String(number).padStart(2, "0");
+                        return '<a href="./listing-photos/photo-' + photoNumber + '.jpg" target="_blank" rel="noopener"><img loading="lazy" width="1024" height="683" src="./listing-photos/photo-' + photoNumber + '.jpg" alt="' + escapeHtml(item.title) + ' shown in listing photo ' + number + '" /><span>Photo ' + number + '</span></a>';
+                    }).join("");
+                    return '<article class="furniture-card"><div class="furniture-photos">' + photos + '</div><div class="furniture-card-body"><div class="furniture-head"><div><h3>' + escapeHtml(item.title) + '</h3><p>' +
+                        escapeHtml(item.fit) + '</p></div><span class="recommendation ' + item.recommendation + '">' + label + '</span></div>' +
+                        '<div class="price-grid" aria-label="Price comparison for ' + escapeHtml(item.title) + '">' +
+                        '<div class="price-box"><span>IKEA new</span><strong>' + escapeHtml(item.ikea) + '</strong><small>Current benchmark</small></div>' +
+                        '<div class="price-box"><span>Other new retail</span><strong>' + escapeHtml(item.outside) + '</strong><small>Estimated range</small></div>' +
+                        '<div class="price-box offer"><span>Opening offer</span><strong>' + escapeHtml(item.opening) + '</strong><small>Start here</small></div>' +
+                        '<div class="price-box offer"><span>Do not exceed</span><strong>' + escapeHtml(item.maximum) + '</strong><small>Condition dependent</small></div></div>' +
+                        '<div class="furniture-guidance"><div><strong>Include</strong><span>' + escapeHtml(item.include) + '</span></div><div><strong>Exclude or inspect carefully</strong><span>' + escapeHtml(item.exclude) + '</span></div></div>' +
+                        '<div class="furniture-fields"><div class="field"><label for="furniture-' + item.id + '-decision">Decision</label><select id="furniture-' + item.id + '-decision" data-persist>' +
                         '<option>Undecided</option><option>Ask seller</option><option>Buy</option><option>Pass</option></select></div>' +
-                        '<div class="field"><label for="furniture-' + item[0] + '-ask">Seller asking price</label><input id="furniture-' + item[0] + '-ask" data-persist type="number" min="0" step="1" inputmode="numeric" placeholder="0" /></div>' +
-                        '<div class="field"><label for="furniture-' + item[0] + '-offer">My offer</label><input id="furniture-' + item[0] + '-offer" data-persist type="number" min="0" step="1" inputmode="numeric" placeholder="0" /></div>' +
-                        '<div class="field full"><label for="furniture-' + item[0] + '-notes">Condition / measurements / included accessories</label><textarea id="furniture-' + item[0] + '-notes" data-persist placeholder="Condition, odor, age, model, dimensions, anchor hardware…"></textarea></div>' +
-                        '</div></article>';
+                        '<div class="field"><label for="furniture-' + item.id + '-ask">Seller asking price</label><input id="furniture-' + item.id + '-ask" data-persist type="number" min="0" step="1" inputmode="numeric" placeholder="0" /></div>' +
+                        '<div class="field"><label for="furniture-' + item.id + '-offer">My offer</label><input id="furniture-' + item.id + '-offer" data-persist type="number" min="0" step="1" inputmode="numeric" placeholder="0" /></div>' +
+                        '<div class="field full"><label for="furniture-' + item.id + '-notes">Condition, measurements and included pieces</label><textarea id="furniture-' + item.id + '-notes" data-persist placeholder="Wood type, maker label, odors, damage, dimensions, missing hardware and agreed cleaning…"></textarea></div>' +
+                        '</div></div></article>';
                 }).join("");
+            }
+
+            function renderFurnitureAlternatives() {
+                document.getElementById("furniture-alternatives").innerHTML = furnitureAlternatives.map(function (item) {
+                    return '<article class="alternative-card"><h3>' + escapeHtml(item.title) + '</h3>' +
+                        '<p><strong>IKEA:</strong> ' + escapeHtml(item.ikea) + '</p>' +
+                        '<p><strong>Other stores:</strong> ' + escapeHtml(item.outside) + '</p>' +
+                        '<p><strong>Walk away and buy outside when:</strong> ' + escapeHtml(item.trigger) + '</p>' +
+                        '<a href="' + item.url + '" target="_blank" rel="noopener">View current IKEA results</a></article>';
+                }).join("");
+            }
+
+            function formatFurnitureCurrency(value) {
+                return new Intl.NumberFormat("en-US", { style: "currency", currency: "USD", maximumFractionDigits: 0 }).format(value);
+            }
+
+            function updateFurnitureSummary() {
+                const askingTotal = furniture.reduce(function (total, item) {
+                    return total + Number(state.fields["furniture-" + item.id + "-ask"] || 0);
+                }, 0);
+                const offerTotal = furniture.reduce(function (total, item) {
+                    return total + Number(state.fields["furniture-" + item.id + "-offer"] || 0);
+                }, 0);
+                const offerCard = document.getElementById("furniture-offer-card");
+                document.getElementById("furniture-ask-total").textContent = "Seller asking total: " + formatFurnitureCurrency(askingTotal);
+                document.getElementById("furniture-offer-total").textContent = formatFurnitureCurrency(offerTotal);
+                offerCard.classList.toggle("over-limit", offerTotal > 1400);
+
+                let status = "Enter offers below";
+                if (offerTotal > 0 && offerTotal <= 900) status = "Opening range";
+                else if (offerTotal <= 1200 && offerTotal > 900) status = "Comfortable range";
+                else if (offerTotal <= 1400 && offerTotal > 1200) status = "Near the hard ceiling";
+                else if (offerTotal > 1400) status = "Above the recommended ceiling";
+                document.getElementById("furniture-offer-status").textContent = status;
             }
 
             function restoreFields() {
@@ -2191,6 +2608,7 @@
                 });
                 document.getElementById("attention-count").textContent = String(attention);
                 document.getElementById("estimate-total").textContent = new Intl.NumberFormat("en-US", { style: "currency", currency: "USD", maximumFractionDigits: 0 }).format(estimate);
+                updateFurnitureSummary();
             }
 
             function renderVisits() {
@@ -2310,6 +2728,7 @@
                 lines.push("Detailed specialist records", "");
                 appendPersistedSection(lines, "sewer-details", "Sewer camera scope");
                 appendPersistedSection(lines, "tank-details", "Underground oil-tank sweep");
+                appendPersistedSection(lines, "view-furniture", "Furniture buying plan");
                 lines.push("Quick feedback log", "");
                 state.visits.forEach(function (visit) {
                     lines.push(visit.date + " · " + visit.area + " · " + visit.status);
@@ -2423,6 +2842,7 @@
                 loadState();
                 renderAreas();
                 renderFurniture();
+                renderFurnitureAlternatives();
                 restoreFields();
                 updateSummary();
                 renderVisits();
@@ -2499,6 +2919,7 @@
 
                 document.getElementById("export-json").addEventListener("click", exportJson);
                 document.getElementById("export-text").addEventListener("click", exportText);
+                document.getElementById("print-furniture").addEventListener("click", function () { window.print(); });
                 document.getElementById("restore-button").addEventListener("click", function () {
                     document.getElementById("restore-file").click();
                 });

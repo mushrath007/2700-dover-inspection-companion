@@ -22,7 +22,7 @@ https://mushrath007.github.io/2700-dover-inspection-companion/
 - Dedicated sewer-camera and underground tank-sweep field records
 - Private camera/photo capture organized by inspection area
 - Offline IndexedDB photo storage with download, deletion and backup/restore
-- Seller-furniture decision worksheet
+- Photo-matched seller-furniture buying guide with IKEA/new-retail benchmarks, offer limits and an autosaved bundle calculator
 - 39-photo annotated visual assessment
 - 18-page printable notebook and PDF
 - Offline app shell and on-demand photo caching
