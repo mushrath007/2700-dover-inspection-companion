@@ -19,6 +19,7 @@ https://mushrath007.github.io/2700-dover-inspection-companion/
 
 - Mobile inspection dashboard and quick feedback log
 - Eleven detailed inspection areas
+- Dedicated sewer-camera and underground tank-sweep field records
 - Private camera/photo capture organized by inspection area
 - Offline IndexedDB photo storage with download, deletion and backup/restore
 - Seller-furniture decision worksheet

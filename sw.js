@@ -1,4 +1,4 @@
-const CACHE_NAME = "dover-inspection-v2";
+const CACHE_NAME = "dover-inspection-v3";
 const APP_SHELL = [
     "./",
     "./index.html",

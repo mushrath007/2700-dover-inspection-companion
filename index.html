@@ -57,6 +57,8 @@
 
             button,
             select,
+            input[type="text"],
+            input[type="url"],
             input[type="date"],
             input[type="number"] {
                 min-height: 46px;
@@ -349,6 +351,8 @@
 
             input[type="date"],
             input[type="number"],
+            input[type="text"],
+            input[type="url"],
             select,
             textarea {
                 background: var(--surface);
@@ -499,6 +503,124 @@
                 background: var(--primary);
                 border-color: var(--primary);
                 color: white;
+            }
+
+            .specialist-workbook {
+                margin-bottom: 18px;
+            }
+
+            .specialist-workbook-heading {
+                margin-bottom: 12px;
+            }
+
+            .specialist-workbook-heading h3 {
+                font-size: 1.16rem;
+                margin-bottom: 3px;
+            }
+
+            .specialist-workbook-heading p {
+                color: var(--muted);
+                margin-bottom: 0;
+            }
+
+            .specialist-grid {
+                display: grid;
+                gap: 14px;
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+
+            .specialist-detail {
+                background: var(--surface);
+                border: 1px solid var(--line);
+                border-radius: var(--radius);
+                box-shadow: var(--shadow);
+                overflow: hidden;
+            }
+
+            .specialist-detail > summary {
+                cursor: pointer;
+                list-style: none;
+                min-height: 76px;
+                padding: 15px 50px 15px 17px;
+                position: relative;
+            }
+
+            .specialist-detail > summary::-webkit-details-marker {
+                display: none;
+            }
+
+            .specialist-detail > summary::after {
+                border-bottom: 2px solid currentColor;
+                border-right: 2px solid currentColor;
+                content: "";
+                height: 9px;
+                position: absolute;
+                right: 21px;
+                top: 29px;
+                transform: rotate(45deg);
+                transition: transform 180ms ease-out;
+                width: 9px;
+            }
+
+            .specialist-detail[open] > summary::after {
+                transform: rotate(225deg);
+            }
+
+            .specialist-detail > summary strong,
+            .specialist-detail > summary span {
+                display: block;
+            }
+
+            .specialist-detail > summary span {
+                color: var(--muted);
+                font-size: 0.8rem;
+                margin-top: 2px;
+            }
+
+            .specialist-detail-content {
+                border-top: 1px solid var(--line);
+                padding: 17px;
+            }
+
+            .specialist-warning {
+                background: var(--warning-soft);
+                border: 1px solid #c68b2c;
+                border-radius: 10px;
+                color: var(--text);
+                margin-bottom: 14px;
+                padding: 12px;
+            }
+
+            .specialist-warning p {
+                margin: 0;
+            }
+
+            .checklist-fieldset {
+                border: 0;
+                margin: 0;
+                min-width: 0;
+                padding: 0;
+            }
+
+            .checklist-fieldset legend {
+                font-size: 0.88rem;
+                font-weight: 900;
+                margin-bottom: 7px;
+                padding: 0;
+            }
+
+            .specialist-fields {
+                background: var(--surface-2);
+                border-radius: 12px;
+                display: grid;
+                gap: 13px;
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+                margin-top: 14px;
+                padding: 14px;
+            }
+
+            .specialist-fields .full {
+                grid-column: 1 / -1;
             }
 
             .area-list,
@@ -967,7 +1089,8 @@
 
                 .dashboard-grid,
                 .area-fields,
-                .photo-capture-grid {
+                .photo-capture-grid,
+                .specialist-grid {
                     grid-template-columns: 1fr;
                 }
 
@@ -1055,6 +1178,7 @@
                 .form-grid,
                 .check-grid,
                 .furniture-fields,
+                .specialist-fields,
                 .link-grid {
                     grid-template-columns: 1fr;
                 }
@@ -1112,6 +1236,8 @@
 
                 input[type="date"],
                 input[type="number"],
+                input[type="text"],
+                input[type="url"],
                 select,
                 textarea {
                     border-color: #708198;
@@ -1307,6 +1433,97 @@
                         <button type="button" aria-pressed="false" data-area-filter="incomplete">Incomplete</button>
                         <button type="button" aria-pressed="false" data-area-filter="attention">Needs attention</button>
                     </div>
+
+                    <section class="specialist-workbook" aria-labelledby="specialist-workbook-title">
+                        <div class="specialist-workbook-heading">
+                            <h3 id="specialist-workbook-title">Sewer and underground tank specialist records</h3>
+                            <p>Use these with the contractor during the visit. A checked box records what was covered; it does not certify the system as clear.</p>
+                        </div>
+                        <div class="specialist-grid">
+                            <details class="specialist-detail" id="sewer-details">
+                                <summary>
+                                    <strong>Sewer camera scope</strong>
+                                    <span>Route, pipe condition, defect footage, video and repair exposure</span>
+                                </summary>
+                                <div class="specialist-detail-content">
+                                    <div class="specialist-warning">
+                                        <p><strong>Do not accept “looks okay” alone.</strong> Ask whether the camera reached the public main and obtain the full video plus a written, property-addressed report.</p>
+                                    </div>
+                                    <fieldset class="checklist-fieldset">
+                                        <legend>Scope and evidence checklist</legend>
+                                        <div class="check-grid">
+                                            <label class="check-row" for="sewer-permission"><input id="sewer-permission" data-persist type="checkbox" />Written seller permission obtained</label>
+                                            <label class="check-row" for="sewer-access"><input id="sewer-access" data-persist type="checkbox" />Cleanout/access point identified and photographed</label>
+                                            <label class="check-row" for="sewer-main-video"><input id="sewer-main-video" data-persist type="checkbox" />Continuous camera video reaches the public main</label>
+                                            <label class="check-row" for="sewer-footage"><input id="sewer-footage" data-persist type="checkbox" />Footage counter shown throughout the recording</label>
+                                            <label class="check-row" for="sewer-material"><input id="sewer-material" data-persist type="checkbox" />Pipe material and approximate diameter documented</label>
+                                            <label class="check-row" for="sewer-defects"><input id="sewer-defects" data-persist type="checkbox" />Roots, cracks, offsets, bellies, scaling and collapse evaluated</label>
+                                            <label class="check-row" for="sewer-sonde"><input id="sewer-sonde" data-persist type="checkbox" />Defects located from above with footage/depth or sonde</label>
+                                            <label class="check-row" for="sewer-flow"><input id="sewer-flow" data-persist type="checkbox" />Water flow and standing water checked</label>
+                                            <label class="check-row" for="sewer-responsibility"><input id="sewer-responsibility" data-persist type="checkbox" />Owner/municipal responsibility boundary confirmed</label>
+                                            <label class="check-row" for="sewer-documents"><input id="sewer-documents" data-persist type="checkbox" />Full video, written findings and invoice received</label>
+                                        </div>
+                                    </fieldset>
+                                    <div class="specialist-fields">
+                                        <div class="field"><label for="sewer-date">Inspection date</label><input id="sewer-date" data-persist type="date" /></div>
+                                        <div class="field"><label for="sewer-vendor">Company / inspector / phone</label><input id="sewer-vendor" data-persist type="text" autocomplete="off" placeholder="Name, license and contact" /></div>
+                                        <div class="field"><label for="sewer-access-point">Camera access point</label><input id="sewer-access-point" data-persist type="text" autocomplete="off" placeholder="Basement, exterior cleanout…" /></div>
+                                        <div class="field"><label for="sewer-pipe-material">Pipe material</label><select id="sewer-pipe-material" data-persist><option>Not identified</option><option>Cast iron</option><option>Clay</option><option>PVC</option><option>Orangeburg / bituminous fiber</option><option>Mixed materials</option><option>Other / uncertain</option></select></div>
+                                        <div class="field"><label for="sewer-reached-main">Reached public main?</label><select id="sewer-reached-main" data-persist><option>Not confirmed</option><option>Yes — visible on video</option><option>No — obstruction</option><option>No — access/scope limitation</option><option>Unclear</option></select></div>
+                                        <div class="field"><label for="sewer-length">Length inspected (feet)</label><input id="sewer-length" data-persist type="number" min="0" step="1" inputmode="numeric" placeholder="0" /></div>
+                                        <div class="field"><label for="sewer-result">Overall result</label><select id="sewer-result" data-persist><option>Not completed</option><option>No material defect reported</option><option>Maintenance / monitor</option><option>Repair recommended</option><option>Replacement recommended</option><option>Further specialist review</option></select></div>
+                                        <div class="field"><label for="sewer-estimate">Quoted repair amount</label><input id="sewer-estimate" data-persist type="number" min="0" step="1" inputmode="numeric" placeholder="0" /></div>
+                                        <div class="field full"><label for="sewer-findings">Defects, footage, depth and exact location</label><textarea id="sewer-findings" data-persist placeholder="Example: roots at 42 ft near rear tree; standing water from 55–63 ft…"></textarea></div>
+                                        <div class="field full"><label for="sewer-recommendation">Contractor recommendation and urgency</label><textarea id="sewer-recommendation" data-persist placeholder="Cleaning, lining, spot repair, replacement, second opinion or no action…"></textarea></div>
+                                        <div class="field full"><label for="sewer-files">Video/report filename, link or delivery notes</label><textarea id="sewer-files" data-persist placeholder="Record where the full video, route sketch, written report and invoice were saved."></textarea></div>
+                                        <div class="field"><label for="sewer-followup">Follow-up deadline</label><input id="sewer-followup" data-persist type="date" /></div>
+                                        <div class="field"><label for="sewer-negotiation">Buyer action</label><select id="sewer-negotiation" data-persist><option>No decision yet</option><option>Accept / monitor</option><option>Request documents</option><option>Request repair</option><option>Request credit</option><option>Attorney review</option></select></div>
+                                    </div>
+                                </div>
+                            </details>
+
+                            <details class="specialist-detail" id="tank-details">
+                                <summary>
+                                    <strong>Underground oil-tank sweep</strong>
+                                    <span>Scan coverage, equipment, anomalies, records and environmental follow-up</span>
+                                </summary>
+                                <div class="specialist-detail-content">
+                                    <div class="specialist-warning">
+                                        <p><strong>A “clear” sweep is limited to accessible scanned areas.</strong> Record exclusions such as additions, decks, paving or utilities, and do not authorize digging or invasive testing without written seller approval.</p>
+                                    </div>
+                                    <fieldset class="checklist-fieldset">
+                                        <legend>Scope and evidence checklist</legend>
+                                        <div class="check-grid">
+                                            <label class="check-row" for="tank-permission"><input id="tank-permission" data-persist type="checkbox" />Written seller permission obtained</label>
+                                            <label class="check-row" for="tank-credentials"><input id="tank-credentials" data-persist type="checkbox" />Vendor credentials and insurance verified</label>
+                                            <label class="check-row" for="tank-history"><input id="tank-history" data-persist type="checkbox" />Seller heating-oil and prior tank history documented</label>
+                                            <label class="check-row" for="tank-records"><input id="tank-records" data-persist type="checkbox" />Municipal/fire and NJDEP records checked</label>
+                                            <label class="check-row" for="tank-visible-signs"><input id="tank-visible-signs" data-persist type="checkbox" />Fill/vent pipes, cut lines, patches and depressions checked</label>
+                                            <label class="check-row" for="tank-coverage"><input id="tank-coverage" data-persist type="checkbox" />Accessible yard, driveway, garage and basement perimeter scanned</label>
+                                            <label class="check-row" for="tank-equipment"><input id="tank-equipment" data-persist type="checkbox" />Equipment and scan method documented</label>
+                                            <label class="check-row" for="tank-utilities"><input id="tank-utilities" data-persist type="checkbox" />Utilities/known metal separated from possible tank signals</label>
+                                            <label class="check-row" for="tank-map"><input id="tank-map" data-persist type="checkbox" />Coverage map, anomaly locations and photos provided</label>
+                                            <label class="check-row" for="tank-report"><input id="tank-report" data-persist type="checkbox" />Written result, limitations and invoice received</label>
+                                        </div>
+                                    </fieldset>
+                                    <div class="specialist-fields">
+                                        <div class="field"><label for="tank-date">Sweep date</label><input id="tank-date" data-persist type="date" /></div>
+                                        <div class="field"><label for="tank-vendor">Company / inspector / phone</label><input id="tank-vendor" data-persist type="text" autocomplete="off" placeholder="Name, credentials and contact" /></div>
+                                        <div class="field"><label for="tank-method">Scan method</label><select id="tank-method" data-persist><option>Not documented</option><option>Magnetometer / metal detector</option><option>Ground-penetrating radar</option><option>Both methods</option><option>Other</option></select></div>
+                                        <div class="field"><label for="tank-result">Sweep result</label><select id="tank-result" data-persist><option>Not completed</option><option>No anomaly in accessible areas</option><option>Possible anomaly</option><option>Tank-related piping/signs found</option><option>Known tank / closure records found</option><option>Inconclusive — further review</option></select></div>
+                                        <div class="field"><label for="tank-fill-vent">Fill/vent pipe evidence</label><select id="tank-fill-vent" data-persist><option>Not checked</option><option>None observed</option><option>Present</option><option>Removed/cut lines suspected</option><option>Unclear</option></select></div>
+                                        <div class="field"><label for="tank-estimate">Quoted follow-up amount</label><input id="tank-estimate" data-persist type="number" min="0" step="1" inputmode="numeric" placeholder="0" /></div>
+                                        <div class="field full"><label for="tank-coverage-notes">Areas scanned and areas that were inaccessible</label><textarea id="tank-coverage-notes" data-persist placeholder="Record the scan grid plus exclusions beneath additions, decks, paving, stored items or utilities."></textarea></div>
+                                        <div class="field full"><label for="tank-anomaly">Anomaly location, approximate depth/size and nearby utilities</label><textarea id="tank-anomaly" data-persist placeholder="If none, write “none reported in accessible scanned areas.”"></textarea></div>
+                                        <div class="field full"><label for="tank-record-notes">Seller statement and municipal/NJDEP/closure records</label><textarea id="tank-record-notes" data-persist placeholder="Record permits, removal/closure report, soil results, case number or missing documents."></textarea></div>
+                                        <div class="field full"><label for="tank-recommendation">Inspector recommendation and next action</label><textarea id="tank-recommendation" data-persist placeholder="No action, records search, rescan, environmental professional, seller removal/closure, soil sampling…"></textarea></div>
+                                        <div class="field"><label for="tank-followup">Follow-up deadline</label><input id="tank-followup" data-persist type="date" /></div>
+                                        <div class="field"><label for="tank-negotiation">Buyer action</label><select id="tank-negotiation" data-persist><option>No decision yet</option><option>Accept documented result</option><option>Request documents</option><option>Request further testing</option><option>Request removal/remediation</option><option>Request credit / escrow</option><option>Attorney review</option></select></div>
+                                    </div>
+                                </div>
+                            </details>
+                        </div>
+                    </section>
                     <div class="area-list" id="area-list"></div>
                 </section>
 
@@ -2068,6 +2285,17 @@
                 }
             }
 
+            function appendPersistedSection(lines, sectionId, title) {
+                const section = document.getElementById(sectionId);
+                lines.push(title);
+                section.querySelectorAll("[data-persist]").forEach(function (field) {
+                    const label = field.labels && field.labels[0] ? field.labels[0].textContent.trim() : field.id;
+                    if (field.type === "checkbox") lines.push((field.checked ? "[x] " : "[ ] ") + label);
+                    else lines.push(label + ": " + (field.value || "Not recorded"));
+                });
+                lines.push("");
+            }
+
             async function exportText() {
                 storeState();
                 const lines = ["Dover home inspection summary", "Exported: " + new Date().toLocaleString(), ""];
@@ -2079,6 +2307,9 @@
                     lines.push("Inspector feedback: " + (state.fields[area.id + "-feedback"] || ""));
                     lines.push("Next action: " + (state.fields[area.id + "-action"] || ""), "");
                 });
+                lines.push("Detailed specialist records", "");
+                appendPersistedSection(lines, "sewer-details", "Sewer camera scope");
+                appendPersistedSection(lines, "tank-details", "Underground oil-tank sweep");
                 lines.push("Quick feedback log", "");
                 state.visits.forEach(function (visit) {
                     lines.push(visit.date + " · " + visit.area + " · " + visit.status);
