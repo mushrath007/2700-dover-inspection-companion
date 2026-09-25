@@ -1,0 +1,1358 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="color-scheme" content="light" />
+        <title>2700 Dover Street — Printable Inspection & Furniture Notebook</title>
+        <style>
+            :root {
+                --ink: #172033;
+                --muted: #526076;
+                --blue: #164e83;
+                --blue-soft: #eaf3fb;
+                --amber: #8a4b08;
+                --amber-soft: #fff7df;
+                --red: #9f1239;
+                --red-soft: #fff1f4;
+                --green: #17603a;
+                --green-soft: #eef9f2;
+                --line: #bdc8d6;
+                --paper: #ffffff;
+                --desk: #e8edf3;
+            }
+
+            * {
+                box-sizing: border-box;
+            }
+
+            html {
+                scroll-behavior: smooth;
+            }
+
+            body {
+                background: var(--desk);
+                color: var(--ink);
+                font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+                font-size: 15px;
+                line-height: 1.45;
+                margin: 0;
+            }
+
+            button {
+                background: var(--blue);
+                border: 2px solid var(--blue);
+                border-radius: 8px;
+                color: white;
+                cursor: pointer;
+                font: inherit;
+                font-weight: 800;
+                min-height: 44px;
+                padding: 8px 16px;
+            }
+
+            button.secondary {
+                background: white;
+                color: var(--blue);
+            }
+
+            button:hover {
+                background: #0f3c68;
+            }
+
+            button.secondary:hover {
+                background: var(--blue-soft);
+            }
+
+            :focus-visible {
+                outline: 3px solid #2563eb;
+                outline-offset: 3px;
+            }
+
+            .skip-link {
+                background: #111827;
+                color: white;
+                left: 12px;
+                padding: 10px 14px;
+                position: fixed;
+                top: -64px;
+                z-index: 100;
+            }
+
+            .skip-link:focus {
+                top: 12px;
+            }
+
+            .screen-toolbar {
+                align-items: center;
+                background: #0e2f52;
+                color: white;
+                display: flex;
+                flex-wrap: wrap;
+                gap: 12px;
+                justify-content: space-between;
+                padding: 12px max(16px, calc((100vw - 8.5in) / 2));
+                position: sticky;
+                top: 0;
+                z-index: 20;
+            }
+
+            .screen-toolbar p {
+                margin: 0;
+            }
+
+            .screen-toolbar div {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 8px;
+            }
+
+            .book {
+                counter-reset: sheet;
+                margin: 24px auto 56px;
+                width: min(100% - 24px, 8.5in);
+            }
+
+            .sheet {
+                background: var(--paper);
+                box-shadow: 0 8px 26px rgba(23, 32, 51, 0.14);
+                counter-increment: sheet;
+                margin: 0 auto 24px;
+                min-height: 10.2in;
+                overflow: hidden;
+                padding: 0.42in 0.45in 0.5in;
+                position: relative;
+            }
+
+            .sheet::after {
+                bottom: 0.18in;
+                color: var(--muted);
+                content: "2700 Dover inspection notebook  •  Page " counter(sheet);
+                font-size: 9px;
+                left: 0.45in;
+                letter-spacing: 0.02em;
+                position: absolute;
+            }
+
+            .cover {
+                border-top: 12px solid var(--blue);
+                padding-top: 0.55in;
+            }
+
+            .eyebrow {
+                color: var(--blue);
+                font-size: 0.78rem;
+                font-weight: 900;
+                letter-spacing: 0.12em;
+                margin: 0 0 8px;
+                text-transform: uppercase;
+            }
+
+            h1,
+            h2,
+            h3,
+            p {
+                margin-top: 0;
+            }
+
+            h1 {
+                font-size: 2.15rem;
+                letter-spacing: -0.035em;
+                line-height: 1.08;
+                margin-bottom: 12px;
+            }
+
+            h2 {
+                color: var(--blue);
+                font-size: 1.48rem;
+                line-height: 1.2;
+                margin-bottom: 8px;
+            }
+
+            h3 {
+                font-size: 1rem;
+                margin-bottom: 7px;
+            }
+
+            .lede,
+            .subtitle {
+                color: var(--muted);
+            }
+
+            .lede {
+                font-size: 1.05rem;
+                max-width: 68ch;
+            }
+
+            .sheet-header {
+                border-bottom: 3px solid var(--blue);
+                margin-bottom: 14px;
+                padding-bottom: 10px;
+            }
+
+            .sheet-header .photo-ref {
+                color: var(--muted);
+                font-size: 0.82rem;
+                font-weight: 800;
+                margin: 0;
+            }
+
+            .grid-2,
+            .grid-3,
+            .check-grid,
+            .decision-grid,
+            .use-plan {
+                display: grid;
+                gap: 12px;
+            }
+
+            .grid-2,
+            .check-grid,
+            .decision-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+
+            .grid-3,
+            .use-plan {
+                grid-template-columns: repeat(3, minmax(0, 1fr));
+            }
+
+            .panel {
+                border: 1.5px solid var(--line);
+                border-radius: 10px;
+                padding: 13px;
+            }
+
+            .panel.blue {
+                background: var(--blue-soft);
+                border-color: #8cb5d9;
+            }
+
+            .panel.priority {
+                background: var(--red-soft);
+                border-color: #e59ab3;
+            }
+
+            .panel.verify {
+                background: var(--amber-soft);
+                border-color: #deb86b;
+            }
+
+            .panel.good {
+                background: var(--green-soft);
+                border-color: #92c9a9;
+            }
+
+            .warning {
+                border-left: 6px solid var(--red);
+                margin: 18px 0;
+            }
+
+            .warning strong {
+                color: var(--red);
+            }
+
+            .fill-grid {
+                display: grid;
+                gap: 13px 24px;
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+                margin: 20px 0;
+            }
+
+            .fill-field {
+                border-bottom: 1.5px solid var(--ink);
+                min-height: 27px;
+                padding-bottom: 3px;
+            }
+
+            .fill-field span {
+                background: white;
+                color: var(--muted);
+                font-size: 0.78rem;
+                font-weight: 800;
+                padding-right: 8px;
+                text-transform: uppercase;
+            }
+
+            .check-list {
+                display: grid;
+                gap: 4px;
+            }
+
+            .check {
+                align-items: flex-start;
+                display: flex;
+                gap: 8px;
+                min-height: 27px;
+            }
+
+            .check input {
+                accent-color: var(--blue);
+                flex: 0 0 auto;
+                height: 18px;
+                margin: 2px 0 0;
+                width: 18px;
+            }
+
+            .priority-list {
+                margin: 8px 0 0;
+                padding-left: 22px;
+            }
+
+            .priority-list li {
+                margin: 5px 0;
+            }
+
+            .use-plan {
+                align-items: stretch;
+                margin: 16px 0;
+                position: relative;
+            }
+
+            .room-card {
+                border: 2px solid #8ea5bc;
+                border-radius: 10px;
+                min-height: 150px;
+                padding: 13px;
+            }
+
+            .room-card strong,
+            .room-card span {
+                display: block;
+            }
+
+            .room-card .room-name {
+                color: var(--blue);
+                font-size: 1rem;
+                margin-bottom: 6px;
+            }
+
+            .room-card span {
+                color: var(--muted);
+                font-size: 0.86rem;
+                margin-top: 4px;
+            }
+
+            .office-card {
+                background: var(--amber-soft);
+                border-color: var(--amber);
+                grid-column: 2;
+                margin-top: 26px;
+                position: relative;
+            }
+
+            .office-card::before {
+                border-left: 3px solid var(--blue);
+                content: "";
+                height: 26px;
+                left: 50%;
+                position: absolute;
+                top: -28px;
+            }
+
+            .office-card::after {
+                border-left: 7px solid transparent;
+                border-right: 7px solid transparent;
+                border-top: 10px solid var(--blue);
+                content: "";
+                left: calc(50% - 5px);
+                position: absolute;
+                top: -10px;
+            }
+
+            .photo-strip {
+                display: grid;
+                gap: 8px;
+                grid-template-columns: repeat(var(--photo-count, 3), minmax(0, 1fr));
+                margin: 10px 0 13px;
+            }
+
+            .photo-strip figure {
+                border: 1px solid var(--line);
+                margin: 0;
+                overflow: hidden;
+            }
+
+            .photo-strip a {
+                display: block;
+            }
+
+            .photo-strip img {
+                aspect-ratio: 3 / 2;
+                display: block;
+                height: auto;
+                object-fit: cover;
+                width: 100%;
+            }
+
+            .photo-strip figcaption {
+                background: #f4f7fa;
+                color: var(--muted);
+                font-size: 0.72rem;
+                font-weight: 700;
+                padding: 4px 6px;
+            }
+
+            .photos-hidden .photo-strip {
+                display: none;
+            }
+
+            .room-layout {
+                display: grid;
+                gap: 12px;
+                grid-template-columns: 1.08fr 0.92fr;
+            }
+
+            .watch-list {
+                margin: 0;
+                padding-left: 20px;
+            }
+
+            .watch-list li {
+                margin-bottom: 5px;
+            }
+
+            .result-row {
+                align-items: center;
+                border: 1.5px solid var(--line);
+                display: flex;
+                flex-wrap: wrap;
+                gap: 8px 15px;
+                margin: 12px 0;
+                padding: 9px 12px;
+            }
+
+            .result-row strong {
+                margin-right: 4px;
+            }
+
+            .mini-box {
+                border: 1.5px solid var(--ink);
+                display: inline-block;
+                height: 15px;
+                margin-right: 4px;
+                vertical-align: -2px;
+                width: 15px;
+            }
+
+            .notes-block {
+                margin-top: 10px;
+            }
+
+            .notes-block h3 {
+                margin-bottom: 3px;
+            }
+
+            .write-lines span {
+                border-bottom: 1px solid #718096;
+                display: block;
+                height: 25px;
+            }
+
+            .measure-table,
+            .furniture-table,
+            .summary-table {
+                border-collapse: collapse;
+                table-layout: fixed;
+                width: 100%;
+            }
+
+            .measure-table th,
+            .measure-table td,
+            .furniture-table th,
+            .furniture-table td,
+            .summary-table th,
+            .summary-table td {
+                border: 1px solid #8796a8;
+                padding: 7px;
+                text-align: left;
+                vertical-align: top;
+            }
+
+            .measure-table th,
+            .furniture-table th,
+            .summary-table th {
+                background: var(--blue-soft);
+                color: #123a60;
+                font-size: 0.76rem;
+                letter-spacing: 0.02em;
+                text-transform: uppercase;
+            }
+
+            .measure-table td {
+                height: 34px;
+            }
+
+            .furniture-table {
+                font-size: 0.78rem;
+                line-height: 1.3;
+            }
+
+            .furniture-table td {
+                height: 58px;
+            }
+
+            .recommend {
+                display: inline-block;
+                font-size: 0.69rem;
+                font-weight: 900;
+                letter-spacing: 0.04em;
+                margin-bottom: 3px;
+                text-transform: uppercase;
+            }
+
+            .recommend.ask {
+                color: var(--green);
+            }
+
+            .recommend.maybe {
+                color: var(--amber);
+            }
+
+            .recommend.skip {
+                color: var(--red);
+            }
+
+            .offer-cell {
+                line-height: 1.8;
+            }
+
+            .shortlist {
+                counter-reset: shortlist;
+                display: grid;
+                gap: 9px;
+                list-style: none;
+                margin: 12px 0 0;
+                padding: 0;
+            }
+
+            .shortlist li {
+                border: 1.5px solid var(--line);
+                border-left: 6px solid var(--green);
+                border-radius: 8px;
+                counter-increment: shortlist;
+                padding: 10px 12px 10px 46px;
+                position: relative;
+            }
+
+            .shortlist li::before {
+                align-items: center;
+                background: var(--green);
+                border-radius: 50%;
+                color: white;
+                content: counter(shortlist);
+                display: flex;
+                font-size: 0.82rem;
+                font-weight: 900;
+                height: 26px;
+                justify-content: center;
+                left: 11px;
+                position: absolute;
+                top: 10px;
+                width: 26px;
+            }
+
+            .summary-table td {
+                height: 42px;
+            }
+
+            .money {
+                font-variant-numeric: tabular-nums;
+                white-space: nowrap;
+            }
+
+            .small {
+                color: var(--muted);
+                font-size: 0.8rem;
+            }
+
+            .legal-note {
+                background: var(--amber-soft);
+                border: 1.5px solid #d2a246;
+                margin-top: 12px;
+                padding: 11px 13px;
+            }
+
+            .legend {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 9px 18px;
+                margin: 12px 0;
+            }
+
+            .legend span {
+                align-items: center;
+                display: inline-flex;
+                gap: 6px;
+            }
+
+            .dot {
+                border: 2px solid currentColor;
+                border-radius: 50%;
+                display: inline-block;
+                height: 13px;
+                width: 13px;
+            }
+
+            .dot.priority-dot {
+                color: var(--red);
+            }
+
+            .dot.verify-dot {
+                color: var(--amber);
+            }
+
+            .dot.good-dot {
+                color: var(--green);
+            }
+
+            @media (max-width: 700px) {
+                .screen-toolbar {
+                    align-items: stretch;
+                    flex-direction: column;
+                    position: static;
+                }
+
+                .screen-toolbar div {
+                    display: grid;
+                    grid-template-columns: 1fr 1fr;
+                }
+
+                .book {
+                    width: min(100% - 12px, 8.5in);
+                }
+
+                .sheet {
+                    min-height: auto;
+                    padding: 24px 18px 48px;
+                }
+
+                .grid-2,
+                .grid-3,
+                .check-grid,
+                .decision-grid,
+                .fill-grid,
+                .room-layout,
+                .use-plan {
+                    grid-template-columns: 1fr;
+                }
+
+                .office-card {
+                    grid-column: 1;
+                }
+
+                .photo-strip {
+                    --photo-count: 2 !important;
+                }
+
+                .table-wrap {
+                    overflow-x: auto;
+                }
+
+                .furniture-table {
+                    min-width: 720px;
+                }
+            }
+
+            @media (prefers-reduced-motion: reduce) {
+                html {
+                    scroll-behavior: auto;
+                }
+            }
+
+            @media print {
+                @page {
+                    margin: 0.28in;
+                    size: letter;
+                }
+
+                body {
+                    background: white;
+                    color: black;
+                    font-size: 10pt;
+                }
+
+                .screen-toolbar,
+                .skip-link {
+                    display: none !important;
+                }
+
+                .book {
+                    margin: 0;
+                    width: 100%;
+                }
+
+                .sheet {
+                    break-after: page;
+                    box-shadow: none;
+                    height: 10.35in;
+                    margin: 0;
+                    min-height: 0;
+                    overflow: hidden;
+                    padding: 0.27in 0.3in 0.34in;
+                }
+
+                .sheet:last-child {
+                    break-after: auto;
+                }
+
+                .sheet::after {
+                    bottom: 0.08in;
+                    left: 0.3in;
+                }
+
+                h1 {
+                    font-size: 24pt;
+                }
+
+                h2 {
+                    font-size: 15pt;
+                }
+
+                h3 {
+                    font-size: 10pt;
+                }
+
+                .panel {
+                    padding: 9px;
+                }
+
+                .photo-strip {
+                    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+                    margin: 7px 0 9px;
+                }
+
+                .photo-strip img {
+                    aspect-ratio: 3 / 2;
+                    height: auto;
+                    max-height: none;
+                    object-fit: cover;
+                    width: 100%;
+                }
+
+                .photo-strip figcaption {
+                    font-size: 7pt;
+                }
+
+                .check {
+                    min-height: 21px;
+                }
+
+                .check input {
+                    height: 15px;
+                    width: 15px;
+                }
+
+                .write-lines span {
+                    height: 20px;
+                }
+
+                .furniture-table {
+                    font-size: 7.6pt;
+                }
+
+                .furniture-table td {
+                    height: 48px;
+                    padding: 5px;
+                }
+
+                .furniture-table th {
+                    padding: 5px;
+                }
+
+                a {
+                    color: inherit;
+                    text-decoration: none;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <a class="skip-link" href="#notebook">Skip to notebook</a>
+        <aside class="screen-toolbar" aria-label="Print controls">
+            <p><strong>2700 Dover printable notebook</strong> · 18 writing-friendly pages</p>
+            <div>
+                <button class="secondary" id="toggle-photos" type="button" aria-pressed="false">Hide photo thumbnails</button>
+                <button id="print-notebook" type="button">Print / Save PDF</button>
+            </div>
+        </aside>
+
+        <main class="book" id="notebook">
+            <section class="sheet cover">
+                <p class="eyebrow">Buyer field notebook</p>
+                <h1>2700 Dover Street<br />inspection & furniture plan</h1>
+                <p class="lede">
+                    A room-by-room worksheet for your own observations, the inspector's findings, likely repair follow-up,
+                    and a practical furniture plan for three upper bedrooms plus a lower-level office.
+                </p>
+
+                <div class="fill-grid" aria-label="Inspection appointment details">
+                    <div class="fill-field"><span>Inspection date</span></div>
+                    <div class="fill-field"><span>Inspector</span></div>
+                    <div class="fill-field"><span>Buyer / attendee</span></div>
+                    <div class="fill-field"><span>Report due</span></div>
+                    <div class="fill-field"><span>Attorney deadline</span></div>
+                    <div class="fill-field"><span>Agent / contact</span></div>
+                </div>
+
+                <div class="panel warning">
+                    <strong>Use this as a question and note guide—not a defect report.</strong>
+                    Photos cannot confirm moisture, structure, code compliance, permits, sewer condition, radon, termites,
+                    tank history, property lines or repair cost.
+                </div>
+
+                <div class="grid-2">
+                    <section class="panel priority">
+                        <h2>Do not miss</h2>
+                        <ol class="priority-list">
+                            <li>Lower-level ceiling area and door-base damage — photos 27–28.</li>
+                            <li>Porch roof boards, skylight and house flashing — photos 3, 29–30.</li>
+                            <li>Deck ledger, stairs, footings and grill gas connection — photos 31–32.</li>
+                            <li>Main roof, chimney, vents and three skylights — photos 12, 36–37.</li>
+                            <li>Rear drainage, sewer route, trees and boundaries — photos 33–39.</li>
+                        </ol>
+                    </section>
+
+                    <section class="panel blue">
+                        <h2>Appointment setup</h2>
+                        <div class="check-list">
+                            <label class="check"><input type="checkbox" />Utilities and appliances are on</label>
+                            <label class="check"><input type="checkbox" />Attic, garage, panels and shutoffs accessible</label>
+                            <label class="check"><input type="checkbox" />Seller permits moving stored items where allowed</label>
+                            <label class="check"><input type="checkbox" />Written permission for sewer/tank work confirmed</label>
+                            <label class="check"><input type="checkbox" />Inspector credentials and insurance verified</label>
+                            <label class="check"><input type="checkbox" />Radon, WDI and specialist scope confirmed</label>
+                        </div>
+                    </section>
+                </div>
+
+                <div class="notes-block">
+                    <h3>My biggest questions before the inspection starts</h3>
+                    <div class="write-lines"><span></span><span></span><span></span><span></span><span></span></div>
+                </div>
+            </section>
+
+            <section class="sheet">
+                <header class="sheet-header">
+                    <p class="eyebrow">Family use plan</p>
+                    <h2>Three upper bedrooms for sleeping; lower room for office</h2>
+                    <p class="subtitle">Suggested arrangement if the primary bedroom is for adults and the other two rooms are shared by four children. This is a use diagram, not a measured floor plan.</p>
+                </header>
+
+                <div class="use-plan" aria-label="Suggested bedroom and office allocation">
+                    <article class="room-card">
+                        <strong class="room-name">Upper bedroom 1 · Primary</strong>
+                        <strong>Adults</strong>
+                        <span>Photos 20–22</span>
+                        <span>Queen/king frame, two compact nightstands, anchored dresser.</span>
+                    </article>
+                    <article class="room-card">
+                        <strong class="room-name">Upper bedroom 2 · Kids A + B</strong>
+                        <strong>Shared children's room</strong>
+                        <span>Photos 23–24</span>
+                        <span>Two twins, trundle, or age-appropriate bunk; keep both windows clear.</span>
+                    </article>
+                    <article class="room-card">
+                        <strong class="room-name">Upper bedroom 3 · Kids C + D</strong>
+                        <strong>Shared children's room</strong>
+                        <span>Photo 25</span>
+                        <span>Two compact twins or safe bunk; narrow shared dresser and study shelf.</span>
+                    </article>
+                    <article class="room-card office-card">
+                        <strong class="room-name">Lower room · Office only</strong>
+                        <strong>No planned sleeping use</strong>
+                        <span>Photos 27–28</span>
+                        <span>Desk, ergonomic chair, closed storage and task lighting after moisture checks.</span>
+                    </article>
+                </div>
+
+                <div class="grid-2">
+                    <section class="panel verify">
+                        <h3>Children's-room safety before furniture</h3>
+                        <div class="check-list">
+                            <label class="check"><input type="checkbox" />Measure each wall, door swing and closet opening</label>
+                            <label class="check"><input type="checkbox" />Keep egress windows and HVAC/baseboard heat clear</label>
+                            <label class="check"><input type="checkbox" />Anchor dressers, shelves and TVs to framing</label>
+                            <label class="check"><input type="checkbox" />Do not place a bunk near ceiling fan or window</label>
+                            <label class="check"><input type="checkbox" />Confirm smoke/CO alarms and night escape route</label>
+                            <label class="check"><input type="checkbox" />Use bunks only when age-appropriate and compliant</label>
+                        </div>
+                    </section>
+                    <section class="panel blue">
+                        <h3>Lower-office setup</h3>
+                        <div class="check-list">
+                            <label class="check"><input type="checkbox" />Ceiling and door-area moisture readings documented</label>
+                            <label class="check"><input type="checkbox" />Enough grounded outlets without extension cords</label>
+                            <label class="check"><input type="checkbox" />Reliable Wi-Fi / Ethernet route confirmed</label>
+                            <label class="check"><input type="checkbox" />Heating, cooling and ventilation comfortable</label>
+                            <label class="check"><input type="checkbox" />Desk positioned away from damaged door area</label>
+                            <label class="check"><input type="checkbox" />Background/privacy and closed storage planned</label>
+                        </div>
+                    </section>
+                </div>
+
+                <h3 style="margin-top:14px">Measurements to take before buying anything</h3>
+                <table class="measure-table">
+                    <thead><tr><th>Room</th><th>Usable wall 1</th><th>Usable wall 2</th><th>Door / window notes</th></tr></thead>
+                    <tbody>
+                        <tr><td>Primary</td><td></td><td></td><td></td></tr>
+                        <tr><td>Kids A + B</td><td></td><td></td><td></td></tr>
+                        <tr><td>Kids C + D</td><td></td><td></td><td></td></tr>
+                        <tr><td>Lower office</td><td></td><td></td><td></td></tr>
+                    </tbody>
+                </table>
+            </section>
+
+            <div id="room-sheets"></div>
+
+            <section class="sheet">
+                <header class="sheet-header">
+                    <p class="eyebrow">Seller furniture · strategy</p>
+                    <h2>Best items to ask about first</h2>
+                    <p class="subtitle">These items appear to fit the photographed rooms. Availability, ownership, brand, condition and inclusion are not confirmed.</p>
+                </header>
+
+                <ol class="shortlist">
+                    <li><strong>Dining table and six-chair set · photos 2, 15–16.</strong> Strong first ask because it already fits the dining area and seats a six-person family. Inspect joints, chair wobble and upholstery.</li>
+                    <li><strong>Gray sectional / family-room seating · photos 9–11.</strong> More practical for children than the light-colored sofa. Buy only if odor-, pest-, smoke- and stain-free with supportive cushions.</li>
+                    <li><strong>Hard bedroom furniture · photos 20–25.</strong> Dressers, nightstands, desks and twin bed frames can save moving cost because they already fit. Anchor all tall pieces. Decline mattresses.</li>
+                    <li><strong>Desk and chair for the lower office · photos 5, 23 or 25.</strong> Ask about the best-sized desk; test chair height/support and leave room around baseboard heat and outlets.</li>
+                    <li><strong>Porch dining set · photos 3, 29–30.</strong> Useful if metal joints are sound and there is no rust, mildew or cushion odor. Treat as a low-cost add-on.</li>
+                </ol>
+
+                <div class="grid-2" style="margin-top:14px">
+                    <section class="panel good">
+                        <h3>Good family-fit candidates</h3>
+                        <div class="check-list">
+                            <label class="check"><input type="checkbox" />Dining table + chairs</label>
+                            <label class="check"><input type="checkbox" />Gray sectional if clean</label>
+                            <label class="check"><input type="checkbox" />Twin frames / trundle frames</label>
+                            <label class="check"><input type="checkbox" />Dressers with anchor hardware</label>
+                            <label class="check"><input type="checkbox" />Desks and hard-surface storage</label>
+                            <label class="check"><input type="checkbox" />Dry, sound porch table/chairs</label>
+                        </div>
+                    </section>
+                    <section class="panel priority">
+                        <h3>Usually decline or buy only after testing</h3>
+                        <div class="check-list">
+                            <label class="check"><input type="checkbox" />Used mattresses, pillows and bedding</label>
+                            <label class="check"><input type="checkbox" />Mildewed outdoor cushions or rugs</label>
+                            <label class="check"><input type="checkbox" />Light sofa unless covers are washable</label>
+                            <label class="check"><input type="checkbox" />Unanchored tall dressers / unstable bunks</label>
+                            <label class="check"><input type="checkbox" />Grill before gas connection is leak-tested</label>
+                            <label class="check"><input type="checkbox" />Old refrigerator without model/age test</label>
+                        </div>
+                    </section>
+                </div>
+
+                <div class="legal-note">
+                    <strong>Protect the purchase:</strong> list every agreed item, price, condition and removal obligation in a
+                    written attorney/agent-approved addendum or separate bill of sale. Ask the lender how personal property
+                    must be handled. Do not rely on listing photos or a verbal promise.
+                </div>
+
+                <div class="notes-block">
+                    <h3>Seller's first response / bundle price</h3>
+                    <div class="write-lines"><span></span><span></span><span></span><span></span><span></span></div>
+                </div>
+            </section>
+
+            <div id="furniture-sheets"></div>
+
+            <section class="sheet">
+                <header class="sheet-header">
+                    <p class="eyebrow">Final decision worksheet</p>
+                    <h2>Repairs, credits and before-move priorities</h2>
+                    <p class="subtitle">Transfer confirmed issues from the written inspection and specialist reports—not from the listing photos alone.</p>
+                </header>
+
+                <table class="summary-table">
+                    <thead>
+                        <tr><th style="width:25%">Confirmed issue</th><th style="width:14%">Photo / report page</th><th style="width:18%">Specialist</th><th style="width:14%">Estimate</th><th style="width:14%">Credit / seller</th><th>Decision</th></tr>
+                    </thead>
+                    <tbody id="repair-rows"></tbody>
+                </table>
+
+                <div class="notes-block">
+                    <h3>Contractor names, estimate dates and follow-up questions</h3>
+                    <div class="write-lines"><span></span><span></span><span></span><span></span><span></span><span></span></div>
+                </div>
+            </section>
+
+            <section class="sheet">
+                <header class="sheet-header">
+                    <p class="eyebrow">Final decision worksheet</p>
+                    <h2>Move-in priorities, totals and my decision</h2>
+                    <p class="subtitle">Separate safety and active-water work from cosmetic projects and optional furniture.</p>
+                </header>
+
+                <div class="grid-2" style="margin-top:14px">
+                    <section class="panel priority">
+                        <h3>Must resolve before move-in</h3>
+                        <div class="check-list">
+                            <label class="check"><input type="checkbox" />Active water entry / wet materials</label>
+                            <label class="check"><input type="checkbox" />Unsafe deck, stairs, railings or gas</label>
+                            <label class="check"><input type="checkbox" />Electrical shock / fire hazards</label>
+                            <label class="check"><input type="checkbox" />Sewer blockage, collapse or tank concern</label>
+                            <label class="check"><input type="checkbox" />Unsafe bedroom egress or missing alarms</label>
+                            <label class="check"><input type="checkbox" />Radon / WDI response if results require it</label>
+                        </div>
+                    </section>
+                    <section class="panel good">
+                        <h3>Can normally wait if safe and dry</h3>
+                        <div class="check-list">
+                            <label class="check"><input type="checkbox" />Painting and cosmetic patching</label>
+                            <label class="check"><input type="checkbox" />Optional bathroom modernization</label>
+                            <label class="check"><input type="checkbox" />Furniture replacement / decor</label>
+                            <label class="check"><input type="checkbox" />Deck cleaning and sealing after repairs</label>
+                            <label class="check"><input type="checkbox" />Landscaping not affecting drainage</label>
+                            <label class="check"><input type="checkbox" />Non-safety lighting upgrades</label>
+                        </div>
+                    </section>
+                </div>
+
+                <div class="decision-grid" style="margin-top:14px">
+                    <div class="panel"><strong>Repair estimate total</strong><div class="fill-field money" style="margin-top:14px"><span>$</span></div></div>
+                    <div class="panel"><strong>Credit / seller work total</strong><div class="fill-field money" style="margin-top:14px"><span>$</span></div></div>
+                    <div class="panel"><strong>Furniture offer total</strong><div class="fill-field money" style="margin-top:14px"><span>$</span></div></div>
+                    <div class="panel"><strong>Immediate cash needed</strong><div class="fill-field money" style="margin-top:14px"><span>$</span></div></div>
+                </div>
+
+                <div class="notes-block">
+                    <h3>My final decision and reasons</h3>
+                    <div class="write-lines"><span></span><span></span><span></span><span></span><span></span></div>
+                </div>
+            </section>
+        </main>
+
+        <noscript>
+            <p style="padding:20px;background:#fff1f4;color:#881337">JavaScript is required to build the room and furniture worksheet pages.</p>
+        </noscript>
+
+        <script>
+            const roomSheets = [
+                {
+                    id: "exterior",
+                    title: "Exterior, roof, attic and site",
+                    refs: "Photos 1, 8, 33–39",
+                    photos: [[1, "Front exterior"], [36, "Roof aerial"], [37, "Skylights / roof"]],
+                    checks: [
+                        "Roof covering age, layers, wear and remaining life",
+                        "All skylights, chimney and vent flashing",
+                        "Attic underside for stains, rot, mold and daylight",
+                        "Gutters/downspouts at every roof edge; discharge location",
+                        "Siding, trim, penetrations and foundation clearance",
+                        "Grading and standing-water evidence around additions",
+                        "Trees/limbs/roots affecting roof, fence or sewer",
+                        "Driveway, walks, fence, shed and property boundaries"
+                    ],
+                    watch: [
+                        "At least three skylights increase flashing/leak exposure.",
+                        "Rear additions create several roof-to-wall and drainage joints.",
+                        "Survey, easements, park boundary and sewer route are not visible."
+                    ]
+                },
+                {
+                    id: "porch-deck",
+                    title: "Screened porch, rear deck and garage",
+                    refs: "Photos 3, 29–34; garage not shown",
+                    photos: [[3, "Porch roof"], [31, "Deck surface"], [32, "Stairs / grill"]],
+                    checks: [
+                        "Porch roof boards/rafters probed for softness or rot",
+                        "Porch skylight and roof-to-house flashing",
+                        "Screens, framing, floor and exterior-rated wiring/GFCI",
+                        "Deck ledger bolts, flashing, joist hangers and posts",
+                        "Footings, guards, stair dimensions and handrails",
+                        "Weathered boards, fasteners and awning wind connection",
+                        "Grill gas line, shutoff, leak test and permit",
+                        "Garage door auto-reverse, fire separation and outlets"
+                    ],
+                    watch: [
+                        "Dark marks and uneven porch-roof paint may be weathering, old leakage or mildew.",
+                        "Deck ledger, footings and most connectors are concealed in photos.",
+                        "Do not use unsafe deck/stairs until structural findings are resolved."
+                    ]
+                },
+                {
+                    id: "living",
+                    title: "Entry, living and family areas",
+                    refs: "Photos 2, 4, 9–14",
+                    photos: [[9, "Entry / family room"], [12, "Skylight room"], [14, "Open living area"]],
+                    checks: [
+                        "Ceilings/walls for stains, cracks, patches and movement",
+                        "Floors for slope, squeaks, soft areas and hidden damage",
+                        "Windows/doors for operation, locks, seals and drafts",
+                        "Front/rear thresholds and floor moisture",
+                        "Outlets, switches, lighting and accessible receptacles",
+                        "HVAC registers/baseboard heat and room comfort",
+                        "Stair guards, handrails, tread/riser safety and lighting",
+                        "Large wall openings checked against permits/support"
+                    ],
+                    watch: [
+                        "Skylights require ceiling moisture readings even without a visible stain.",
+                        "Large openings may represent prior alterations; verify permits if relevant.",
+                        "Furniture may conceal outlets, flooring, walls and baseboards."
+                    ]
+                },
+                {
+                    id: "kitchen-dining",
+                    title: "Kitchen, dining and breakfast areas",
+                    refs: "Photos 2, 4, 15–19",
+                    photos: [[2, "Dining area"], [17, "Kitchen appliances"], [19, "Kitchen / rear access"]],
+                    checks: [
+                        "Sink, dishwasher, refrigerator lines and cabinet floor leaks",
+                        "Gas shutoff, range anti-tip bracket and ignition",
+                        "Microwave/range exhaust route and fan operation",
+                        "GFCI protection, outlets and two-refrigerator circuit load",
+                        "All appliances tested; model/serial/age recorded",
+                        "Counters, cabinet doors, drawers and wall/floor behind units",
+                        "Dining/rear door operation, sill and moisture",
+                        "Water pressure, hot water and drain flow"
+                    ],
+                    watch: [
+                        "Confirm in writing which appliances stay, including the second refrigerator.",
+                        "Appliances hide floor, wall, electrical and plumbing conditions.",
+                        "Dining set appears to seat the household well; measure before negotiating."
+                    ]
+                },
+                {
+                    id: "primary",
+                    title: "Upper bedroom 1 — primary / adults",
+                    refs: "Photos 20–22",
+                    photos: [[20, "Primary bedroom"], [21, "Ceiling / fan"], [22, "Bath-side view"]],
+                    checks: [
+                        "Ceiling seams/patch-like areas moisture-metered",
+                        "Attic/plumbing source above or beside room investigated",
+                        "Windows operate, lock, seal and satisfy escape needs",
+                        "Ceiling fan support and concealed TV wiring",
+                        "Outlets, lighting, smoke/CO alarm and HVAC airflow",
+                        "Baseboard heat clear of curtains and planned furniture",
+                        "Closets, doors, floor perimeter and furniture-hidden areas",
+                        "Bed/nightstand/dresser wall measurements recorded"
+                    ],
+                    watch: [
+                        "Uneven ceiling finish may be normal, movement or a prior moisture repair.",
+                        "Nearby bathroom adds a possible plumbing source.",
+                        "Buy hard furniture only after measuring; decline the mattress."
+                    ]
+                },
+                {
+                    id: "kids-ab",
+                    title: "Upper bedroom 2 — children A + B",
+                    refs: "Photos 23–24",
+                    photos: [[23, "Two-window bedroom"], [24, "Closet / opposite view"]],
+                    checks: [
+                        "Both windows open, lock and meet escape requirements",
+                        "Clear escape path not blocked by beds/desks",
+                        "Ceiling fan clearance from any bunk or raised bed",
+                        "Smoke/CO alarm location and audible operation",
+                        "Outlets, covers, cords and HVAC airflow",
+                        "Closet, door swing and usable wall dimensions",
+                        "Walls/floors behind existing furniture inspected",
+                        "Dresser/shelves/TV can be anchored to framing"
+                    ],
+                    watch: [
+                        "Likely best shared-kids room because it shows two windows and useful floor area.",
+                        "Two twins or a trundle may be simpler than a bunk if fan/window clearance is tight.",
+                        "Existing hard furniture may fit; inspect stability and anchor points."
+                    ]
+                },
+                {
+                    id: "kids-cd",
+                    title: "Upper bedroom 3 — children C + D",
+                    refs: "Photo 25",
+                    photos: [[25, "Bedroom / desk / bed"], [5, "Desk candidate"], [23, "Twin-frame candidate"]],
+                    checks: [
+                        "Window opens, locks and meets escape requirements",
+                        "Bed placement leaves window and door path clear",
+                        "Ceiling fan clearance from bunks/raised furniture",
+                        "Smoke/CO alarm and night lighting",
+                        "Outlets, wiring, HVAC and baseboard clearance",
+                        "Closet and room dimensions for two sleeping positions",
+                        "Floor/walls behind bed, dresser and desk",
+                        "All tall furniture can be anchored"
+                    ],
+                    watch: [
+                        "This room appears tighter; measure before promising two separate twin frames.",
+                        "An age-appropriate bunk or trundle may preserve play/study space.",
+                        "Do not buy the pictured mattress; consider desk/dresser/frame only."
+                    ]
+                },
+                {
+                    id: "bathrooms",
+                    title: "Bathrooms and wet areas",
+                    refs: "Photos 7, 22, 26",
+                    photos: [[7, "Bathroom"], [22, "Primary bath side"], [26, "Second bathroom"]],
+                    checks: [
+                        "Run every sink, tub and shower; check hot/cold pressure",
+                        "Drain speed, traps, supply valves and cabinet floors",
+                        "Toilet stability, seal, flush and floor around base",
+                        "Shower pan/tub edge moisture readings",
+                        "Grout, caulk, tile, wall and floor condition",
+                        "GFCI protection and safe fixture placement",
+                        "Exhaust fan operation and exterior discharge",
+                        "Ceiling below/adjacent rooms checked for leaks"
+                    ],
+                    watch: [
+                        "Older shower materials can conceal pan or substrate leakage.",
+                        "No exhaust grille is obvious in the second-bath photo.",
+                        "Repair water sources before cosmetic tile or paint work."
+                    ]
+                },
+                {
+                    id: "office",
+                    title: "Lower-level room — planned office",
+                    refs: "Photos 27–28",
+                    photos: [[27, "Ceiling concern"], [28, "Door-base concern"]],
+                    checks: [
+                        "Moisture meter and thermal camera at ceiling irregularity",
+                        "Area above traced for plumbing/roof/exterior source",
+                        "Door/jamb, adjacent floor and wall probed for softness",
+                        "Humidity, musty odor, efflorescence and water history",
+                        "Grounded outlets, circuit capacity and task lighting",
+                        "Heating/cooling, ventilation and comfortable work temperature",
+                        "Internet/Wi-Fi/Ethernet route and phone signal",
+                        "Permit/finished-space status documented even for office use"
+                    ],
+                    watch: [
+                        "Do not repaint the ceiling or door until moisture is ruled out.",
+                        "Keep desk/electronics away from the suspect area until dry and repaired.",
+                        "Office use avoids relying on this room as a legal bedroom."
+                    ]
+                },
+                {
+                    id: "systems",
+                    title: "Electrical, plumbing, HVAC and life safety",
+                    refs: "Systems are mostly absent from listing photos",
+                    photos: [[17, "Kitchen loads"], [21, "Fan / HVAC"], [32, "Gas connection"]],
+                    checks: [
+                        "Main panel brand, capacity, labels, double taps and open slots",
+                        "GFCI/AFCI protection and representative outlet testing",
+                        "Service grounding/bonding and visible unsafe wiring",
+                        "Water main/shutoffs, visible supply/drain material and leaks",
+                        "Water heater age, venting, relief pipe and hot-water delivery",
+                        "Heating/cooling equipment age, service history and operation",
+                        "Smoke/CO alarms at required sleeping/floor locations",
+                        "Gas lines, shutoffs, leaks and combustion venting"
+                    ],
+                    watch: [
+                        "Listing photos do not clear any major system.",
+                        "Record model, serial, age and expected remaining life for each unit.",
+                        "Obtain specialist estimates for material safety defects before deadline."
+                    ]
+                },
+                {
+                    id: "specialists",
+                    title: "Sewer, tank, radon, WDI, permits and records",
+                    refs: "Photos 35, 38–39 provide site context only",
+                    photos: [[35, "Trees / rear yard"], [38, "Lot aerial"], [39, "Park-side context"]],
+                    checks: [
+                        "Sewer camera reaches public main; full video and map delivered",
+                        "Pipe material, roots, bellies, offsets and cleanout documented",
+                        "Tank sweep area/scope, scan map, photos and written result",
+                        "Radon test location, duration, closed-house conditions and result",
+                        "WDI inspection, credentials, report and inaccessible areas",
+                        "Municipal permits/CO for additions, porch, deck and finished room",
+                        "Survey, easements, fence/park boundary and encroachments",
+                        "Flood determination, drainage history and insurance questions"
+                    ],
+                    watch: [
+                        "Obtain written seller permission before invasive sewer/tank work.",
+                        "Keep complete reports, receipts, videos and specialist credentials.",
+                        "Tree roots and park-side vegetation increase the value of locating the sewer route."
+                    ]
+                }
+            ];
+
+            const furnitureGroups = [
+                {
+                    title: "Furniture worksheet — main living and dining areas",
+                    rows: [
+                        ["Dining table + six chairs", "2, 15–16", "ask", "Strong family fit; already scaled to room.", "Joints, wobble, leaf, upholstery, stains.", ""],
+                        ["Gray sectional / sofa", "9–11", "ask", "Practical seating for children if clean.", "Odor, smoke, pets, pests, stains, frame/springs.", ""],
+                        ["White sofa + chairs", "12–14", "maybe", "Fits room, but light upholstery is less child-friendly.", "Washable covers, stains, cushion support.", ""],
+                        ["Coffee / side tables", "9–14", "maybe", "Useful only as low-cost bundle pieces.", "Sharp corners, wobble, finish, dimensions.", ""],
+                        ["Dining hutch / cabinet", "15–16", "maybe", "Storage value if anchored and walkway stays clear.", "Tip risk, shelves, glass, wall anchor.", ""],
+                        ["Breakfast table / movable seating", "4", "maybe", "Smaller daily-use option; confirm what is built in.", "Dimensions, stability, inclusion status.", ""],
+                        ["Rugs, lamps and decor", "Multiple", "skip", "Low move-in value unless nearly free and wanted.", "Odor, allergens, pests, cord and shade damage.", ""]
+                    ]
+                },
+                {
+                    title: "Furniture worksheet — bedrooms, office and outdoor",
+                    rows: [
+                        ["Twin / daybed frames", "23–25", "ask", "Good for shared kids' rooms after measuring.", "Slats, fasteners, recalls, guardrails; no mattress.", ""],
+                        ["Dressers / nightstands", "20–25", "ask", "Good hard-furniture candidates that already fit.", "Drawer stops, stability, damage, anchor hardware.", ""],
+                        ["Desks / shelving", "5, 23, 25", "ask", "Useful for lower office or children's study area.", "Dimensions, wobble, outlets, anchor need.", ""],
+                        ["Desk / gaming chairs", "5, 25", "maybe", "Use only if supportive and correctly sized.", "Lift, wheels, tilt, upholstery and ergonomics.", ""],
+                        ["Primary bed frame", "20–22", "maybe", "May fit room, but compare moving and disassembly cost.", "Frame condition and dimensions; decline mattress.", ""],
+                        ["Porch table + chairs", "3, 29–30", "ask", "Good low-cost add-on for screened porch.", "Rust, joints, mildew, outdoor rating.", ""],
+                        ["Deck seating / canopy items", "31", "maybe", "Buy only if dry, stable and not part of unsafe deck work.", "Fabric, anchors, rust, wind damage.", ""],
+                        ["Grill", "32", "maybe", "Only after appliance and gas connection are tested.", "Age, burners, rust, hose/shutoff, leak test.", ""],
+                        ["Second refrigerator", "17–18", "maybe", "Useful for a large family if efficient and reliable.", "Model/serial, age, temperature, seals, energy use.", ""],
+                        ["Mattresses / pillows / bedding", "20–27", "skip", "Hygiene, allergen and pest risk outweigh convenience.", "Do not include unless you independently choose otherwise.", ""]
+                    ]
+                }
+            ];
+
+            function photoStrip(photos) {
+                return '<div class="photo-strip" style="--photo-count:' + photos.length + '">' +
+                    photos.map(function (photo) {
+                        const number = String(photo[0]).padStart(2, "0");
+                        return '<figure><a href="listing-photos/photo-' + number + '.jpg" target="_blank" rel="noopener">' +
+                            '<img src="listing-photos/photo-' + number + '.jpg" width="1024" height="682" loading="lazy" alt="Listing photo ' + number + ', ' + photo[1] + '" /></a>' +
+                            '<figcaption>Photo ' + number + ' · ' + photo[1] + '</figcaption></figure>';
+                    }).join("") + '</div>';
+            }
+
+            function roomSheet(room) {
+                const checks = room.checks.map(function (item) {
+                    return '<label class="check"><input type="checkbox" />' + item + '</label>';
+                }).join("");
+                const watch = room.watch.map(function (item) {
+                    return '<li>' + item + '</li>';
+                }).join("");
+                return '<section class="sheet room-sheet" id="' + room.id + '">' +
+                    '<header class="sheet-header"><p class="eyebrow">Room-by-room inspection</p><h2>' + room.title + '</h2>' +
+                    '<p class="photo-ref">' + room.refs + '</p></header>' +
+                    photoStrip(room.photos) +
+                    '<div class="room-layout"><section class="panel"><h3>Check each item</h3><div class="check-list">' + checks + '</div></section>' +
+                    '<section class="panel verify"><h3>Photo-guided focus</h3><ul class="watch-list">' + watch + '</ul>' +
+                    '<div class="notes-block"><h3>Measurements / age / model</h3><div class="write-lines"><span></span><span></span><span></span></div></div></section></div>' +
+                    '<div class="result-row"><strong>Inspector result:</strong><span><i class="mini-box"></i>Good</span><span><i class="mini-box"></i>Monitor</span>' +
+                    '<span><i class="mini-box"></i>Repair</span><span><i class="mini-box"></i>Specialist</span><span><i class="mini-box"></i>Request credit</span></div>' +
+                    '<div class="grid-2"><div class="notes-block"><h3>What I noticed / questions I asked</h3><div class="write-lines"><span></span><span></span><span></span><span></span></div></div>' +
+                    '<div class="notes-block"><h3>Inspector answer / report page / estimated cost</h3><div class="write-lines"><span></span><span></span><span></span><span></span></div></div></div>' +
+                    '</section>';
+            }
+
+            function furnitureSheet(group) {
+                const rows = group.rows.map(function (row) {
+                    return '<tr><td><strong>' + row[0] + '</strong></td><td>' + row[1] + '</td><td><span class="recommend ' + row[2] + '">' +
+                        (row[2] === "ask" ? "Ask first" : row[2] === "maybe" ? "Consider" : "Usually skip") +
+                        '</span><br />' + row[3] + '</td><td>' + row[4] + '</td><td class="offer-cell"><span class="mini-box"></span>Buy<br /><span class="mini-box"></span>Pass<br />Offer $ ______</td></tr>';
+                }).join("");
+                return '<section class="sheet"><header class="sheet-header"><p class="eyebrow">Seller furniture</p><h2>' + group.title + '</h2>' +
+                    '<p class="subtitle">Inspect in person and compare with local used-market prices. Do not pay for items simply because they appear in listing photos.</p></header>' +
+                    '<div class="table-wrap"><table class="furniture-table"><thead><tr><th style="width:18%">Item</th><th style="width:9%">Photos</th><th style="width:28%">Family fit</th><th style="width:27%">Inspect / ask</th><th>Decision / offer</th></tr></thead>' +
+                    '<tbody>' + rows + '</tbody></table></div>' +
+                    '<div class="notes-block"><h3>Seller answer, included accessories and pickup/removal agreement</h3><div class="write-lines"><span></span><span></span><span></span><span></span></div></div></section>';
+            }
+
+            document.getElementById("room-sheets").innerHTML = roomSheets.map(roomSheet).join("");
+            document.getElementById("furniture-sheets").innerHTML = furnitureGroups.map(furnitureSheet).join("");
+            document.getElementById("repair-rows").innerHTML = Array.from({ length: 12 }, function () {
+                return '<tr><td></td><td></td><td></td><td class="money">$</td><td></td><td></td></tr>';
+            }).join("");
+
+            document.getElementById("print-notebook").addEventListener("click", function () {
+                window.print();
+            });
+
+            document.getElementById("toggle-photos").addEventListener("click", function () {
+                const hidden = document.body.classList.toggle("photos-hidden");
+                this.setAttribute("aria-pressed", String(hidden));
+                this.textContent = hidden ? "Show photo thumbnails" : "Hide photo thumbnails";
+            });
+        </script>
+    </body>
+</html>

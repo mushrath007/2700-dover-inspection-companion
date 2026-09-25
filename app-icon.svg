@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-labelledby="title">
+    <title id="title">Home inspection checklist</title>
+    <rect width="512" height="512" rx="104" fill="#123e6b"/>
+    <path d="M92 244 256 106l164 138v158a30 30 0 0 1-30 30H122a30 30 0 0 1-30-30V244Z" fill="#e7f1fa"/>
+    <path d="m66 250 190-160 190 160-28 34-162-136L94 284l-28-34Z" fill="#78b8e7"/>
+    <rect x="196" y="268" width="120" height="164" rx="8" fill="#fff"/>
+    <path d="m165 302 38 38 84-92" fill="none" stroke="#17603a" stroke-linecap="round" stroke-linejoin="round" stroke-width="30"/>
+</svg>

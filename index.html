@@ -1,0 +1,1797 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="theme-color" content="#123e6b" />
+        <meta name="description" content="Private-on-device home inspection notes, room checklists, repair follow-up and furniture decisions." />
+        <link rel="manifest" href="./manifest.webmanifest" />
+        <link rel="icon" href="./app-icon.svg" type="image/svg+xml" />
+        <title>Dover Home Inspection Companion</title>
+        <style>
+            :root {
+                color-scheme: light;
+                --bg: #edf2f7;
+                --surface: #ffffff;
+                --surface-2: #f5f8fb;
+                --text: #172033;
+                --muted: #526076;
+                --line: #cad4e1;
+                --primary: #164e83;
+                --primary-strong: #0d385f;
+                --primary-soft: #e7f1fa;
+                --danger: #a30f3e;
+                --danger-soft: #fff0f4;
+                --warning: #8a4b08;
+                --warning-soft: #fff6dc;
+                --success: #17603a;
+                --success-soft: #eaf8ef;
+                --shadow: 0 12px 34px rgba(23, 32, 51, 0.1);
+                --radius: 16px;
+            }
+
+            * {
+                box-sizing: border-box;
+            }
+
+            html {
+                scroll-behavior: smooth;
+            }
+
+            body {
+                background: var(--bg);
+                color: var(--text);
+                font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+                font-size: 16px;
+                line-height: 1.55;
+                margin: 0;
+                min-height: 100dvh;
+            }
+
+            button,
+            input,
+            select,
+            textarea {
+                font: inherit;
+            }
+
+            button,
+            select,
+            input[type="date"],
+            input[type="number"] {
+                min-height: 46px;
+            }
+
+            button {
+                cursor: pointer;
+                touch-action: manipulation;
+            }
+
+            a {
+                color: var(--primary);
+            }
+
+            :focus-visible {
+                outline: 3px solid #2f7bd3;
+                outline-offset: 3px;
+            }
+
+            .skip-link {
+                background: #111827;
+                color: white;
+                left: 12px;
+                padding: 10px 14px;
+                position: fixed;
+                top: -70px;
+                z-index: 100;
+            }
+
+            .skip-link:focus {
+                top: 12px;
+            }
+
+            .app-header {
+                background:
+                    radial-gradient(circle at 86% 18%, rgba(118, 180, 230, 0.28), transparent 28%),
+                    linear-gradient(135deg, #0d2f52, #17568e);
+                color: white;
+                padding: 30px 18px 64px;
+            }
+
+            .container {
+                margin-inline: auto;
+                max-width: 1180px;
+                width: min(100% - 28px, 1180px);
+            }
+
+            .header-row {
+                align-items: flex-start;
+                display: flex;
+                gap: 20px;
+                justify-content: space-between;
+            }
+
+            .eyebrow {
+                font-size: 0.76rem;
+                font-weight: 900;
+                letter-spacing: 0.13em;
+                margin: 0 0 7px;
+                text-transform: uppercase;
+            }
+
+            h1,
+            h2,
+            h3,
+            p {
+                margin-top: 0;
+            }
+
+            h1 {
+                font-size: clamp(2rem, 6vw, 3.65rem);
+                letter-spacing: -0.045em;
+                line-height: 1.02;
+                margin-bottom: 12px;
+                max-width: 760px;
+            }
+
+            .header-copy {
+                color: #e4eef9;
+                margin-bottom: 0;
+                max-width: 720px;
+            }
+
+            .save-state {
+                align-items: center;
+                background: rgba(255, 255, 255, 0.12);
+                border: 1px solid rgba(255, 255, 255, 0.34);
+                border-radius: 999px;
+                display: inline-flex;
+                flex: 0 0 auto;
+                font-size: 0.82rem;
+                font-weight: 800;
+                gap: 8px;
+                min-height: 40px;
+                padding: 8px 12px;
+            }
+
+            .save-dot {
+                background: #81e6a8;
+                border-radius: 50%;
+                height: 10px;
+                width: 10px;
+            }
+
+            .app-shell {
+                margin-top: -38px;
+                padding-bottom: 90px;
+            }
+
+            .tab-nav {
+                background: var(--surface);
+                border: 1px solid var(--line);
+                border-radius: var(--radius);
+                box-shadow: var(--shadow);
+                display: grid;
+                gap: 8px;
+                grid-template-columns: repeat(4, 1fr);
+                padding: 8px;
+                position: sticky;
+                top: 8px;
+                z-index: 20;
+            }
+
+            .tab-nav button {
+                align-items: center;
+                background: transparent;
+                border: 0;
+                border-radius: 10px;
+                color: var(--muted);
+                display: inline-flex;
+                font-weight: 800;
+                gap: 8px;
+                justify-content: center;
+                padding: 8px 10px;
+            }
+
+            .tab-nav button[aria-selected="true"] {
+                background: var(--primary);
+                color: white;
+            }
+
+            .tab-nav svg,
+            .action svg {
+                fill: none;
+                flex: 0 0 auto;
+                height: 21px;
+                stroke: currentColor;
+                stroke-linecap: round;
+                stroke-linejoin: round;
+                stroke-width: 2;
+                width: 21px;
+            }
+
+            .view {
+                margin-top: 20px;
+            }
+
+            .view[hidden] {
+                display: none;
+            }
+
+            .panel,
+            .metric,
+            .area-card,
+            .furniture-card,
+            .visit-card {
+                background: var(--surface);
+                border: 1px solid var(--line);
+                border-radius: var(--radius);
+                box-shadow: var(--shadow);
+            }
+
+            .panel {
+                padding: 22px;
+            }
+
+            .privacy {
+                align-items: flex-start;
+                background: var(--success-soft);
+                border-color: #8fc5a7;
+                display: flex;
+                gap: 12px;
+            }
+
+            .privacy svg {
+                fill: none;
+                flex: 0 0 auto;
+                height: 26px;
+                stroke: var(--success);
+                stroke-linecap: round;
+                stroke-linejoin: round;
+                stroke-width: 2;
+                width: 26px;
+            }
+
+            .privacy p {
+                margin: 0;
+            }
+
+            .metrics {
+                display: grid;
+                gap: 12px;
+                grid-template-columns: repeat(4, minmax(0, 1fr));
+                margin-top: 16px;
+            }
+
+            .metric {
+                padding: 18px;
+            }
+
+            .metric strong {
+                display: block;
+                font-size: 1.75rem;
+                line-height: 1.1;
+            }
+
+            .metric span {
+                color: var(--muted);
+                font-size: 0.84rem;
+            }
+
+            .progress-track {
+                background: #dbe4ee;
+                border-radius: 99px;
+                height: 10px;
+                margin-top: 10px;
+                overflow: hidden;
+            }
+
+            .progress-fill {
+                background: var(--success);
+                height: 100%;
+                transition: width 220ms ease-out;
+                width: 0;
+            }
+
+            .dashboard-grid {
+                display: grid;
+                gap: 16px;
+                grid-template-columns: 1.2fr 0.8fr;
+                margin-top: 16px;
+            }
+
+            .section-heading {
+                align-items: end;
+                display: flex;
+                gap: 16px;
+                justify-content: space-between;
+                margin-bottom: 14px;
+            }
+
+            .section-heading h2,
+            .panel h2 {
+                font-size: 1.42rem;
+                line-height: 1.25;
+                margin-bottom: 4px;
+            }
+
+            .section-heading p,
+            .panel-subtitle {
+                color: var(--muted);
+                margin-bottom: 0;
+            }
+
+            .form-grid {
+                display: grid;
+                gap: 14px;
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+
+            .field {
+                min-width: 0;
+            }
+
+            .field.full {
+                grid-column: 1 / -1;
+            }
+
+            .field label,
+            .field-label {
+                display: block;
+                font-size: 0.82rem;
+                font-weight: 850;
+                margin-bottom: 5px;
+            }
+
+            input[type="date"],
+            input[type="number"],
+            select,
+            textarea {
+                background: var(--surface);
+                border: 1.5px solid #8998aa;
+                border-radius: 9px;
+                color: var(--text);
+                padding: 10px 11px;
+                width: 100%;
+            }
+
+            textarea {
+                min-height: 102px;
+                resize: vertical;
+            }
+
+            .helper {
+                color: var(--muted);
+                display: block;
+                font-size: 0.75rem;
+                margin-top: 4px;
+            }
+
+            .actions {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 9px;
+                margin-top: 16px;
+            }
+
+            .action {
+                align-items: center;
+                background: var(--primary);
+                border: 2px solid var(--primary);
+                border-radius: 9px;
+                color: white;
+                display: inline-flex;
+                font-weight: 850;
+                gap: 8px;
+                justify-content: center;
+                min-height: 46px;
+                padding: 9px 14px;
+                text-decoration: none;
+            }
+
+            .action:hover {
+                background: var(--primary-strong);
+                border-color: var(--primary-strong);
+            }
+
+            .action.secondary {
+                background: transparent;
+                color: var(--primary);
+            }
+
+            .action.secondary:hover {
+                background: var(--primary-soft);
+            }
+
+            .action.danger {
+                background: transparent;
+                border-color: #d6829f;
+                color: var(--danger);
+            }
+
+            .priority-box {
+                background: var(--danger-soft);
+                border-color: #e6a4b9;
+            }
+
+            .priority-box ol {
+                margin: 10px 0 0;
+                padding-left: 22px;
+            }
+
+            .priority-box li {
+                margin: 6px 0;
+            }
+
+            .visit-list {
+                display: grid;
+                gap: 10px;
+                margin-top: 14px;
+            }
+
+            .visit-card {
+                box-shadow: none;
+                padding: 14px;
+            }
+
+            .visit-card-head {
+                align-items: flex-start;
+                display: flex;
+                gap: 12px;
+                justify-content: space-between;
+            }
+
+            .visit-card h3 {
+                font-size: 1rem;
+                margin-bottom: 2px;
+            }
+
+            .visit-card p {
+                margin: 8px 0 0;
+                white-space: pre-wrap;
+            }
+
+            .visit-card .meta {
+                color: var(--muted);
+                font-size: 0.78rem;
+            }
+
+            .text-button {
+                background: transparent;
+                border: 0;
+                color: var(--danger);
+                font-size: 0.8rem;
+                font-weight: 850;
+                min-height: 44px;
+                padding: 8px;
+            }
+
+            .empty-state {
+                border: 2px dashed var(--line);
+                border-radius: 12px;
+                color: var(--muted);
+                padding: 20px;
+                text-align: center;
+            }
+
+            .filter-row {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 8px;
+                margin-bottom: 14px;
+            }
+
+            .filter-row button {
+                background: var(--surface);
+                border: 1.5px solid #8d9bad;
+                border-radius: 999px;
+                color: var(--text);
+                font-weight: 800;
+                min-height: 44px;
+                padding: 7px 14px;
+            }
+
+            .filter-row button[aria-pressed="true"] {
+                background: var(--primary);
+                border-color: var(--primary);
+                color: white;
+            }
+
+            .area-list,
+            .furniture-list {
+                display: grid;
+                gap: 14px;
+            }
+
+            .area-card,
+            .furniture-card {
+                overflow: hidden;
+            }
+
+            .area-card[hidden] {
+                display: none;
+            }
+
+            .area-card summary {
+                align-items: center;
+                cursor: pointer;
+                display: grid;
+                gap: 12px;
+                grid-template-columns: auto 1fr auto;
+                list-style: none;
+                min-height: 72px;
+                padding: 14px 18px;
+            }
+
+            .area-card summary::-webkit-details-marker {
+                display: none;
+            }
+
+            .area-card summary::before {
+                border-bottom: 2px solid currentColor;
+                border-right: 2px solid currentColor;
+                content: "";
+                height: 8px;
+                transform: rotate(-45deg);
+                transition: transform 180ms ease-out;
+                width: 8px;
+            }
+
+            .area-card[open] summary::before {
+                transform: rotate(45deg);
+            }
+
+            .area-title {
+                min-width: 0;
+            }
+
+            .area-title strong {
+                display: block;
+                font-size: 1.03rem;
+            }
+
+            .area-title span {
+                color: var(--muted);
+                font-size: 0.78rem;
+            }
+
+            .status-badge {
+                border: 1px solid;
+                border-radius: 99px;
+                font-size: 0.72rem;
+                font-weight: 900;
+                padding: 6px 9px;
+                white-space: nowrap;
+            }
+
+            .status-not-checked,
+            .status-monitor {
+                background: var(--warning-soft);
+                border-color: #c68b2c;
+                color: #6f3c07;
+            }
+
+            .status-good,
+            .status-complete {
+                background: var(--success-soft);
+                border-color: #56a878;
+                color: #0e522f;
+            }
+
+            .status-repair,
+            .status-specialist {
+                background: var(--danger-soft);
+                border-color: #d7658a;
+                color: #8b0c35;
+            }
+
+            .area-content {
+                border-top: 1px solid var(--line);
+                padding: 18px;
+            }
+
+            .photo-row {
+                display: grid;
+                gap: 8px;
+                grid-template-columns: repeat(3, minmax(0, 1fr));
+                margin-bottom: 16px;
+            }
+
+            .photo-row a {
+                border: 1px solid var(--line);
+                border-radius: 9px;
+                overflow: hidden;
+                position: relative;
+            }
+
+            .photo-row img {
+                aspect-ratio: 3 / 2;
+                display: block;
+                height: auto;
+                object-fit: cover;
+                width: 100%;
+            }
+
+            .photo-row span {
+                background: rgba(17, 24, 39, 0.84);
+                bottom: 5px;
+                color: white;
+                font-size: 0.7rem;
+                font-weight: 800;
+                left: 5px;
+                padding: 3px 6px;
+                position: absolute;
+            }
+
+            .check-grid {
+                display: grid;
+                gap: 5px 14px;
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+
+            .check-row,
+            .complete-row {
+                align-items: flex-start;
+                display: flex;
+                gap: 9px;
+                min-height: 44px;
+                padding: 6px 0;
+            }
+
+            .check-row input,
+            .complete-row input {
+                accent-color: var(--primary);
+                flex: 0 0 auto;
+                height: 22px;
+                margin-top: 2px;
+                width: 22px;
+            }
+
+            .area-fields {
+                background: var(--surface-2);
+                border-radius: 12px;
+                display: grid;
+                gap: 13px;
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+                margin-top: 16px;
+                padding: 14px;
+            }
+
+            .area-fields .full {
+                grid-column: 1 / -1;
+            }
+
+            .complete-row {
+                align-items: center;
+                font-weight: 850;
+            }
+
+            .furniture-card {
+                box-shadow: none;
+                padding: 17px;
+            }
+
+            .furniture-head {
+                align-items: flex-start;
+                display: flex;
+                gap: 12px;
+                justify-content: space-between;
+            }
+
+            .furniture-head h3 {
+                font-size: 1rem;
+                margin-bottom: 2px;
+            }
+
+            .furniture-head p {
+                color: var(--muted);
+                font-size: 0.8rem;
+                margin-bottom: 0;
+            }
+
+            .recommendation {
+                border-radius: 99px;
+                font-size: 0.7rem;
+                font-weight: 900;
+                padding: 6px 8px;
+                text-transform: uppercase;
+                white-space: nowrap;
+            }
+
+            .recommendation.ask {
+                background: var(--success-soft);
+                color: var(--success);
+            }
+
+            .recommendation.maybe {
+                background: var(--warning-soft);
+                color: var(--warning);
+            }
+
+            .recommendation.skip {
+                background: var(--danger-soft);
+                color: var(--danger);
+            }
+
+            .furniture-fields {
+                display: grid;
+                gap: 12px;
+                grid-template-columns: 1fr 1fr 1fr;
+                margin-top: 12px;
+            }
+
+            .guide-steps {
+                counter-reset: guide;
+                display: grid;
+                gap: 11px;
+                list-style: none;
+                margin: 14px 0 0;
+                padding: 0;
+            }
+
+            .guide-steps li {
+                border: 1px solid var(--line);
+                border-radius: 10px;
+                counter-increment: guide;
+                padding: 12px 12px 12px 48px;
+                position: relative;
+            }
+
+            .guide-steps li::before {
+                align-items: center;
+                background: var(--primary);
+                border-radius: 50%;
+                color: white;
+                content: counter(guide);
+                display: flex;
+                font-size: 0.78rem;
+                font-weight: 900;
+                height: 28px;
+                justify-content: center;
+                left: 11px;
+                position: absolute;
+                top: 11px;
+                width: 28px;
+            }
+
+            .link-grid {
+                display: grid;
+                gap: 12px;
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+                margin-top: 16px;
+            }
+
+            .resource-link {
+                background: var(--surface-2);
+                border: 1px solid var(--line);
+                border-radius: 12px;
+                color: var(--text);
+                display: block;
+                min-height: 92px;
+                padding: 15px;
+                text-decoration: none;
+            }
+
+            .resource-link:hover {
+                border-color: var(--primary);
+            }
+
+            .resource-link strong,
+            .resource-link span {
+                display: block;
+            }
+
+            .resource-link span {
+                color: var(--muted);
+                font-size: 0.82rem;
+                margin-top: 4px;
+            }
+
+            .toast {
+                background: #111827;
+                border-radius: 10px;
+                bottom: 20px;
+                color: white;
+                left: 50%;
+                max-width: min(90vw, 520px);
+                opacity: 0;
+                padding: 12px 16px;
+                pointer-events: none;
+                position: fixed;
+                transform: translate(-50%, 18px);
+                transition: opacity 180ms ease-out, transform 180ms ease-out;
+                z-index: 80;
+            }
+
+            .toast.show {
+                opacity: 1;
+                transform: translate(-50%, 0);
+            }
+
+            .visually-hidden {
+                clip: rect(0 0 0 0);
+                clip-path: inset(50%);
+                height: 1px;
+                overflow: hidden;
+                position: absolute;
+                white-space: nowrap;
+                width: 1px;
+            }
+
+            @media (max-width: 860px) {
+                .metrics {
+                    grid-template-columns: repeat(2, minmax(0, 1fr));
+                }
+
+                .dashboard-grid,
+                .area-fields {
+                    grid-template-columns: 1fr;
+                }
+
+                .area-fields .full {
+                    grid-column: auto;
+                }
+
+                .furniture-fields {
+                    grid-template-columns: 1fr 1fr;
+                }
+            }
+
+            @media (max-width: 620px) {
+                .app-header {
+                    padding: 24px 14px 56px;
+                }
+
+                .container {
+                    width: min(100% - 18px, 1180px);
+                }
+
+                .header-row {
+                    display: block;
+                }
+
+                .save-state {
+                    margin-top: 16px;
+                }
+
+                .app-shell {
+                    margin-top: 0;
+                    padding-bottom: calc(96px + env(safe-area-inset-bottom));
+                }
+
+                .tab-nav {
+                    border-bottom: 0;
+                    border-radius: 14px 14px 0 0;
+                    bottom: 0;
+                    left: 0;
+                    padding-bottom: calc(8px + env(safe-area-inset-bottom));
+                    position: fixed;
+                    right: 0;
+                    top: auto;
+                    width: 100%;
+                }
+
+                .tab-nav button {
+                    flex-direction: column;
+                    font-size: 0.7rem;
+                    gap: 2px;
+                    min-height: 58px;
+                    padding: 5px;
+                }
+
+                .panel {
+                    padding: 17px;
+                }
+
+                .metrics {
+                    grid-template-columns: 1fr 1fr;
+                }
+
+                .metric {
+                    padding: 14px;
+                }
+
+                .form-grid,
+                .check-grid,
+                .furniture-fields,
+                .link-grid {
+                    grid-template-columns: 1fr;
+                }
+
+                .field.full {
+                    grid-column: auto;
+                }
+
+                .photo-row {
+                    grid-template-columns: repeat(2, minmax(0, 1fr));
+                }
+
+                .area-card summary {
+                    grid-template-columns: auto minmax(0, 1fr);
+                }
+
+                .area-card summary .status-badge {
+                    grid-column: 2;
+                    justify-self: start;
+                }
+
+                .actions .action {
+                    flex: 1 1 100%;
+                }
+            }
+
+            @media (prefers-color-scheme: dark) {
+                :root {
+                    color-scheme: dark;
+                    --bg: #0f1722;
+                    --surface: #172231;
+                    --surface-2: #202d3d;
+                    --text: #f2f6fb;
+                    --muted: #b8c5d5;
+                    --line: #3d4d61;
+                    --primary: #7eb6e4;
+                    --primary-strong: #9cc9ed;
+                    --primary-soft: #203f5a;
+                    --danger: #ff92b7;
+                    --danger-soft: #4a2030;
+                    --warning: #f5bf63;
+                    --warning-soft: #49371d;
+                    --success: #78d59d;
+                    --success-soft: #193d2b;
+                    --shadow: 0 12px 34px rgba(0, 0, 0, 0.28);
+                }
+
+                .app-header {
+                    background: linear-gradient(135deg, #0a223d, #123e6b);
+                }
+
+                input[type="date"],
+                input[type="number"],
+                select,
+                textarea {
+                    border-color: #708198;
+                }
+
+                .progress-track {
+                    background: #34465a;
+                }
+            }
+
+            @media (prefers-reduced-motion: reduce) {
+                *,
+                *::before,
+                *::after {
+                    scroll-behavior: auto !important;
+                    transition: none !important;
+                }
+            }
+
+            @media print {
+                .app-header,
+                .tab-nav,
+                .actions,
+                .toast {
+                    display: none !important;
+                }
+
+                body {
+                    background: white;
+                    color: black;
+                }
+
+                .app-shell {
+                    margin: 0;
+                    padding: 0;
+                }
+
+                .view[hidden] {
+                    display: none !important;
+                }
+
+                .panel,
+                .metric,
+                .area-card,
+                .furniture-card,
+                .visit-card {
+                    box-shadow: none;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <a class="skip-link" href="#main-content">Skip to main content</a>
+
+        <header class="app-header">
+            <div class="container header-row">
+                <div>
+                    <p class="eyebrow">Private-on-device field app</p>
+                    <h1>Dover home inspection companion</h1>
+                    <p class="header-copy">
+                        Capture tomorrow's inspection feedback, room notes, repair estimates and seller-furniture decisions.
+                        Your entries stay in this browser unless you export a backup.
+                    </p>
+                </div>
+                <div class="save-state" aria-live="polite">
+                    <span class="save-dot" aria-hidden="true"></span>
+                    <span id="save-label">Ready · no notes yet</span>
+                </div>
+            </div>
+        </header>
+
+        <div class="container app-shell">
+            <nav class="tab-nav" aria-label="Application sections" role="tablist">
+                <button type="button" role="tab" aria-selected="true" data-view="overview">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 13h6V4H4v9Zm0 7h6v-4H4v4Zm10 0h6v-9h-6v9Zm0-16v4h6V4h-6Z"></path></svg>
+                    Overview
+                </button>
+                <button type="button" role="tab" aria-selected="false" data-view="inspection">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5h10M9 12h10M9 19h10M4 5l1 1 2-2M4 12l1 1 2-2M4 19l1 1 2-2"></path></svg>
+                    Inspection
+                </button>
+                <button type="button" role="tab" aria-selected="false" data-view="furniture">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 11V7a3 3 0 0 1 6 0v4m2 0V7a3 3 0 0 1 6 0v4M3 11h18v7H3v-7Zm2 7v2m14-2v2"></path></svg>
+                    Furniture
+                </button>
+                <button type="button" role="tab" aria-selected="false" data-view="backup">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12m0 0 4-4m-4 4-4-4M5 19h14"></path></svg>
+                    Backup
+                </button>
+            </nav>
+
+            <main id="main-content" tabindex="-1">
+                <section class="view" id="view-overview" role="tabpanel">
+                    <div class="panel privacy">
+                        <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="10" width="16" height="11" rx="2"></rect><path d="M8 10V7a4 4 0 0 1 8 0v3"></path></svg>
+                        <p><strong>Your notes are private on this device.</strong> This public site has no database, analytics or note-upload service. Export a JSON backup after the inspection so a lost browser or phone does not erase your work.</p>
+                    </div>
+
+                    <div class="metrics" aria-label="Inspection progress">
+                        <article class="metric">
+                            <strong id="task-progress">0%</strong>
+                            <span>checklist progress</span>
+                            <div class="progress-track" aria-hidden="true"><div class="progress-fill" id="progress-fill"></div></div>
+                        </article>
+                        <article class="metric"><strong id="areas-complete">0/11</strong><span>areas completed</span></article>
+                        <article class="metric"><strong id="attention-count">0</strong><span>repair/specialist areas</span></article>
+                        <article class="metric"><strong id="estimate-total">$0</strong><span>recorded repair estimates</span></article>
+                    </div>
+
+                    <div class="dashboard-grid">
+                        <section class="panel" aria-labelledby="quick-note-title">
+                            <h2 id="quick-note-title">Add inspection feedback</h2>
+                            <p class="panel-subtitle">Use this for fast notes while walking with the inspector. Add as many entries as needed.</p>
+                            <form id="quick-note-form" style="margin-top:16px">
+                                <div class="form-grid">
+                                    <div class="field">
+                                        <label for="visit-date">Date</label>
+                                        <input id="visit-date" type="date" required />
+                                    </div>
+                                    <div class="field">
+                                        <label for="visit-area">Area</label>
+                                        <select id="visit-area" required></select>
+                                    </div>
+                                    <div class="field">
+                                        <label for="visit-status">Result</label>
+                                        <select id="visit-status">
+                                            <option>Good</option>
+                                            <option>Monitor</option>
+                                            <option>Repair</option>
+                                            <option>Specialist needed</option>
+                                            <option>Request credit</option>
+                                        </select>
+                                    </div>
+                                    <div class="field">
+                                        <label for="visit-estimate">Estimated cost</label>
+                                        <input id="visit-estimate" type="number" min="0" step="1" inputmode="numeric" placeholder="0" />
+                                    </div>
+                                    <div class="field full">
+                                        <label for="visit-observation">What I noticed</label>
+                                        <textarea id="visit-observation" placeholder="Location, smell, stain, crack, sound, measurement, photo number…"></textarea>
+                                    </div>
+                                    <div class="field full">
+                                        <label for="visit-feedback">Inspector's feedback / report page</label>
+                                        <textarea id="visit-feedback" placeholder="What the inspector said, moisture reading, report section or specialist recommendation…"></textarea>
+                                    </div>
+                                    <div class="field full">
+                                        <label for="visit-action">Next action</label>
+                                        <textarea id="visit-action" placeholder="Repair, estimate, document request, credit request, monitor or no action…"></textarea>
+                                    </div>
+                                </div>
+                                <div class="actions">
+                                    <button class="action" type="submit">
+                                        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"></path></svg>
+                                        Save feedback entry
+                                    </button>
+                                </div>
+                            </form>
+                        </section>
+
+                        <aside>
+                            <section class="panel priority-box">
+                                <h2>Tomorrow's priority checks</h2>
+                                <ol>
+                                    <li>Lower-level ceiling and damaged door base.</li>
+                                    <li>Porch roof boards, skylight and flashing.</li>
+                                    <li>Deck ledger, footings, stairs and gas.</li>
+                                    <li>Main roof, attic, chimney and skylights.</li>
+                                    <li>Drainage, sewer scope, tank sweep, radon and WDI.</li>
+                                </ol>
+                            </section>
+                            <section class="panel" style="margin-top:16px">
+                                <h2>Recent feedback</h2>
+                                <div id="visit-list" class="visit-list"></div>
+                            </section>
+                        </aside>
+                    </div>
+                </section>
+
+                <section class="view" id="view-inspection" role="tabpanel" hidden>
+                    <div class="section-heading">
+                        <div>
+                            <h2>Room-by-room inspection</h2>
+                            <p>Open an area, check items, record the inspector's answer and assign follow-up.</p>
+                        </div>
+                    </div>
+                    <div class="filter-row" role="group" aria-label="Filter inspection areas">
+                        <button type="button" aria-pressed="true" data-area-filter="all">All areas</button>
+                        <button type="button" aria-pressed="false" data-area-filter="priority">Priority</button>
+                        <button type="button" aria-pressed="false" data-area-filter="incomplete">Incomplete</button>
+                        <button type="button" aria-pressed="false" data-area-filter="attention">Needs attention</button>
+                    </div>
+                    <div class="area-list" id="area-list"></div>
+                </section>
+
+                <section class="view" id="view-furniture" role="tabpanel" hidden>
+                    <div class="section-heading">
+                        <div>
+                            <h2>Seller furniture decisions</h2>
+                            <p>Availability and ownership are unverified. Inspect, measure and document every agreed item.</p>
+                        </div>
+                    </div>
+                    <div class="panel priority-box" style="margin-bottom:14px">
+                        <strong>Best first asks:</strong> dining set, clean gray sectional, hard bedroom furniture, desks and a dry porch set.
+                        Usually decline mattresses, pillows, questionable rugs/cushions and untested gas appliances.
+                    </div>
+                    <div class="furniture-list" id="furniture-list"></div>
+                </section>
+
+                <section class="view" id="view-backup" role="tabpanel" hidden>
+                    <div class="section-heading">
+                        <div>
+                            <h2>Backup, restore and usage guide</h2>
+                            <p>Protect your notes and reopen the supporting visual reports.</p>
+                        </div>
+                    </div>
+
+                    <div class="dashboard-grid">
+                        <section class="panel">
+                            <h2>Back up your inspection</h2>
+                            <p class="panel-subtitle">Export after tomorrow's inspection and again after adding contractor estimates.</p>
+                            <div class="actions">
+                                <button class="action" id="export-json" type="button">
+                                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12m0 0 4-4m-4 4-4-4M5 19h14"></path></svg>
+                                    Export JSON backup
+                                </button>
+                                <button class="action secondary" id="export-text" type="button">Export readable summary</button>
+                                <button class="action secondary" id="restore-button" type="button">Restore backup</button>
+                                <input class="visually-hidden" id="restore-file" type="file" accept="application/json,.json" />
+                            </div>
+                            <div class="actions">
+                                <button class="action secondary" id="install-app" type="button" hidden>Install this app</button>
+                                <button class="action danger" id="clear-data" type="button">Clear all device data</button>
+                            </div>
+                        </section>
+
+                        <section class="panel">
+                            <h2>How to use it tomorrow</h2>
+                            <ol class="guide-steps">
+                                <li>Open this URL on the phone you will carry and keep the tab available.</li>
+                                <li>Use <strong>Add inspection feedback</strong> for fast observations during the walk-through.</li>
+                                <li>Open <strong>Inspection</strong> afterward and complete each detailed room checklist.</li>
+                                <li>Use <strong>Furniture</strong> only after measuring rooms and confirming seller ownership.</li>
+                                <li>Export a JSON backup before closing the browser or changing devices.</li>
+                            </ol>
+                            <p class="small" style="margin:12px 0 0">On iPhone/iPad: Safari → Share → Add to Home Screen. Android/Chrome may show an Install button here.</p>
+                        </section>
+                    </div>
+
+                    <div class="link-grid">
+                        <a class="resource-link" href="./2700-dover-visual-inspection-report.html">
+                            <strong>Annotated 39-photo assessment</strong>
+                            <span>Visual arrows, concerns, repair questions and full-resolution photos.</span>
+                        </a>
+                        <a class="resource-link" href="./2700-dover-printable-inspection-and-furniture-notebook.html">
+                            <strong>Printable inspection notebook</strong>
+                            <span>18 Letter-size room, furniture and final-decision pages.</span>
+                        </a>
+                        <a class="resource-link" href="./2700-dover-printable-inspection-and-furniture-notebook.pdf">
+                            <strong>Ready-to-print PDF</strong>
+                            <span>Download the validated 18-page PDF.</span>
+                        </a>
+                        <a class="resource-link" href="https://github.com/mushrath-mohammad_finact/home-inspection-companion">
+                            <strong>Public source repository</strong>
+                            <span>App source and deployment history; entered notes are never committed.</span>
+                        </a>
+                    </div>
+
+                    <div class="panel" style="margin-top:16px">
+                        <h2>Important data limits</h2>
+                        <p>Your browser can remove site storage if history/site data is cleared. Private/incognito mode may erase it sooner. JSON export is the durable backup. Notes do not automatically synchronize across phones because this version intentionally has no account or public database.</p>
+                    </div>
+                </section>
+            </main>
+        </div>
+
+        <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+        <script>
+            const areas = [
+                {
+                    id: "exterior",
+                    name: "Exterior, roof, attic & site",
+                    level: "priority",
+                    photos: [1, 36, 37],
+                    checks: [
+                        "Roof age, layers, wear and remaining life",
+                        "Skylight, chimney and vent flashing",
+                        "Attic stains, rot, mold and daylight",
+                        "Gutters/downspouts and discharge",
+                        "Siding, trim and foundation clearance",
+                        "Grading and water around additions",
+                        "Trees/roots affecting roof, fence or sewer",
+                        "Survey, boundaries and easements"
+                    ]
+                },
+                {
+                    id: "porch-deck",
+                    name: "Screened porch, deck & garage",
+                    level: "priority",
+                    photos: [3, 31, 32],
+                    checks: [
+                        "Porch roof boards/rafters probed",
+                        "Porch skylight and house flashing",
+                        "Screens, floor and exterior wiring",
+                        "Deck ledger, bolts and flashing",
+                        "Joists, posts, footings and guards",
+                        "Stairs, rails and weathered boards",
+                        "Grill gas line, shutoff and leak test",
+                        "Garage door safety and fire separation"
+                    ]
+                },
+                {
+                    id: "living",
+                    name: "Entry, living & family areas",
+                    level: "standard",
+                    photos: [9, 12, 14],
+                    checks: [
+                        "Ceilings/walls for stains and cracks",
+                        "Floors for slope, squeaks or softness",
+                        "Windows/doors, locks and drafts",
+                        "Thresholds and nearby moisture",
+                        "Outlets, switches and lighting",
+                        "HVAC/baseboard heat operation",
+                        "Stair guards, handrails and lighting",
+                        "Large openings and permits/support"
+                    ]
+                },
+                {
+                    id: "kitchen",
+                    name: "Kitchen, dining & breakfast areas",
+                    level: "standard",
+                    photos: [2, 17, 19],
+                    checks: [
+                        "Sink/dishwasher/refrigerator leaks",
+                        "Gas shutoff and range anti-tip bracket",
+                        "Microwave/range exhaust route",
+                        "GFCI and appliance circuit load",
+                        "Appliance models, ages and operation",
+                        "Floors/walls behind appliances",
+                        "Dining/rear door sill and moisture",
+                        "Water pressure and drain flow"
+                    ]
+                },
+                {
+                    id: "primary",
+                    name: "Upper bedroom 1 — primary",
+                    level: "priority",
+                    photos: [20, 21, 22],
+                    checks: [
+                        "Ceiling seams moisture-metered",
+                        "Possible attic/plumbing source traced",
+                        "Windows, locks and seals",
+                        "Ceiling fan support and TV wiring",
+                        "Outlets, alarms and HVAC airflow",
+                        "Baseboard heat clear of furniture",
+                        "Closets and hidden floor/wall areas",
+                        "Furniture wall measurements"
+                    ]
+                },
+                {
+                    id: "kids-ab",
+                    name: "Upper bedroom 2 — kids A + B",
+                    level: "standard",
+                    photos: [23, 24],
+                    checks: [
+                        "Both windows open, lock and allow escape",
+                        "Clear escape path around beds/desks",
+                        "Fan clearance from raised beds",
+                        "Smoke/CO alarm operation",
+                        "Outlets, cords and HVAC airflow",
+                        "Closet and wall measurements",
+                        "Hidden floor/wall surfaces",
+                        "Furniture anchor points"
+                    ]
+                },
+                {
+                    id: "kids-cd",
+                    name: "Upper bedroom 3 — kids C + D",
+                    level: "standard",
+                    photos: [25, 5, 23],
+                    checks: [
+                        "Window opens, locks and allows escape",
+                        "Bed placement keeps exits clear",
+                        "Fan clearance from bunk/raised bed",
+                        "Smoke/CO alarm and night lighting",
+                        "Outlets, HVAC and heat clearance",
+                        "Dimensions for two sleeping positions",
+                        "Hidden floor/wall surfaces",
+                        "Tall furniture can be anchored"
+                    ]
+                },
+                {
+                    id: "bathrooms",
+                    name: "Bathrooms & wet areas",
+                    level: "standard",
+                    photos: [7, 22, 26],
+                    checks: [
+                        "Run every sink, tub and shower",
+                        "Drain flow, traps and supply valves",
+                        "Toilet stability and floor at base",
+                        "Shower/tub moisture readings",
+                        "Grout, caulk, tile and substrate",
+                        "GFCI protection",
+                        "Exhaust fan and exterior discharge",
+                        "Ceilings below for leakage"
+                    ]
+                },
+                {
+                    id: "office",
+                    name: "Lower-level room — office",
+                    level: "priority",
+                    photos: [27, 28],
+                    checks: [
+                        "Ceiling moisture and thermal scan",
+                        "Source above room traced",
+                        "Door/jamb/floor probed for softness",
+                        "Humidity, odor and water history",
+                        "Grounded outlets and task lighting",
+                        "Heating, cooling and ventilation",
+                        "Wi-Fi/Ethernet route",
+                        "Finished-space permits documented"
+                    ]
+                },
+                {
+                    id: "systems",
+                    name: "Electrical, plumbing, HVAC & safety",
+                    level: "standard",
+                    photos: [17, 21, 32],
+                    checks: [
+                        "Panel brand, capacity and labeling",
+                        "GFCI/AFCI and representative outlets",
+                        "Grounding and visible unsafe wiring",
+                        "Water main, shutoffs and pipe material",
+                        "Water heater age and venting",
+                        "HVAC age, service and operation",
+                        "Smoke/CO alarm coverage",
+                        "Gas shutoffs, leaks and venting"
+                    ]
+                },
+                {
+                    id: "specialists",
+                    name: "Sewer, tank, radon, WDI & records",
+                    level: "priority",
+                    photos: [35, 38, 39],
+                    checks: [
+                        "Sewer camera reaches public main",
+                        "Pipe material, roots and defects",
+                        "Tank sweep map/photos/report",
+                        "Radon duration, conditions and result",
+                        "WDI credentials and report",
+                        "Permits/CO for additions and deck",
+                        "Survey, park boundary and easements",
+                        "Flood/drainage history and insurance"
+                    ]
+                }
+            ];
+
+            const furniture = [
+                ["dining-set", "Dining table + six chairs", "Photos 2, 15–16", "ask", "Strong family fit; already scaled to the room."],
+                ["gray-sectional", "Gray sectional / sofa", "Photos 9–11", "ask", "Practical for children if clean, odor-free and supportive."],
+                ["white-sofa", "White sofa + chairs", "Photos 12–14", "maybe", "Fits the room but light upholstery is less child-friendly."],
+                ["coffee-tables", "Coffee / side tables", "Photos 9–14", "maybe", "Consider only as low-cost bundle pieces without sharp hazards."],
+                ["dining-hutch", "Dining hutch / cabinet", "Photos 15–16", "maybe", "Useful storage if anchored and the walkway remains clear."],
+                ["twin-frames", "Twin / daybed frames", "Photos 23–25", "ask", "Good for shared kids' rooms after measuring; decline mattresses."],
+                ["dressers", "Dressers / nightstands", "Photos 20–25", "ask", "Good hard-furniture candidates if stable and anchorable."],
+                ["desks", "Desks / shelving", "Photos 5, 23, 25", "ask", "Useful for the office or children's study areas."],
+                ["desk-chairs", "Desk / gaming chairs", "Photos 5, 25", "maybe", "Use only if supportive, adjustable and correctly sized."],
+                ["primary-frame", "Primary bed frame", "Photos 20–22", "maybe", "Compare price with moving/disassembly cost; decline mattress."],
+                ["porch-set", "Porch table + chairs", "Photos 3, 29–30", "ask", "Good low-cost add-on if dry, sound and rust-free."],
+                ["deck-seating", "Deck seating / canopy items", "Photo 31", "maybe", "Buy only if dry and unrelated to structural deck work."],
+                ["grill", "Grill", "Photo 32", "maybe", "Only after appliance and gas connection are leak-tested."],
+                ["extra-fridge", "Second refrigerator", "Photos 17–18", "maybe", "Useful for a large family if efficient and reliable."],
+                ["soft-goods", "Mattresses, pillows, rugs & bedding", "Photos 20–27", "skip", "Hygiene, allergen, odor and pest risk outweigh convenience."]
+            ];
+
+            const storageKey = "doverInspectionCompanionV1";
+            let state = { version: 1, fields: {}, visits: [], updatedAt: null };
+            let saveTimer;
+            let activeFilter = "all";
+            let deferredPrompt;
+
+            const svgDownload = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12m0 0 4-4m-4 4-4-4M5 19h14"></path></svg>';
+
+            function escapeHtml(value) {
+                return String(value || "")
+                    .replaceAll("&", "&amp;")
+                    .replaceAll("<", "&lt;")
+                    .replaceAll(">", "&gt;")
+                    .replaceAll('"', "&quot;")
+                    .replaceAll("'", "&#039;");
+            }
+
+            function loadState() {
+                try {
+                    const saved = JSON.parse(localStorage.getItem(storageKey) || "null");
+                    if (saved && saved.version === 1 && saved.fields && Array.isArray(saved.visits)) state = saved;
+                } catch (error) {
+                    showToast("Saved data could not be read. Export a backup before entering more notes.");
+                }
+            }
+
+            function storeState() {
+                try {
+                    state.updatedAt = new Date().toISOString();
+                    localStorage.setItem(storageKey, JSON.stringify(state));
+                    document.getElementById("save-label").textContent = "Saved " + new Date(state.updatedAt).toLocaleTimeString([], { hour: "numeric", minute: "2-digit" });
+                } catch (error) {
+                    document.getElementById("save-label").textContent = "Save failed · export now";
+                    showToast("Browser storage failed. Export a JSON backup now.");
+                }
+            }
+
+            function scheduleSave() {
+                document.getElementById("save-label").textContent = "Saving…";
+                clearTimeout(saveTimer);
+                saveTimer = setTimeout(storeState, 180);
+            }
+
+            function showToast(message) {
+                const toast = document.getElementById("toast");
+                toast.textContent = message;
+                toast.classList.add("show");
+                clearTimeout(showToast.timer);
+                showToast.timer = setTimeout(function () { toast.classList.remove("show"); }, 3500);
+            }
+
+            function statusClass(value) {
+                if (value === "Specialist needed" || value === "Request credit") return "status-repair";
+                return "status-" + String(value || "Not checked").toLowerCase().replaceAll(" ", "-");
+            }
+
+            function renderAreas() {
+                const container = document.getElementById("area-list");
+                container.innerHTML = areas.map(function (area, areaIndex) {
+                    const photos = area.photos.map(function (photo) {
+                        const number = String(photo).padStart(2, "0");
+                        return '<a href="./listing-photos/photo-' + number + '.jpg" target="_blank" rel="noopener">' +
+                            '<img src="./listing-photos/photo-' + number + '.jpg" loading="lazy" width="1024" height="682" alt="' +
+                            escapeHtml(area.name) + ' reference photo ' + number + '" /><span>Photo ' + number + '</span></a>';
+                    }).join("");
+                    const checks = area.checks.map(function (check, checkIndex) {
+                        const id = area.id + "-check-" + checkIndex;
+                        return '<label class="check-row" for="' + id + '"><input id="' + id + '" data-persist type="checkbox" />' + escapeHtml(check) + '</label>';
+                    }).join("");
+                    return '<details class="area-card" data-area="' + area.id + '" data-level="' + area.level + '" ' + (areaIndex === 0 ? "open" : "") + '>' +
+                        '<summary><span class="area-title"><strong>' + escapeHtml(area.name) + '</strong><span>Photos ' + area.photos.join(", ") + '</span></span>' +
+                        '<span class="status-badge status-not-checked" id="' + area.id + '-badge">Not checked</span></summary>' +
+                        '<div class="area-content"><div class="photo-row">' + photos + '</div><div class="check-grid">' + checks + '</div>' +
+                        '<div class="area-fields">' +
+                        '<div class="field"><label for="' + area.id + '-status">Inspector result</label><select id="' + area.id + '-status" data-persist>' +
+                        '<option>Not checked</option><option>Good</option><option>Monitor</option><option>Repair</option><option>Specialist needed</option><option>Request credit</option></select></div>' +
+                        '<div class="field"><label for="' + area.id + '-estimate">Repair estimate</label><input id="' + area.id + '-estimate" data-persist type="number" min="0" step="1" inputmode="numeric" placeholder="0" /></div>' +
+                        '<div class="field full"><label for="' + area.id + '-notes">What I noticed</label><textarea id="' + area.id + '-notes" data-persist placeholder="Location, condition, measurements and photo number…"></textarea></div>' +
+                        '<div class="field full"><label for="' + area.id + '-feedback">Inspector feedback / report page</label><textarea id="' + area.id + '-feedback" data-persist placeholder="Finding, moisture reading, severity, report page or specialist…"></textarea></div>' +
+                        '<div class="field full"><label for="' + area.id + '-action">Repair, credit or follow-up</label><textarea id="' + area.id + '-action" data-persist placeholder="Next action, person responsible and deadline…"></textarea></div>' +
+                        '<div class="field"><label for="' + area.id + '-followup">Follow-up date</label><input id="' + area.id + '-followup" data-persist type="date" /></div>' +
+                        '<label class="complete-row" for="' + area.id + '-complete"><input id="' + area.id + '-complete" data-persist type="checkbox" />Area review complete</label>' +
+                        '</div></div></details>';
+                }).join("");
+            }
+
+            function renderFurniture() {
+                document.getElementById("furniture-list").innerHTML = furniture.map(function (item) {
+                    const label = item[3] === "ask" ? "Ask first" : item[3] === "maybe" ? "Consider" : "Usually skip";
+                    return '<article class="furniture-card"><div class="furniture-head"><div><h3>' + escapeHtml(item[1]) + '</h3><p>' +
+                        escapeHtml(item[2]) + ' · ' + escapeHtml(item[4]) + '</p></div><span class="recommendation ' + item[3] + '">' + label + '</span></div>' +
+                        '<div class="furniture-fields"><div class="field"><label for="furniture-' + item[0] + '-decision">Decision</label><select id="furniture-' + item[0] + '-decision" data-persist>' +
+                        '<option>Undecided</option><option>Ask seller</option><option>Buy</option><option>Pass</option></select></div>' +
+                        '<div class="field"><label for="furniture-' + item[0] + '-ask">Seller asking price</label><input id="furniture-' + item[0] + '-ask" data-persist type="number" min="0" step="1" inputmode="numeric" placeholder="0" /></div>' +
+                        '<div class="field"><label for="furniture-' + item[0] + '-offer">My offer</label><input id="furniture-' + item[0] + '-offer" data-persist type="number" min="0" step="1" inputmode="numeric" placeholder="0" /></div>' +
+                        '<div class="field full"><label for="furniture-' + item[0] + '-notes">Condition / measurements / included accessories</label><textarea id="furniture-' + item[0] + '-notes" data-persist placeholder="Condition, odor, age, model, dimensions, anchor hardware…"></textarea></div>' +
+                        '</div></article>';
+                }).join("");
+            }
+
+            function restoreFields() {
+                document.querySelectorAll("[data-persist]").forEach(function (field) {
+                    const saved = state.fields[field.id];
+                    if (saved === undefined) return;
+                    if (field.type === "checkbox") field.checked = Boolean(saved);
+                    else field.value = saved;
+                });
+                if (state.updatedAt) {
+                    document.getElementById("save-label").textContent = "Saved " + new Date(state.updatedAt).toLocaleString([], { month: "short", day: "numeric", hour: "numeric", minute: "2-digit" });
+                }
+            }
+
+            function captureField(field) {
+                state.fields[field.id] = field.type === "checkbox" ? field.checked : field.value;
+                scheduleSave();
+                updateSummary();
+                applyAreaFilter();
+            }
+
+            function updateSummary() {
+                const taskInputs = Array.from(document.querySelectorAll('.area-card input[type="checkbox"][id*="-check-"]'));
+                const checked = taskInputs.filter(function (input) { return input.checked; }).length;
+                const percent = taskInputs.length ? Math.round((checked / taskInputs.length) * 100) : 0;
+                document.getElementById("task-progress").textContent = percent + "%";
+                document.getElementById("progress-fill").style.width = percent + "%";
+
+                const completed = areas.filter(function (area) {
+                    return Boolean(state.fields[area.id + "-complete"]);
+                }).length;
+                document.getElementById("areas-complete").textContent = completed + "/" + areas.length;
+
+                let attention = 0;
+                let estimate = 0;
+                areas.forEach(function (area) {
+                    const status = state.fields[area.id + "-status"] || "Not checked";
+                    const needsAttention = status === "Repair" || status === "Specialist needed" || status === "Request credit";
+                    if (needsAttention) attention += 1;
+                    estimate += Number(state.fields[area.id + "-estimate"] || 0);
+                    const badge = document.getElementById(area.id + "-badge");
+                    if (badge) {
+                        const complete = Boolean(state.fields[area.id + "-complete"]);
+                        badge.textContent = complete && needsAttention ? status + " · reviewed" : complete ? "Complete" : status;
+                        badge.className = "status-badge " + (needsAttention ? statusClass(status) : complete ? "status-complete" : statusClass(status));
+                    }
+                });
+                document.getElementById("attention-count").textContent = String(attention);
+                document.getElementById("estimate-total").textContent = new Intl.NumberFormat("en-US", { style: "currency", currency: "USD", maximumFractionDigits: 0 }).format(estimate);
+            }
+
+            function renderVisits() {
+                const list = document.getElementById("visit-list");
+                if (!state.visits.length) {
+                    list.innerHTML = '<div class="empty-state">No quick feedback saved yet.</div>';
+                    return;
+                }
+                list.innerHTML = state.visits.slice(0, 8).map(function (visit) {
+                    const area = areas.find(function (item) { return item.id === visit.area; });
+                    return '<article class="visit-card"><div class="visit-card-head"><div><h3>' + escapeHtml(area ? area.name : visit.area) + '</h3>' +
+                        '<div class="meta">' + escapeHtml(visit.date) + ' · ' + escapeHtml(visit.status) +
+                        (visit.estimate ? ' · $' + Number(visit.estimate).toLocaleString() : "") + '</div></div>' +
+                        '<button class="text-button" type="button" data-delete-visit="' + escapeHtml(visit.id) + '">Delete</button></div>' +
+                        (visit.observation ? '<p><strong>I noticed:</strong> ' + escapeHtml(visit.observation) + '</p>' : "") +
+                        (visit.feedback ? '<p><strong>Inspector:</strong> ' + escapeHtml(visit.feedback) + '</p>' : "") +
+                        (visit.action ? '<p><strong>Next:</strong> ' + escapeHtml(visit.action) + '</p>' : "") + '</article>';
+                }).join("");
+            }
+
+            function applyAreaFilter() {
+                document.querySelectorAll(".area-card").forEach(function (card) {
+                    const id = card.dataset.area;
+                    const status = state.fields[id + "-status"] || "Not checked";
+                    const complete = Boolean(state.fields[id + "-complete"]);
+                    let visible = true;
+                    if (activeFilter === "priority") visible = card.dataset.level === "priority";
+                    if (activeFilter === "incomplete") visible = !complete;
+                    if (activeFilter === "attention") visible = ["Repair", "Specialist needed", "Request credit"].includes(status);
+                    card.hidden = !visible;
+                });
+            }
+
+            function showView(name, updateHash) {
+                document.querySelectorAll(".view").forEach(function (view) {
+                    view.hidden = view.id !== "view-" + name;
+                });
+                document.querySelectorAll("[data-view]").forEach(function (button) {
+                    button.setAttribute("aria-selected", String(button.dataset.view === name));
+                });
+                if (updateHash) history.replaceState(null, "", "#" + name);
+                document.getElementById("main-content").focus({ preventScroll: true });
+                window.scrollTo({ top: 0, behavior: "smooth" });
+            }
+
+            function downloadFile(filename, content, type) {
+                const blob = new Blob([content], { type: type });
+                const url = URL.createObjectURL(blob);
+                const link = document.createElement("a");
+                link.href = url;
+                link.download = filename;
+                link.click();
+                setTimeout(function () { URL.revokeObjectURL(url); }, 1000);
+            }
+
+            function exportJson() {
+                storeState();
+                const payload = { app: "Dover Inspection Companion", exportedAt: new Date().toISOString(), state: state };
+                downloadFile("dover-inspection-backup-" + new Date().toISOString().slice(0, 10) + ".json", JSON.stringify(payload, null, 2), "application/json");
+                showToast("JSON backup downloaded.");
+            }
+
+            function exportText() {
+                storeState();
+                const lines = ["Dover home inspection summary", "Exported: " + new Date().toLocaleString(), ""];
+                areas.forEach(function (area) {
+                    lines.push(area.name);
+                    lines.push("Result: " + (state.fields[area.id + "-status"] || "Not checked"));
+                    lines.push("Estimate: $" + (state.fields[area.id + "-estimate"] || "0"));
+                    lines.push("My notes: " + (state.fields[area.id + "-notes"] || ""));
+                    lines.push("Inspector feedback: " + (state.fields[area.id + "-feedback"] || ""));
+                    lines.push("Next action: " + (state.fields[area.id + "-action"] || ""), "");
+                });
+                lines.push("Quick feedback log", "");
+                state.visits.forEach(function (visit) {
+                    lines.push(visit.date + " · " + visit.area + " · " + visit.status);
+                    lines.push("I noticed: " + (visit.observation || ""));
+                    lines.push("Inspector: " + (visit.feedback || ""));
+                    lines.push("Next: " + (visit.action || ""));
+                    lines.push("Estimate: $" + (visit.estimate || "0"), "");
+                });
+                downloadFile("dover-inspection-summary-" + new Date().toISOString().slice(0, 10) + ".txt", lines.join("\n"), "text/plain");
+                showToast("Readable summary downloaded.");
+            }
+
+            function initialize() {
+                loadState();
+                renderAreas();
+                renderFurniture();
+                restoreFields();
+                updateSummary();
+                renderVisits();
+
+                const today = new Date();
+                document.getElementById("visit-date").value = [
+                    today.getFullYear(),
+                    String(today.getMonth() + 1).padStart(2, "0"),
+                    String(today.getDate()).padStart(2, "0")
+                ].join("-");
+                document.getElementById("visit-area").innerHTML = areas.map(function (area) {
+                    return '<option value="' + area.id + '">' + escapeHtml(area.name) + '</option>';
+                }).join("");
+
+                document.addEventListener("input", function (event) {
+                    if (event.target.matches("[data-persist]")) captureField(event.target);
+                });
+                document.addEventListener("change", function (event) {
+                    if (event.target.matches("[data-persist]")) captureField(event.target);
+                });
+
+                document.querySelectorAll("[data-view]").forEach(function (button) {
+                    button.addEventListener("click", function () { showView(button.dataset.view, true); });
+                });
+
+                document.querySelectorAll("[data-area-filter]").forEach(function (button) {
+                    button.addEventListener("click", function () {
+                        activeFilter = button.dataset.areaFilter;
+                        document.querySelectorAll("[data-area-filter]").forEach(function (item) {
+                            item.setAttribute("aria-pressed", String(item === button));
+                        });
+                        applyAreaFilter();
+                    });
+                });
+
+                document.getElementById("quick-note-form").addEventListener("submit", function (event) {
+                    event.preventDefault();
+                    const observation = document.getElementById("visit-observation").value.trim();
+                    const feedback = document.getElementById("visit-feedback").value.trim();
+                    const action = document.getElementById("visit-action").value.trim();
+                    if (!observation && !feedback && !action) {
+                        showToast("Add an observation, inspector answer or next action first.");
+                        document.getElementById("visit-observation").focus();
+                        return;
+                    }
+                    state.visits.unshift({
+                        id: window.crypto && crypto.randomUUID ? crypto.randomUUID() : String(Date.now()),
+                        date: document.getElementById("visit-date").value,
+                        area: document.getElementById("visit-area").value,
+                        status: document.getElementById("visit-status").value,
+                        estimate: document.getElementById("visit-estimate").value,
+                        observation: observation,
+                        feedback: feedback,
+                        action: action,
+                        createdAt: new Date().toISOString()
+                    });
+                    ["visit-estimate", "visit-observation", "visit-feedback", "visit-action"].forEach(function (id) {
+                        document.getElementById(id).value = "";
+                    });
+                    storeState();
+                    renderVisits();
+                    showToast("Inspection feedback saved on this device.");
+                });
+
+                document.getElementById("visit-list").addEventListener("click", function (event) {
+                    const button = event.target.closest("[data-delete-visit]");
+                    if (!button) return;
+                    if (!window.confirm("Delete this feedback entry?")) return;
+                    state.visits = state.visits.filter(function (visit) { return visit.id !== button.dataset.deleteVisit; });
+                    storeState();
+                    renderVisits();
+                    showToast("Feedback entry deleted.");
+                });
+
+                document.getElementById("export-json").addEventListener("click", exportJson);
+                document.getElementById("export-text").addEventListener("click", exportText);
+                document.getElementById("restore-button").addEventListener("click", function () {
+                    document.getElementById("restore-file").click();
+                });
+                document.getElementById("restore-file").addEventListener("change", async function (event) {
+                    const file = event.target.files[0];
+                    if (!file) return;
+                    try {
+                        const payload = JSON.parse(await file.text());
+                        if (payload.app !== "Dover Inspection Companion" || !payload.state || payload.state.version !== 1) {
+                            throw new Error("Unsupported backup");
+                        }
+                        if (!window.confirm("Replace this device's current notes with the selected backup?")) return;
+                        state = payload.state;
+                        storeState();
+                        window.location.reload();
+                    } catch (error) {
+                        showToast("That file is not a valid Dover Inspection Companion backup.");
+                    } finally {
+                        event.target.value = "";
+                    }
+                });
+                document.getElementById("clear-data").addEventListener("click", function () {
+                    if (!window.confirm("Permanently clear all inspection and furniture notes saved in this browser? Export a backup first.")) return;
+                    localStorage.removeItem(storageKey);
+                    window.location.reload();
+                });
+
+                window.addEventListener("beforeinstallprompt", function (event) {
+                    event.preventDefault();
+                    deferredPrompt = event;
+                    document.getElementById("install-app").hidden = false;
+                });
+                document.getElementById("install-app").addEventListener("click", async function () {
+                    if (!deferredPrompt) return;
+                    deferredPrompt.prompt();
+                    await deferredPrompt.userChoice;
+                    deferredPrompt = null;
+                    this.hidden = true;
+                });
+
+                const initialView = ["overview", "inspection", "furniture", "backup"].includes(location.hash.slice(1)) ? location.hash.slice(1) : "overview";
+                showView(initialView, false);
+            }
+
+            window.addEventListener("beforeunload", function () {
+                clearTimeout(saveTimer);
+                if (Object.keys(state.fields).length || state.visits.length) storeState();
+            });
+
+            if ("serviceWorker" in navigator && location.protocol.startsWith("http")) {
+                window.addEventListener("load", function () {
+                    navigator.serviceWorker.register("./sw.js").catch(function () {
+                        showToast("Offline mode could not be enabled; the online app still works.");
+                    });
+                });
+            }
+
+            initialize();
+        </script>
+    </body>
+</html>
