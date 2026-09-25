@@ -2,9 +2,9 @@
 <html lang="en">
     <head>
         <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
         <meta name="theme-color" content="#123e6b" />
-        <meta name="description" content="Private-on-device home inspection notes, room checklists, repair follow-up and furniture decisions." />
+        <meta name="description" content="Private-on-device home inspection notes, photos, room checklists, repair follow-up and furniture decisions." />
         <link rel="manifest" href="./manifest.webmanifest" />
         <link rel="icon" href="./app-icon.svg" type="image/svg+xml" />
         <title>Dover Home Inspection Companion</title>
@@ -74,6 +74,10 @@
             :focus-visible {
                 outline: 3px solid #2f7bd3;
                 outline-offset: 3px;
+            }
+
+            #main-content:focus {
+                outline: none;
             }
 
             .skip-link {
@@ -173,7 +177,7 @@
                 box-shadow: var(--shadow);
                 display: grid;
                 gap: 8px;
-                grid-template-columns: repeat(4, 1fr);
+                grid-template-columns: repeat(5, 1fr);
                 padding: 8px;
                 position: sticky;
                 top: 8px;
@@ -498,7 +502,8 @@
             }
 
             .area-list,
-            .furniture-list {
+            .furniture-list,
+            .evidence-list {
                 display: grid;
                 gap: 14px;
             }
@@ -720,6 +725,143 @@
                 margin-top: 12px;
             }
 
+            .photo-capture-grid {
+                display: grid;
+                gap: 16px;
+                grid-template-columns: minmax(0, 1.15fr) minmax(280px, 0.85fr);
+            }
+
+            .file-picker {
+                align-items: center;
+                background: var(--primary-soft);
+                border: 2px dashed var(--primary);
+                border-radius: 12px;
+                color: var(--primary);
+                cursor: pointer;
+                display: flex;
+                font-weight: 850;
+                gap: 10px;
+                justify-content: center;
+                min-height: 76px;
+                padding: 14px;
+                text-align: center;
+            }
+
+            .file-picker svg {
+                fill: none;
+                flex: 0 0 auto;
+                height: 25px;
+                stroke: currentColor;
+                stroke-linecap: round;
+                stroke-linejoin: round;
+                stroke-width: 2;
+                width: 25px;
+            }
+
+            .file-picker:focus-within {
+                outline: 3px solid #2f7bd3;
+                outline-offset: 3px;
+            }
+
+            .storage-summary {
+                background: var(--surface-2);
+                border: 1px solid var(--line);
+                border-radius: 12px;
+                margin-top: 14px;
+                padding: 13px;
+            }
+
+            .storage-summary strong,
+            .storage-summary span {
+                display: block;
+            }
+
+            .storage-summary span {
+                color: var(--muted);
+                font-size: 0.8rem;
+                margin-top: 3px;
+            }
+
+            .photo-library-heading {
+                align-items: end;
+                display: flex;
+                gap: 12px;
+                justify-content: space-between;
+                margin: 22px 0 12px;
+            }
+
+            .photo-library-heading h3,
+            .photo-library-heading p {
+                margin-bottom: 0;
+            }
+
+            .photo-library-heading p {
+                color: var(--muted);
+                font-size: 0.82rem;
+            }
+
+            .evidence-list {
+                grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+            }
+
+            .evidence-card {
+                background: var(--surface);
+                border: 1px solid var(--line);
+                border-radius: var(--radius);
+                box-shadow: var(--shadow);
+                overflow: hidden;
+            }
+
+            .evidence-card img {
+                aspect-ratio: 4 / 3;
+                background: var(--surface-2);
+                display: block;
+                object-fit: cover;
+                width: 100%;
+            }
+
+            .evidence-body {
+                padding: 14px;
+            }
+
+            .evidence-body h3 {
+                font-size: 1rem;
+                margin-bottom: 2px;
+            }
+
+            .evidence-body p {
+                margin: 8px 0 0;
+                overflow-wrap: anywhere;
+                white-space: pre-wrap;
+            }
+
+            .evidence-meta {
+                color: var(--muted);
+                font-size: 0.76rem;
+            }
+
+            .evidence-actions {
+                display: flex;
+                gap: 8px;
+                margin-top: 12px;
+            }
+
+            .evidence-actions button {
+                background: transparent;
+                border: 1px solid var(--line);
+                border-radius: 8px;
+                color: var(--primary);
+                flex: 1;
+                font-size: 0.8rem;
+                font-weight: 850;
+                min-height: 44px;
+                padding: 7px;
+            }
+
+            .evidence-actions button[data-delete-photo] {
+                color: var(--danger);
+            }
+
             .guide-steps {
                 counter-reset: guide;
                 display: grid;
@@ -824,7 +966,8 @@
                 }
 
                 .dashboard-grid,
-                .area-fields {
+                .area-fields,
+                .photo-capture-grid {
                     grid-template-columns: 1fr;
                 }
 
@@ -838,6 +981,15 @@
             }
 
             @media (max-width: 620px) {
+                :root {
+                    --bottom-nav-height: calc(74px + env(safe-area-inset-bottom));
+                }
+
+                html {
+                    scroll-behavior: auto;
+                    scroll-padding-bottom: calc(var(--bottom-nav-height) + 16px);
+                }
+
                 .app-header {
                     padding: 24px 14px 56px;
                 }
@@ -856,19 +1008,28 @@
 
                 .app-shell {
                     margin-top: 0;
-                    padding-bottom: calc(96px + env(safe-area-inset-bottom));
+                    padding-bottom: calc(var(--bottom-nav-height) + 24px);
                 }
 
                 .tab-nav {
+                    backface-visibility: hidden;
                     border-bottom: 0;
                     border-radius: 14px 14px 0 0;
                     bottom: 0;
+                    contain: layout paint;
+                    height: var(--bottom-nav-height);
                     left: 0;
                     padding-bottom: calc(8px + env(safe-area-inset-bottom));
                     position: fixed;
                     right: 0;
                     top: auto;
+                    transform: translate3d(0, 0, 0);
+                    will-change: transform;
                     width: 100%;
+                }
+
+                .toast {
+                    bottom: calc(var(--bottom-nav-height) + 12px);
                 }
 
                 .tab-nav button {
@@ -904,6 +1065,10 @@
 
                 .photo-row {
                     grid-template-columns: repeat(2, minmax(0, 1fr));
+                }
+
+                .evidence-list {
+                    grid-template-columns: 1fr;
                 }
 
                 .area-card summary {
@@ -1007,8 +1172,8 @@
                     <p class="eyebrow">Private-on-device field app</p>
                     <h1>Dover home inspection companion</h1>
                     <p class="header-copy">
-                        Capture tomorrow's inspection feedback, room notes, repair estimates and seller-furniture decisions.
-                        Your entries stay in this browser unless you export a backup.
+                        Capture tomorrow's inspection feedback, room notes, private photos, repair estimates and seller-furniture decisions.
+                        Your entries and photos stay in this browser unless you export a backup.
                     </p>
                 </div>
                 <div class="save-state" aria-live="polite">
@@ -1028,6 +1193,10 @@
                     <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5h10M9 12h10M9 19h10M4 5l1 1 2-2M4 12l1 1 2-2M4 19l1 1 2-2"></path></svg>
                     Inspection
                 </button>
+                <button type="button" role="tab" aria-selected="false" data-view="photos">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h3l1.5-2h7L17 7h3v12H4V7Z"></path><circle cx="12" cy="13" r="3.5"></circle></svg>
+                    Photos
+                </button>
                 <button type="button" role="tab" aria-selected="false" data-view="furniture">
                     <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 11V7a3 3 0 0 1 6 0v4m2 0V7a3 3 0 0 1 6 0v4M3 11h18v7H3v-7Zm2 7v2m14-2v2"></path></svg>
                     Furniture
@@ -1042,7 +1211,7 @@
                 <section class="view" id="view-overview" role="tabpanel">
                     <div class="panel privacy">
                         <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="10" width="16" height="11" rx="2"></rect><path d="M8 10V7a4 4 0 0 1 8 0v3"></path></svg>
-                        <p><strong>Your notes are private on this device.</strong> This public site has no database, analytics or note-upload service. Export a JSON backup after the inspection so a lost browser or phone does not erase your work.</p>
+                        <p><strong>Your notes and added photos are private on this device.</strong> The public site has no analytics or upload service. Photos use the browser's IndexedDB database; export a JSON backup after the inspection so a lost browser or phone does not erase your work.</p>
                     </div>
 
                     <div class="metrics" aria-label="Inspection progress">
@@ -1141,6 +1310,75 @@
                     <div class="area-list" id="area-list"></div>
                 </section>
 
+                <section class="view" id="view-photos" role="tabpanel" hidden>
+                    <div class="section-heading">
+                        <div>
+                            <h2>Inspection photo evidence</h2>
+                            <p>Take or select photos, connect them to an area and preserve them with your inspection backup.</p>
+                        </div>
+                    </div>
+
+                    <div class="panel privacy">
+                        <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="10" width="16" height="11" rx="2"></rect><path d="M8 10V7a4 4 0 0 1 8 0v3"></path></svg>
+                        <p><strong>Photos stay private in this browser's device database.</strong> They are not uploaded to GitHub or any public server. Export a JSON backup to move them to another device.</p>
+                    </div>
+
+                    <div class="photo-capture-grid" style="margin-top:16px">
+                        <section class="panel">
+                            <h2>Add photos</h2>
+                            <p class="panel-subtitle">Images are resized to a maximum of 1600 pixels and re-encoded to reduce storage and remove embedded camera metadata.</p>
+                            <form id="photo-form" style="margin-top:16px">
+                                <div class="form-grid">
+                                    <div class="field">
+                                        <label for="photo-area">Room or system</label>
+                                        <select id="photo-area" required></select>
+                                    </div>
+                                    <div class="field full">
+                                        <label for="photo-caption">Concern, location or inspector comment</label>
+                                        <textarea id="photo-caption" placeholder="Example: stain below upstairs bathroom; moisture reading 18%…"></textarea>
+                                    </div>
+                                    <div class="field full">
+                                        <label class="file-picker" for="photo-files">
+                                            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h3l1.5-2h7L17 7h3v12H4V7Z"></path><circle cx="12" cy="13" r="3.5"></circle></svg>
+                                            Take or choose inspection photos
+                                            <input class="visually-hidden" id="photo-files" type="file" accept="image/*" capture="environment" multiple aria-describedby="photo-file-status" />
+                                        </label>
+                                        <span class="helper" id="photo-file-status">No photos selected.</span>
+                                    </div>
+                                </div>
+                                <div class="actions">
+                                    <button class="action" id="save-photos" type="submit">Save photos to this device</button>
+                                </div>
+                            </form>
+                        </section>
+
+                        <aside class="panel">
+                            <h2>Device photo database</h2>
+                            <p class="panel-subtitle">Available offline on this device after the first visit. Browser cleanup can still remove it.</p>
+                            <div class="storage-summary" aria-live="polite">
+                                <strong id="photo-storage-count">Loading photo database…</strong>
+                                <span id="photo-storage-size">Please wait.</span>
+                            </div>
+                            <ol class="guide-steps">
+                                <li>Photograph the full area, then a close-up.</li>
+                                <li>Include a ruler or reference when size matters.</li>
+                                <li>Write the exact location and inspector response.</li>
+                                <li>Export a JSON backup before leaving.</li>
+                            </ol>
+                        </aside>
+                    </div>
+
+                    <div class="photo-library-heading">
+                        <div>
+                            <h3>Saved inspection photos</h3>
+                            <p>Newest first. Download an original stored copy or delete an incorrect photo.</p>
+                        </div>
+                    </div>
+                    <div class="evidence-list" id="evidence-list">
+                        <div class="empty-state">Loading saved photos…</div>
+                    </div>
+                </section>
+
                 <section class="view" id="view-furniture" role="tabpanel" hidden>
                     <div class="section-heading">
                         <div>
@@ -1166,7 +1404,7 @@
                     <div class="dashboard-grid">
                         <section class="panel">
                             <h2>Back up your inspection</h2>
-                            <p class="panel-subtitle">Export after tomorrow's inspection and again after adding contractor estimates.</p>
+                            <p class="panel-subtitle">Export after tomorrow's inspection and again after adding contractor estimates. The JSON includes your stored photos and may be large.</p>
                             <div class="actions">
                                 <button class="action" id="export-json" type="button">
                                     <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12m0 0 4-4m-4 4-4-4M5 19h14"></path></svg>
@@ -1189,7 +1427,7 @@
                                 <li>Use <strong>Add inspection feedback</strong> for fast observations during the walk-through.</li>
                                 <li>Open <strong>Inspection</strong> afterward and complete each detailed room checklist.</li>
                                 <li>Use <strong>Furniture</strong> only after measuring rooms and confirming seller ownership.</li>
-                                <li>Export a JSON backup before closing the browser or changing devices.</li>
+                                <li>Export a JSON backup with notes and photos before closing the browser or changing devices.</li>
                             </ol>
                             <p class="small" style="margin:12px 0 0">On iPhone/iPad: Safari → Share → Add to Home Screen. Android/Chrome may show an Install button here.</p>
                         </section>
@@ -1208,7 +1446,7 @@
                             <strong>Ready-to-print PDF</strong>
                             <span>Download the validated 18-page PDF.</span>
                         </a>
-                        <a class="resource-link" href="https://github.com/mushrath-mohammad_finact/home-inspection-companion">
+                        <a class="resource-link" href="https://github.com/mushrath007/2700-dover-inspection-companion">
                             <strong>Public source repository</strong>
                             <span>App source and deployment history; entered notes are never committed.</span>
                         </a>
@@ -1216,7 +1454,7 @@
 
                     <div class="panel" style="margin-top:16px">
                         <h2>Important data limits</h2>
-                        <p>Your browser can remove site storage if history/site data is cleared. Private/incognito mode may erase it sooner. JSON export is the durable backup. Notes do not automatically synchronize across phones because this version intentionally has no account or public database.</p>
+                        <p>Your browser can remove site storage if history/site data is cleared. Private/incognito mode may erase it sooner. Notes use local storage and photos use an IndexedDB device database. JSON export includes both and is the durable backup. Data does not automatically synchronize across phones because there is no account or public database.</p>
                     </div>
                 </section>
             </main>
@@ -1423,8 +1661,13 @@
             ];
 
             const storageKey = "doverInspectionCompanionV1";
+            const photoDatabaseName = "doverInspectionPhotoDatabase";
+            const photoStoreName = "photos";
             let state = { version: 1, fields: {}, visits: [], updatedAt: null };
             let saveTimer;
+            let photoDatabasePromise;
+            let photoRecords = [];
+            let photoObjectUrls = [];
             let activeFilter = "all";
             let deferredPrompt;
 
@@ -1437,6 +1680,168 @@
                     .replaceAll(">", "&gt;")
                     .replaceAll('"', "&quot;")
                     .replaceAll("'", "&#039;");
+            }
+
+            function openPhotoDatabase() {
+                if (photoDatabasePromise) return photoDatabasePromise;
+                photoDatabasePromise = new Promise(function (resolve, reject) {
+                    if (!("indexedDB" in window)) {
+                        reject(new Error("This browser does not support the photo database."));
+                        return;
+                    }
+                    const request = indexedDB.open(photoDatabaseName, 1);
+                    request.onupgradeneeded = function () {
+                        const database = request.result;
+                        if (!database.objectStoreNames.contains(photoStoreName)) {
+                            const store = database.createObjectStore(photoStoreName, { keyPath: "id" });
+                            store.createIndex("createdAt", "createdAt");
+                            store.createIndex("area", "area");
+                        }
+                    };
+                    request.onsuccess = function () { resolve(request.result); };
+                    request.onerror = function () { reject(request.error || new Error("Photo database could not open.")); };
+                    request.onblocked = function () { reject(new Error("Close other copies of this app and try again.")); };
+                });
+                return photoDatabasePromise;
+            }
+
+            async function getStoredPhotos() {
+                const database = await openPhotoDatabase();
+                return new Promise(function (resolve, reject) {
+                    const request = database.transaction(photoStoreName, "readonly").objectStore(photoStoreName).getAll();
+                    request.onsuccess = function () { resolve(request.result || []); };
+                    request.onerror = function () { reject(request.error || new Error("Saved photos could not be read.")); };
+                });
+            }
+
+            async function putStoredPhoto(record) {
+                const database = await openPhotoDatabase();
+                return new Promise(function (resolve, reject) {
+                    const transaction = database.transaction(photoStoreName, "readwrite");
+                    transaction.objectStore(photoStoreName).put(record);
+                    transaction.oncomplete = function () { resolve(); };
+                    transaction.onerror = function () { reject(transaction.error || new Error("Photo could not be saved.")); };
+                    transaction.onabort = function () { reject(transaction.error || new Error("Photo save was cancelled.")); };
+                });
+            }
+
+            async function deleteStoredPhoto(id) {
+                const database = await openPhotoDatabase();
+                return new Promise(function (resolve, reject) {
+                    const transaction = database.transaction(photoStoreName, "readwrite");
+                    transaction.objectStore(photoStoreName).delete(id);
+                    transaction.oncomplete = function () { resolve(); };
+                    transaction.onerror = function () { reject(transaction.error || new Error("Photo could not be deleted.")); };
+                });
+            }
+
+            async function clearStoredPhotos() {
+                const database = await openPhotoDatabase();
+                return new Promise(function (resolve, reject) {
+                    const transaction = database.transaction(photoStoreName, "readwrite");
+                    transaction.objectStore(photoStoreName).clear();
+                    transaction.oncomplete = function () { resolve(); };
+                    transaction.onerror = function () { reject(transaction.error || new Error("Photos could not be cleared.")); };
+                });
+            }
+
+            function formatBytes(bytes) {
+                if (!bytes) return "0 MB";
+                return (bytes / (1024 * 1024)).toFixed(bytes >= 10 * 1024 * 1024 ? 1 : 2) + " MB";
+            }
+
+            function blobToDataUrl(blob) {
+                return new Promise(function (resolve, reject) {
+                    const reader = new FileReader();
+                    reader.onload = function () { resolve(reader.result); };
+                    reader.onerror = function () { reject(reader.error || new Error("Photo could not be added to the backup.")); };
+                    reader.readAsDataURL(blob);
+                });
+            }
+
+            function dataUrlToBlob(dataUrl) {
+                const parts = dataUrl.split(",");
+                const mimeMatch = parts[0].match(/data:([^;]+)/);
+                const binary = atob(parts[1] || "");
+                const bytes = new Uint8Array(binary.length);
+                for (let index = 0; index < binary.length; index += 1) bytes[index] = binary.charCodeAt(index);
+                return new Blob([bytes], { type: mimeMatch ? mimeMatch[1] : "image/jpeg" });
+            }
+
+            async function optimizePhoto(file) {
+                const sourceUrl = URL.createObjectURL(file);
+                try {
+                    const image = document.createElement("img");
+                    await new Promise(function (resolve, reject) {
+                        image.onload = resolve;
+                        image.onerror = function () { reject(new Error(file.name + " could not be decoded as an image.")); };
+                        image.src = sourceUrl;
+                    });
+                    const maximumDimension = 1600;
+                    const scale = Math.min(1, maximumDimension / Math.max(image.naturalWidth, image.naturalHeight));
+                    const width = Math.max(1, Math.round(image.naturalWidth * scale));
+                    const height = Math.max(1, Math.round(image.naturalHeight * scale));
+                    const canvas = document.createElement("canvas");
+                    canvas.width = width;
+                    canvas.height = height;
+                    const context = canvas.getContext("2d", { alpha: false });
+                    context.fillStyle = "#ffffff";
+                    context.fillRect(0, 0, width, height);
+                    context.drawImage(image, 0, 0, width, height);
+                    const blob = await new Promise(function (resolve, reject) {
+                        canvas.toBlob(function (result) {
+                            if (result) resolve(result);
+                            else reject(new Error(file.name + " could not be compressed."));
+                        }, "image/jpeg", 0.82);
+                    });
+                    return { blob: blob, width: width, height: height };
+                } finally {
+                    URL.revokeObjectURL(sourceUrl);
+                }
+            }
+
+            function downloadBlob(filename, blob) {
+                const url = URL.createObjectURL(blob);
+                const link = document.createElement("a");
+                link.href = url;
+                link.download = filename;
+                link.click();
+                setTimeout(function () { URL.revokeObjectURL(url); }, 1000);
+            }
+
+            async function renderStoredPhotos() {
+                const list = document.getElementById("evidence-list");
+                const count = document.getElementById("photo-storage-count");
+                const size = document.getElementById("photo-storage-size");
+                photoObjectUrls.forEach(function (url) { URL.revokeObjectURL(url); });
+                photoObjectUrls = [];
+                photoRecords = (await getStoredPhotos()).sort(function (left, right) {
+                    return String(right.createdAt).localeCompare(String(left.createdAt));
+                });
+                const totalSize = photoRecords.reduce(function (total, photo) { return total + Number(photo.size || photo.blob.size || 0); }, 0);
+                count.textContent = photoRecords.length + (photoRecords.length === 1 ? " inspection photo" : " inspection photos");
+                size.textContent = formatBytes(totalSize) + " stored privately in IndexedDB on this device.";
+                if (!photoRecords.length) {
+                    list.innerHTML = '<div class="empty-state">No inspection photos saved yet. Use the camera or photo picker above.</div>';
+                    return;
+                }
+                list.innerHTML = photoRecords.map(function (photo) {
+                    const area = areas.find(function (item) { return item.id === photo.area; });
+                    const date = new Date(photo.createdAt).toLocaleString([], { month: "short", day: "numeric", hour: "numeric", minute: "2-digit" });
+                    return '<article class="evidence-card" data-photo-id="' + escapeHtml(photo.id) + '">' +
+                        '<img alt="Inspection evidence for ' + escapeHtml(area ? area.name : photo.area) + '" loading="lazy" />' +
+                        '<div class="evidence-body"><h3>' + escapeHtml(area ? area.name : photo.area) + '</h3>' +
+                        '<div class="evidence-meta">' + escapeHtml(date) + ' · ' + escapeHtml(formatBytes(photo.size || photo.blob.size)) + '</div>' +
+                        (photo.caption ? '<p>' + escapeHtml(photo.caption) + '</p>' : "") +
+                        '<div class="evidence-actions"><button type="button" data-download-photo="' + escapeHtml(photo.id) + '">Download</button>' +
+                        '<button type="button" data-delete-photo="' + escapeHtml(photo.id) + '">Delete</button></div></div></article>';
+                }).join("");
+                photoRecords.forEach(function (photo) {
+                    const url = URL.createObjectURL(photo.blob);
+                    photoObjectUrls.push(url);
+                    const card = list.querySelector('[data-photo-id="' + photo.id + '"]');
+                    if (card) card.querySelector("img").src = url;
+                });
             }
 
             function loadState() {
@@ -1611,7 +2016,7 @@
                 });
                 if (updateHash) history.replaceState(null, "", "#" + name);
                 document.getElementById("main-content").focus({ preventScroll: true });
-                window.scrollTo({ top: 0, behavior: "smooth" });
+                window.scrollTo({ top: 0, behavior: "auto" });
             }
 
             function downloadFile(filename, content, type) {
@@ -1624,14 +2029,46 @@
                 setTimeout(function () { URL.revokeObjectURL(url); }, 1000);
             }
 
-            function exportJson() {
-                storeState();
-                const payload = { app: "Dover Inspection Companion", exportedAt: new Date().toISOString(), state: state };
-                downloadFile("dover-inspection-backup-" + new Date().toISOString().slice(0, 10) + ".json", JSON.stringify(payload, null, 2), "application/json");
-                showToast("JSON backup downloaded.");
+            async function exportJson() {
+                const button = document.getElementById("export-json");
+                const originalMarkup = button.innerHTML;
+                button.disabled = true;
+                button.textContent = "Preparing backup…";
+                try {
+                    storeState();
+                    const storedPhotos = await getStoredPhotos();
+                    const photos = await Promise.all(storedPhotos.map(async function (photo) {
+                        return {
+                            id: photo.id,
+                            area: photo.area,
+                            caption: photo.caption,
+                            name: photo.name,
+                            type: photo.type,
+                            size: photo.size,
+                            width: photo.width,
+                            height: photo.height,
+                            createdAt: photo.createdAt,
+                            dataUrl: await blobToDataUrl(photo.blob)
+                        };
+                    }));
+                    const payload = {
+                        app: "Dover Inspection Companion",
+                        exportedAt: new Date().toISOString(),
+                        state: state,
+                        photoBackupVersion: 1,
+                        photos: photos
+                    };
+                    downloadFile("dover-inspection-backup-" + new Date().toISOString().slice(0, 10) + ".json", JSON.stringify(payload, null, 2), "application/json");
+                    showToast("JSON backup with " + photos.length + " photo" + (photos.length === 1 ? "" : "s") + " downloaded.");
+                } catch (error) {
+                    showToast("Backup failed: " + error.message);
+                } finally {
+                    button.disabled = false;
+                    button.innerHTML = originalMarkup;
+                }
             }
 
-            function exportText() {
+            async function exportText() {
                 storeState();
                 const lines = ["Dover home inspection summary", "Exported: " + new Date().toLocaleString(), ""];
                 areas.forEach(function (area) {
@@ -1650,8 +2087,105 @@
                     lines.push("Next: " + (visit.action || ""));
                     lines.push("Estimate: $" + (visit.estimate || "0"), "");
                 });
+                let storedPhotos = [];
+                try {
+                    storedPhotos = await getStoredPhotos();
+                } catch (error) {
+                    lines.push("Photo database unavailable: " + error.message, "");
+                }
+                lines.push("Saved inspection photos", "");
+                storedPhotos.forEach(function (photo) {
+                    const area = areas.find(function (item) { return item.id === photo.area; });
+                    lines.push((area ? area.name : photo.area) + " · " + new Date(photo.createdAt).toLocaleString());
+                    lines.push("Caption: " + (photo.caption || ""));
+                    lines.push("Stored file: " + photo.name, "");
+                });
                 downloadFile("dover-inspection-summary-" + new Date().toISOString().slice(0, 10) + ".txt", lines.join("\n"), "text/plain");
                 showToast("Readable summary downloaded.");
+            }
+
+            async function initializePhotoDatabase() {
+                const areaSelect = document.getElementById("photo-area");
+                const fileInput = document.getElementById("photo-files");
+                const fileStatus = document.getElementById("photo-file-status");
+                const form = document.getElementById("photo-form");
+                const saveButton = document.getElementById("save-photos");
+                areaSelect.innerHTML = areas.map(function (area) {
+                    return '<option value="' + area.id + '">' + escapeHtml(area.name) + '</option>';
+                }).join("");
+
+                fileInput.addEventListener("change", function () {
+                    const count = fileInput.files ? fileInput.files.length : 0;
+                    fileStatus.textContent = count ? count + " photo" + (count === 1 ? " selected." : "s selected.") : "No photos selected.";
+                });
+
+                form.addEventListener("submit", async function (event) {
+                    event.preventDefault();
+                    const files = Array.from(fileInput.files || []).filter(function (file) { return file.type.startsWith("image/"); });
+                    if (!files.length) {
+                        showToast("Take or choose at least one image first.");
+                        fileInput.focus();
+                        return;
+                    }
+                    saveButton.disabled = true;
+                    saveButton.textContent = "Optimizing and saving…";
+                    try {
+                        if (navigator.storage && navigator.storage.persist) navigator.storage.persist().catch(function () {});
+                        const createdAt = new Date().toISOString();
+                        for (let index = 0; index < files.length; index += 1) {
+                            const optimized = await optimizePhoto(files[index]);
+                            await putStoredPhoto({
+                                id: window.crypto && crypto.randomUUID ? crypto.randomUUID() : String(Date.now()) + "-" + index,
+                                area: areaSelect.value,
+                                caption: document.getElementById("photo-caption").value.trim(),
+                                name: files[index].name.replace(/\.[^.]+$/, "") + ".jpg",
+                                type: optimized.blob.type,
+                                size: optimized.blob.size,
+                                width: optimized.width,
+                                height: optimized.height,
+                                createdAt: createdAt,
+                                blob: optimized.blob
+                            });
+                        }
+                        fileInput.value = "";
+                        document.getElementById("photo-caption").value = "";
+                        fileStatus.textContent = "No photos selected.";
+                        await renderStoredPhotos();
+                        showToast(files.length + " inspection photo" + (files.length === 1 ? "" : "s") + " saved privately on this device.");
+                    } catch (error) {
+                        showToast("Photo save failed: " + error.message);
+                    } finally {
+                        saveButton.disabled = false;
+                        saveButton.textContent = "Save photos to this device";
+                    }
+                });
+
+                document.getElementById("evidence-list").addEventListener("click", async function (event) {
+                    const downloadButton = event.target.closest("[data-download-photo]");
+                    const deleteButton = event.target.closest("[data-delete-photo]");
+                    if (downloadButton) {
+                        const photo = photoRecords.find(function (item) { return item.id === downloadButton.dataset.downloadPhoto; });
+                        if (photo) downloadBlob(photo.name || "inspection-photo.jpg", photo.blob);
+                        return;
+                    }
+                    if (!deleteButton || !window.confirm("Delete this inspection photo from this device? Export a backup first if you may need it.")) return;
+                    try {
+                        await deleteStoredPhoto(deleteButton.dataset.deletePhoto);
+                        await renderStoredPhotos();
+                        showToast("Inspection photo deleted from this device.");
+                    } catch (error) {
+                        showToast("Photo could not be deleted: " + error.message);
+                    }
+                });
+
+                try {
+                    await renderStoredPhotos();
+                } catch (error) {
+                    document.getElementById("evidence-list").innerHTML = '<div class="empty-state">Photo storage is unavailable in this browser. Try a normal Safari or Chrome window.</div>';
+                    document.getElementById("photo-storage-count").textContent = "Photo database unavailable";
+                    document.getElementById("photo-storage-size").textContent = error.message;
+                    Array.from(form.elements).forEach(function (element) { element.disabled = true; });
+                }
             }
 
             function initialize() {
@@ -1745,7 +2279,27 @@
                         if (payload.app !== "Dover Inspection Companion" || !payload.state || payload.state.version !== 1) {
                             throw new Error("Unsupported backup");
                         }
-                        if (!window.confirm("Replace this device's current notes with the selected backup?")) return;
+                        const restoredPhotos = Array.isArray(payload.photos) ? payload.photos.map(function (photo) {
+                            if (!photo.dataUrl || !String(photo.dataUrl).startsWith("data:image/")) throw new Error("Invalid photo backup");
+                            const blob = dataUrlToBlob(photo.dataUrl);
+                            return {
+                                id: photo.id,
+                                area: photo.area,
+                                caption: photo.caption || "",
+                                name: photo.name || "inspection-photo.jpg",
+                                type: blob.type,
+                                size: blob.size,
+                                width: photo.width,
+                                height: photo.height,
+                                createdAt: photo.createdAt || new Date().toISOString(),
+                                blob: blob
+                            };
+                        }) : null;
+                        if (!window.confirm("Replace this device's current notes" + (restoredPhotos ? " and photos" : "") + " with the selected backup?")) return;
+                        if (restoredPhotos) {
+                            await clearStoredPhotos();
+                            for (const photo of restoredPhotos) await putStoredPhoto(photo);
+                        }
                         state = payload.state;
                         storeState();
                         window.location.reload();
@@ -1755,10 +2309,15 @@
                         event.target.value = "";
                     }
                 });
-                document.getElementById("clear-data").addEventListener("click", function () {
-                    if (!window.confirm("Permanently clear all inspection and furniture notes saved in this browser? Export a backup first.")) return;
-                    localStorage.removeItem(storageKey);
-                    window.location.reload();
+                document.getElementById("clear-data").addEventListener("click", async function () {
+                    if (!window.confirm("Permanently clear all inspection notes, photos and furniture decisions saved in this browser? Export a backup first.")) return;
+                    try {
+                        await clearStoredPhotos();
+                        localStorage.removeItem(storageKey);
+                        window.location.reload();
+                    } catch (error) {
+                        showToast("Device data could not be cleared: " + error.message);
+                    }
                 });
 
                 window.addEventListener("beforeinstallprompt", function (event) {
@@ -1774,7 +2333,7 @@
                     this.hidden = true;
                 });
 
-                const initialView = ["overview", "inspection", "furniture", "backup"].includes(location.hash.slice(1)) ? location.hash.slice(1) : "overview";
+                const initialView = ["overview", "inspection", "photos", "furniture", "backup"].includes(location.hash.slice(1)) ? location.hash.slice(1) : "overview";
                 showView(initialView, false);
             }
 
@@ -1793,6 +2352,7 @@
             }
 
             initialize();
+            initializePhotoDatabase();
         </script>
     </body>
 </html>

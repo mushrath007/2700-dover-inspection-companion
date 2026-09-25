@@ -1,7 +1,7 @@
 {
     "name": "Dover Home Inspection Companion",
     "short_name": "Inspection",
-    "description": "Private-on-device inspection notes, room checklists, repair follow-up and furniture decisions.",
+    "description": "Private-on-device inspection notes, photo evidence, room checklists, repair follow-up and furniture decisions.",
     "start_url": "./",
     "scope": "./",
     "display": "standalone",
