@@ -1783,7 +1783,8 @@
                 if (Object.keys(state.fields).length || state.visits.length) storeState();
             });
 
-            if ("serviceWorker" in navigator && location.protocol.startsWith("http")) {
+            if ("serviceWorker" in navigator && location.protocol.startsWith("http") &&
+                !["htmlpreview.github.io", "raw.githack.com"].includes(location.hostname)) {
                 window.addEventListener("load", function () {
                     navigator.serviceWorker.register("./sw.js").catch(function () {
                         showToast("Offline mode could not be enabled; the online app still works.");
