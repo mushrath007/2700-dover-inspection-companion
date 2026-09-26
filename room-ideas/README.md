@@ -1,12 +1,13 @@
 # Room concept image handoff
 
-This folder contains everything needed to generate the nine room concepts on another computer. It does not contain an API key, account identifier, family information, inspection notes or generated images.
+This folder contains the source map, prompts and accepted images for the fifteen-space whole-property concept page, plus an individual direction for all 39 listing photos. It also includes a floor-plan-guided walkthrough video and the corrected Photo 37 garden concept, which uses the marked upper-lawn space and keeps the side and family lawns open. It does not contain an API key, account identifier, family information or private inspection evidence.
 
 ## Files
 
 - `manifest.json` is the source of truth for room names, source photos, final filenames, plans and complete prompts.
 - `prompts.md` is the human-readable generation and review guide.
-- `generated/` is where final concept images belong.
+- `generated/` contains the accepted concepts and useful layout variations.
+- `video/2700-dover-dream-home-tour.mp4` is the short walkthrough of the coordinated plan.
 - `../new-room-ideas.html` reads the manifest and automatically shows a concept when its expected WebP or PNG file is present.
 
 ## Recommended Codex workflow
@@ -14,7 +15,7 @@ This folder contains everything needed to generate the nine room concepts on ano
 1. Clone or pull this repository on the image-capable laptop.
 2. Open the repository in a Codex session where image generation is available.
 3. Ask Codex to read this file, `prompts.md` and `manifest.json`.
-4. Work on one room at a time. Give the listed source photo to the image tool as **Image 1: edit target**, then use that room's complete `prompt` value.
+4. Work on one space at a time. Give the listed source photo to the image tool as **Image 1: edit target**, then use that room's complete `prompt` value.
 5. Inspect the result against the checklist in `prompts.md`. Make only one targeted correction at a time and repeat every preservation constraint during edits.
 6. Save the accepted image to the room's exact `output` path. A PNG using `fallbackOutput` also works.
 7. Preview `../new-room-ideas.html`, then commit and push only the accepted room images.

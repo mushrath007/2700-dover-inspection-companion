@@ -1,55 +1,123 @@
 {
-  "version": 1,
-  "updated": "2026-09-25",
-  "purpose": "Privacy-safe, room-by-room image-generation handoff for family space planning.",
+  "version": 3,
+  "updated": "2026-09-26",
+  "purpose": "Fifteen-space full-property reimagination with an individual direction for all 39 listing photographs.",
   "sharedConstraints": [
-    "Use the source photo as the edit target, not only as style inspiration.",
-    "Remove existing movable furniture, rugs, wall decor, family photos and personal belongings.",
-    "Preserve the photographed architecture, camera angle, room proportions, walls, windows, doors, flooring, ceiling, fixed trim and natural-light direction.",
-    "Keep scale realistic and leave clear walking and emergency-exit paths.",
-    "Use only a few practical pieces, rounded edges, washable materials and anchored tall storage.",
-    "Use subtle Islamic-inspired arches or geometric patterns only. Do not generate Arabic, Qur'anic verses, sacred text or imitation calligraphy.",
-    "Do not include people, faces, names, addresses, family photographs, readable documents, logos, trademarks or watermarks.",
-    "Do not place bunk or loft beds beneath a ceiling fan.",
-    "Show plants only where they can be kept safely; verify the exact plant species before purchase.",
-    "If an aquarium is shown, use one lidded 10–20 gallon planted tank on a purpose-built stable stand, away from direct sunlight, with a safe cord drip loop and nearby GFCI protection."
+    "Treat the listing photo as the edit target and preserve fixed architecture, camera angle, doors, windows, flooring, ceiling, trim and natural-light direction.",
+    "Keep realistic scale, clear walking and emergency-exit paths, door swings, window access, HVAC and baseboard heat.",
+    "Use rounded, washable furniture and anchor storage, aquarium stands and other tip-over hazards to suitable structure.",
+    "Use Islamic influence through restrained arches and geometry; do not generate Arabic, Qur'anic verses, sacred text or imitation calligraphy.",
+    "Use only the single lidded aquarium in the family hall and verify plant species before purchase.",
+    "Do not include people, faces, names, addresses, readable documents, logos, trademarks or watermarks."
   ],
   "rooms": [
     {
-      "id": "family-room",
-      "title": "Family room — connection first",
-      "source": "listing-photos/photo-10.jpg",
-      "output": "room-ideas/generated/family-room-concept.webp",
-      "fallbackOutput": "room-ideas/generated/family-room-concept.png",
-      "budget": "$1,000–$2,000 planning range",
+      "id": "front-exterior",
+      "title": "Front exterior — two affordable paint directions",
+      "source": "listing-photos/photo-01.jpg",
+      "output": "room-ideas/generated/exterior-warm-white-concept.webp",
+      "fallbackOutput": "room-ideas/generated/exterior-warm-white-concept.png",
+      "budget": "$600–$1,800 DIY materials; $5,000–$10,000+ professional",
       "priority": "Phase 2",
-      "summary": "A screen-light family gathering room with durable seating, books, floor play and the home’s single aquarium.",
+      "summary": "A paint-first curb-appeal plan that keeps the roof, windows, masonry and structure while adding a calmer palette and simple planting.",
       "plan": [
-        "One compact washable three-seat sofa plus two movable floor cushions; no oversized sectional.",
-        "Low closed book and toy storage so cleanup is simple and the entry route remains open.",
-        "One lidded 10–20 gallon planted aquarium on a dedicated stable stand along an interior wall away from direct sun.",
-        "One child/pet-safer plant on a stable raised stand; verify the exact species before purchase.",
-        "Subtle arch-shaped shelf details or geometric textile accents, without generated sacred text."
+        "First identify the siding material and confirm it is sound and paintable; repair and clean before coating.",
+        "The warm-white version gives the largest visual change with a deep-blue door and refreshed trim.",
+        "The light-sage version feels closer to nature and stays light enough to reduce heat-risk concerns on paintable vinyl siding.",
+        "Retain the existing roof, brick and garage door to control cost; focus spending on preparation and durable exterior coating.",
+        "Use modest native-looking foundation plants, mulch and efficient warm exterior lighting."
       ],
-      "prompt": "Use case: precise-object-edit\nAsset type: photorealistic interior redesign concept for family planning\nInput images: Image 1 is the edit target, the lower family-room listing photo\nPrimary request: Remove all existing movable furniture, rugs, decor, family photos and personal belongings, then redesign this exact room as a calm, cost-effective family connection space with one compact washable three-seat sofa, two movable floor cushions, low closed book and toy storage, and a clear central play area. Add the home’s only aquarium: one lidded 10–20 gallon planted freshwater tank on a purpose-built stable stand along an interior wall away from direct sunlight, with cables arranged as a safe drip loop and no accessible dangling cords. Add one child/pet-safer plant on a stable raised stand. Use restrained Islamic-inspired arches or geometric textile details only.\nStyle/medium: photorealistic, attainable mid-budget interior photography, real fabric and wood texture\nComposition/framing: preserve the exact camera position and wide room view; maintain an unobstructed route between the exterior door, stairs and room opening\nLighting/mood: preserve natural daylight; warm, peaceful and lived-in without clutter\nColor palette: warm ivory, natural oak, muted sage and dusty blue\nMaterials/textures: washable performance fabric, flat-weave rug, rounded wood edges, closed storage\nConstraints: change only movable furnishings and decor; preserve architecture, room proportions, walls, windows, doors, flooring, ceiling, vents, trim and natural-light direction; use realistic scale; anchor tall storage; no TV as the focal point; no people, faces, names, addresses, family photographs, readable documents, Arabic, Qur'anic verses, sacred text, imitation calligraphy, logos, trademarks or watermarks\nAvoid: oversized sectional, multiple aquariums, fish bowls, direct sunlight on the tank, unstable aquarium furniture, loose cords, sharp glass tables, excessive decor, visual clutter"
+      "prompt": "Edit the exact front listing photo using paint and modest landscaping only. Preserve all architecture, roof, windows, doors, driveway and proportions. Show a warm off-white siding palette with refreshed white trim, deep blue door, simple foundation plants and efficient warm exterior light; no structural additions.",
+      "alternatives": [
+        {
+          "title": "Nature-sage exterior variation",
+          "image": "room-ideas/generated/exterior-sage-concept.png",
+          "summary": "Light sage siding, creamy trim and a warm wood-look door create a softer garden-connected exterior."
+        }
+      ],
+      "variationTitle": "Exterior color variations",
+      "variationIntro": "Confirm siding material, manufacturer limits and surface condition before choosing a color. Dark paint can be unsuitable for some vinyl siding."
     },
     {
-      "id": "quiet-living-prayer",
-      "title": "Quiet living and prayer room",
-      "source": "listing-photos/photo-12.jpg",
-      "output": "room-ideas/generated/quiet-living-prayer-concept.webp",
-      "fallbackOutput": "room-ideas/generated/quiet-living-prayer-concept.png",
-      "budget": "$700–$1,500 planning range",
+      "id": "family-hall",
+      "title": "Family hall — sofa, TV and living nature",
+      "source": "listing-photos/photo-10.jpg",
+      "output": "room-ideas/generated/family-hall-tv-nature-concept.webp",
+      "fallbackOutput": "room-ideas/generated/family-hall-tv-nature-concept.png",
+      "budget": "$1,800–$4,000 planning range",
       "priority": "Phase 2",
-      "summary": "A flexible reading, reflection and prayer room that stays open, quiet and easy to reset.",
+      "summary": "A welcoming family hall with mounted TV, washable seating, Islamic geometric art, layered light, plants and the home’s single aquarium.",
       "plan": [
-        "One modest sofa or two compact reading chairs, not a full matching furniture set.",
-        "A clear prayer area with roll-away mats stored in a closed bench; verify qibla direction on site.",
-        "Low book storage for children’s books and family reading.",
-        "Geometric screen or arch motif used as decor only, with no generated Arabic or sacred text.",
-        "Keep skylight paths, windows, stairs and room circulation unobstructed."
+        "Use one compact sofa and two movable chairs; retain a direct route from the front door to the stairs.",
+        "Mount the TV with concealed cables and keep low closed storage below or beside it.",
+        "Use one lidded 15–20 gallon planted aquarium on a purpose-built anchored stand away from direct sunlight.",
+        "Choose a washable low-pile rug and warm overhead, task and bias lighting.",
+        "Use parlor palm, spider plant or peperomia after verifying the exact species for the household."
       ],
-      "prompt": "Use case: precise-object-edit\nAsset type: photorealistic interior redesign concept for family planning\nInput images: Image 1 is the edit target, the vaulted upper living-room listing photo\nPrimary request: Remove all existing movable furniture, rugs, decor, family photos and personal belongings, then redesign this exact room as a calm shared reading, reflection and prayer space. Use either one modest low-profile sofa or two compact reading chairs, a low bookcase, a closed storage bench for roll-away prayer mats, and a generous uncluttered floor area. Add a simple arch-shaped wood detail or restrained Islamic geometric screen as non-text decor. Do not invent a qibla direction; the family will verify orientation on site.\nStyle/medium: photorealistic, attainable minimal interior photography with real material texture\nComposition/framing: preserve the exact wide camera view, vaulted volume, skylights, windows and stair relationship; keep walkways and stair access clear\nLighting/mood: preserve daylight from the skylights; quiet, warm and reflective\nColor palette: warm white, light oak, muted olive and soft indigo accents\nMaterials/textures: washable natural-look textiles, flat-weave rug, rounded wood furniture\nConstraints: change only movable furnishings and decor; preserve architecture, room proportions, walls, windows, stairs, flooring, ceiling, skylights, trim and natural-light direction; use realistic scale; anchor storage; no people, faces, names, addresses, family photographs, readable documents, Arabic, Qur'anic verses, sacred text, imitation calligraphy, logos, trademarks or watermarks\nAvoid: blocking stairs or windows, permanent religious text, oversized furniture, television focal point, excessive lanterns, visual clutter"
+      "prompt": "Edit the exact family-hall listing photo into a calm family room with compact sofa, two chairs, wall-mounted TV with concealed wires, closed storage, one properly supported lidded planted aquarium, washable rug, layered lighting, restrained Islamic geometric wall art without text, and a few verified plants. Preserve architecture and all circulation; no people or readable writing.",
+      "alternatives": [
+        {
+          "title": "Screen-light family variation",
+          "image": "room-ideas/generated/family-room-concept.png",
+          "summary": "More open floor play and lower storage, with the television visually secondary."
+        }
+      ],
+      "variationTitle": "More layout variations",
+      "variationIntro": "Compare the options against verified room measurements before buying furniture."
+    },
+    {
+      "id": "prayer-hall",
+      "title": "Second hall — prayer, reading and storage",
+      "source": "listing-photos/photo-12.jpg",
+      "output": "room-ideas/generated/prayer-hall-zoned-concept.webp",
+      "fallbackOutput": "room-ideas/generated/prayer-hall-zoned-concept.png",
+      "budget": "$800–$2,000 planning range",
+      "priority": "Phase 2",
+      "summary": "A naturally bright prayer room with separated rug zones, open circulation, compact seating and hidden storage.",
+      "plan": [
+        "Verify qibla direction on site before arranging the individual prayer rugs.",
+        "Keep an open aisle between the two rug zones and preserve clear stair access.",
+        "Use a small storage sofa or lift-top bench for folded rugs and blankets.",
+        "Add low closed book storage and restrained non-text geometric decor.",
+        "Place a few verified plants on stable raised surfaces so daylight and paths remain open."
+      ],
+      "prompt": "Edit the exact vaulted hall photo into a family prayer and reading room with six separated individual prayer rugs, a modest aisle, small storage sofa, low book cabinet, compact seating, restrained non-text Islamic geometry and raised plants. Preserve skylights, windows, stairs and circulation. Do not invent qibla or generate Arabic text.",
+      "alternatives": [
+        {
+          "title": "Open prayer and reading variation",
+          "image": "room-ideas/generated/quiet-living-prayer-concept.png",
+          "summary": "A larger flexible floor area with movable chairs and a closed mat-storage bench."
+        }
+      ],
+      "variationTitle": "More layout variations",
+      "variationIntro": "Compare the options against verified room measurements before buying furniture."
+    },
+    {
+      "id": "kitchen-storage",
+      "title": "Kitchen — remove the white refrigerator and add pantry cabinets",
+      "source": "listing-photos/photo-18.jpg",
+      "output": "room-ideas/generated/kitchen-white-pantry-concept.webp",
+      "fallbackOutput": "room-ideas/generated/kitchen-white-pantry-concept.png",
+      "budget": "$2,500–$7,500 targeted cabinet/refinish plan",
+      "priority": "Phase 1",
+      "summary": "Keep the stainless refrigerator and existing footprint; replace the extra white refrigerator with floor-to-ceiling pantry, drawers and an appliance garage.",
+      "plan": [
+        "Disconnect and dispose of the white refrigerator through an appliance recycler; keep the stainless refrigerator if inspection and energy use are acceptable.",
+        "Measure the former refrigerator opening and install a fitted pantry cabinet with deep drawers and adjustable shelves.",
+        "Reuse sound cabinet boxes; clean, repair and repaint doors rather than replacing the entire kitchen.",
+        "Add ceiling-height cabinet extensions only where they remain reachable and do not interfere with ventilation.",
+        "Use LED task lighting, durable pulls and a simple backsplash before considering new counters or moving plumbing."
+      ],
+      "prompt": "Edit the exact kitchen listing photo. Keep the stainless refrigerator, range, dishwasher, sink, windows, floor and footprint. Remove only the second white refrigerator and replace it with fitted floor-to-ceiling pantry cabinets, deep drawers and an appliance garage. Extend useful upper storage, add efficient task lighting and preserve clear work paths.",
+      "alternatives": [
+        {
+          "title": "Sage and oak pantry variation",
+          "image": "room-ideas/generated/kitchen-sage-oak-concept.png",
+          "summary": "Repaint reusable lower cabinets sage and use a light-oak pantry wall for a warmer nature-focused kitchen."
+        }
+      ],
+      "variationTitle": "Kitchen cabinet variations",
+      "variationIntro": "Both concepts keep one refrigerator and avoid moving plumbing. Price the pantry cabinet separately before considering counters or a full cabinet replacement."
     },
     {
       "id": "dining-room",
@@ -88,94 +156,486 @@
       "prompt": "Use case: precise-object-edit\nAsset type: photorealistic interior redesign concept for family planning\nInput images: Image 1 is the edit target, the breakfast-nook listing photo\nPrimary request: Remove all existing movable furniture, rugs, decor, family photos and personal belongings, then redesign this exact nook as a compact breakfast, homework and craft area. Use one wipe-clean rectangular table, a simple wall bench with closed basket storage below, and two light movable chairs. Add one small child/pet-safer plant on a stable raised surface. Include only a subtle geometric cushion pattern with no text.\nStyle/medium: photorealistic, practical low-cost interior photography\nComposition/framing: preserve the exact camera angle and both large openings; keep circulation through the nook clear\nLighting/mood: preserve natural daylight; cheerful, calm and focused\nColor palette: warm white, natural wood, muted green and soft blue\nMaterials/textures: sealed wood tabletop, washable cushions, woven closed baskets\nConstraints: change only movable furnishings and decor; preserve architecture, room proportions, walls, openings, flooring, ceiling, fixed trim and natural-light direction; use realistic scale; no people, faces, names, addresses, family photographs, readable documents, Arabic, Qur'anic verses, sacred text, imitation calligraphy, logos, trademarks or watermarks\nAvoid: second large dining set, bulky cabinets, blocked openings, wall-mounted screens, open craft clutter, floor plants in the walkway"
     },
     {
-      "id": "primary-bedroom",
-      "title": "Primary bedroom — restful essentials",
+      "id": "large-three-bed-room",
+      "title": "Large bedroom — three individual storage beds",
       "source": "listing-photos/photo-20.jpg",
-      "output": "room-ideas/generated/primary-bedroom-concept.webp",
-      "fallbackOutput": "room-ideas/generated/primary-bedroom-concept.png",
-      "budget": "$1,200–$2,500 including a new mattress",
+      "output": "room-ideas/generated/large-three-bed-nature-concept.webp",
+      "fallbackOutput": "room-ideas/generated/large-three-bed-nature-concept.png",
+      "budget": "$1,500–$3,500 including three mattresses",
       "priority": "Phase 1",
-      "summary": "A restful bedroom with only the bed, two compact nightstands, closed clothing storage and one plant.",
+      "summary": "Three movable twin beds with integrated drawers, nature details and an unobstructed closet route.",
       "plan": [
-        "One correctly scaled bed with a new mattress and simple washable bedding.",
-        "Two compact nightstands with safe charging, plus one closed dresser only if needed.",
-        "Keep baseboard heat, windows, doors and HVAC register unobstructed.",
-        "Use a single geometric textile accent rather than multiple wall pieces.",
-        "Resolve any ceiling moisture concern before arranging or purchasing furniture."
+        "Use three separate low twin captain beds so each can move to a future bedroom.",
+        "Face drawers into open floor area and allow about 24 inches for drawer pull-out.",
+        "Keep approximately 36 inches at the closet and door route; verify with actual measurements.",
+        "Use wall-mounted bedside cubbies instead of a freestanding dresser.",
+        "If the aquarium is retained here, use a locking lid and anchored purpose-built stand; the family hall is the safer preferred location."
       ],
-      "prompt": "Use case: precise-object-edit\nAsset type: photorealistic interior redesign concept for family planning\nInput images: Image 1 is the edit target, the primary-bedroom listing photo\nPrimary request: Remove all existing movable furniture, rugs, decor, family photos, television and personal belongings, then redesign this exact bedroom as a restful minimal space. Add one realistically scaled bed with simple washable bedding, two compact rounded nightstands, one low closed dresser only if it fits without crowding, and one child/pet-safer plant on a stable raised stand. Use one restrained Islamic geometric textile accent without text.\nStyle/medium: photorealistic, attainable warm-minimal interior photography\nComposition/framing: preserve the exact camera angle and relationship among the windows, door and ceiling; keep clear walking paths on both sides of the bed\nLighting/mood: preserve natural daylight; restful, warm and uncluttered\nColor palette: warm white, light walnut, sand and muted sage\nMaterials/textures: washable cotton-look bedding, wood grain, flat-weave rug\nConstraints: change only movable furnishings and decor; preserve architecture, room proportions, walls, windows, doors, flooring, ceiling seams and beams, fan, vents, baseboard heat, trim and natural-light direction; do not conceal the ceiling area that requires inspection; no people, faces, names, addresses, family photographs, readable documents, Arabic, Qur'anic verses, sacred text, imitation calligraphy, logos, trademarks or watermarks\nAvoid: television, bench at the foot of the bed, oversized dresser, blocked heat or windows, fragile decor, excessive pillows, clutter"
+      "prompt": "Edit the large bedroom listing photo into a three-person room with exactly three separate low twin storage beds, integrated drawers, a clear closet aisle, wall cubbies, calm natural colors and raised plants. Preserve all architecture, door swings, heat, windows and fan clearance.",
+      "alternatives": [
+        {
+          "title": "Storage-first three-bed variation",
+          "image": "room-ideas/generated/large-three-bed-storage-concept.png",
+          "summary": "No freestanding dresser; the beds provide nearly all clothing and toy storage."
+        }
+      ],
+      "variationTitle": "More layout variations",
+      "variationIntro": "Both concepts keep three individual beds that can move into separate rooms later. Confirm the exact closet swing and drawer clearance on site."
     },
     {
-      "id": "shared-kids-room-a",
-      "title": "Shared children’s room A — two real beds",
+      "id": "compact-adult-bedroom",
+      "title": "Medium bedroom — compact adult retreat",
       "source": "listing-photos/photo-23.jpg",
-      "output": "room-ideas/generated/shared-kids-room-a-concept.webp",
-      "fallbackOutput": "room-ideas/generated/shared-kids-room-a-concept.png",
-      "budget": "$1,200–$2,400 including two new mattresses",
+      "output": "room-ideas/generated/compact-adult-bedroom-concept.webp",
+      "fallbackOutput": "room-ideas/generated/compact-adult-bedroom-concept.png",
+      "budget": "$900–$2,000 including mattress",
       "priority": "Phase 1",
-      "summary": "Two floor-level twin sleeping surfaces, shared storage and a small work zone without using a bunk beneath the fan.",
+      "summary": "A compact queen storage bed, narrow wall shelves, concealed clothing storage and a few raised plants.",
       "plan": [
-        "Two genuine twin beds or one twin plus a verified roll-out trundle rated for nightly sleep.",
-        "No bunk or loft bed under the ceiling fan.",
-        "One shared anchored dresser and one compact two-place homework surface.",
-        "Use under-bed drawers and wall-mounted book ledges to avoid extra cabinets.",
-        "Keep both windows and the room exit usable."
+        "Measure for a queen bed and preserve 30–36 inch access where the room allows.",
+        "Use flush under-bed drawers and wall-mounted bedside shelves to reduce furniture.",
+        "Keep the closet, windows, baseboard heat and fan sweep unobstructed.",
+        "Anchor the narrow wardrobe or replace it with a low dresser if clearances are tight.",
+        "Use blackout curtains, simple washable bedding and only a few verified plants."
       ],
-      "prompt": "Use case: precise-object-edit\nAsset type: photorealistic interior redesign concept for family planning\nInput images: Image 1 is the edit target, the first children’s-bedroom listing photo\nPrimary request: Remove all existing movable furniture, rugs, decor, family photos and personal belongings, then redesign this exact room for two children with two genuine, comfortable sleeping surfaces. Use two low twin beds arranged to preserve the windows and exit, or one low twin bed plus a clearly visible pull-out trundle designed for nightly sleep. Add one shared anchored dresser, a compact two-place homework surface, under-bed storage and a few reachable book ledges. Use subtle star-and-geometry textile patterns without text.\nStyle/medium: photorealistic, attainable family interior photography, durable and age-flexible rather than themed\nComposition/framing: preserve the exact camera angle, windows, closet relationship and ceiling fan; show both sleeping surfaces clearly and keep the center walkway open\nLighting/mood: preserve natural daylight; calm, bright and organized\nColor palette: warm white, light oak, muted navy and sage accents\nMaterials/textures: washable cotton-look bedding, rounded wood edges, low-pile rug\nConstraints: change only movable furnishings and decor; preserve architecture, room proportions, walls, windows, flooring, ceiling, fan, vents, trim and natural-light direction; anchor dresser and shelves; keep beds safely away from fan blades; no people, faces, names, addresses, family photographs, readable documents, Arabic, Qur'anic verses, sacred text, imitation calligraphy, logos, trademarks or watermarks\nAvoid: bunk beds, loft beds, only one sleeping surface, blocking windows or exit, unanchored tall furniture, dangling cords, screens, fragile decor, visual clutter"
+      "prompt": "Edit the exact medium bedroom photo into a compact adult bedroom with a queen storage bed, flush drawers, two wall shelves, one narrow anchored wardrobe, blackout curtains, low-pile rug and raised plants. Preserve closet, windows, heat, fan and door access; no TV or aquarium."
     },
     {
-      "id": "shared-kids-room-b",
-      "title": "Shared children’s room B — flexible twins",
-      "source": "listing-photos/photo-25.jpg",
-      "output": "room-ideas/generated/shared-kids-room-b-concept.webp",
-      "fallbackOutput": "room-ideas/generated/shared-kids-room-b-concept.png",
-      "budget": "$1,200–$2,400 including two new mattresses",
-      "priority": "Phase 1",
-      "summary": "Two low twin beds with storage, one shared desk and anchored essentials, leaving the fan and exit clear.",
+      "id": "upstairs-study",
+      "title": "Small upstairs bedroom — study only",
+      "source": "listing-photos/photo-05.jpg",
+      "output": "room-ideas/generated/upstairs-study-concept.webp",
+      "fallbackOutput": "room-ideas/generated/upstairs-study-concept.png",
+      "budget": "$600–$1,500 planning range",
+      "priority": "Phase 2",
+      "summary": "A two-place study room with a shallow desk, closed supplies, controlled cables and no bed.",
       "plan": [
-        "Two low twin beds with drawers, shown as two separate nightly sleeping surfaces.",
-        "No bunk or loft bed under the ceiling fan.",
-        "One shared desk, one anchored chest and a narrow book ledge instead of several storage units.",
-        "Keep window access, HVAC flow and the door route open.",
-        "Use calm age-flexible colors so the room does not need frequent replacement."
+        "Use one shallow two-person desk rather than two bulky desks.",
+        "Provide adjustable task chairs and separate task lamps for focused work.",
+        "Keep printer and art supplies in low closed storage.",
+        "Use anchored upper cabinets and cable channels; keep the heater and closet clear.",
+        "Add raised spider plants or peperomia and a single floor cushion for reading."
       ],
-      "prompt": "Use case: precise-object-edit\nAsset type: photorealistic interior redesign concept for family planning\nInput images: Image 1 is the edit target, the second children’s-bedroom listing photo\nPrimary request: Remove all existing movable furniture, rugs, decor, family photos, television and personal belongings, then redesign this exact room for two children with two clearly separate low twin storage beds, one compact shared desk, one anchored low chest and a narrow book ledge. Use restrained Islamic geometric patterns in bedding or a small wall panel, without text. Make the room practical, calm and age-flexible.\nStyle/medium: photorealistic, attainable family interior photography with realistic furniture scale\nComposition/framing: preserve the exact camera position, window, door and ceiling fan; show both sleeping surfaces and a clear route between the door and window\nLighting/mood: preserve natural daylight; calm, organized and welcoming\nColor palette: warm white, medium oak, muted teal and clay accents\nMaterials/textures: washable bedding, rounded wood edges, low-pile rug\nConstraints: change only movable furnishings and decor; preserve architecture, room proportions, walls, window, door, flooring, ceiling, fan, vents, trim and natural-light direction; anchor storage; maintain safe fan clearance; no people, faces, names, addresses, family photographs, readable documents, Arabic, Qur'anic verses, sacred text, imitation calligraphy, logos, trademarks or watermarks\nAvoid: bunk beds, loft beds, only one sleeping surface, television, gaming chair, blocked window or exit, unanchored tall furniture, dangling cords, excessive furniture or decor"
+      "prompt": "Edit the exact small upstairs bedroom into a study-only room with a long shallow two-seat desk, two adjustable chairs, anchored closed cabinets, printer cabinet, task lights, cable control, raised plants and one reading cushion. Preserve window, closet, door, fan, vent and heat; no bed, TV or aquarium."
     },
     {
-      "id": "lower-office",
-      "title": "Lower room — focused office",
+      "id": "ground-office",
+      "title": "Ground bedroom — four-screen creative office",
       "source": "listing-photos/photo-27.jpg",
-      "output": "room-ideas/generated/lower-office-concept.webp",
-      "fallbackOutput": "room-ideas/generated/lower-office-concept.png",
-      "budget": "$500–$1,200 planning range",
-      "priority": "After moisture clearance",
-      "summary": "A focused office with one desk, closed files and a small reading corner after the ceiling concern is resolved.",
+      "output": "room-ideas/generated/ground-office-four-screen-concept.webp",
+      "fallbackOutput": "room-ideas/generated/ground-office-four-screen-concept.png",
+      "budget": "$2,000–$5,000 including four monitors",
+      "priority": "Phase 2",
+      "summary": "A focused digital studio with exactly four displays, sit-stand desk, ergonomic chair, cable management and plants.",
       "plan": [
-        "Remove the bed; use one ergonomic desk and chair with concealed cable management.",
-        "One low closed file cabinet and one narrow anchored bookshelf only.",
-        "A compact reading chair can double as a conversation seat without turning this into another bedroom.",
-        "Keep baseboard heat, door, window and HVAC routes clear.",
-        "Do not furnish until the ceiling discoloration or prior repair is moisture-checked and resolved."
+        "Use a deep, stable desk sized for four separate monitors on rated arms.",
+        "Arrange four screens as a clear 2×2 grid and confirm the wall and arm load ratings.",
+        "Use concealed power and data cables with surge protection; have outlet capacity checked if needed.",
+        "Keep the baseboard heater, windows, door swing and visible ceiling concern accessible.",
+        "Add one low file cabinet, one anchored shelf and optional compact reading chair."
       ],
-      "prompt": "Use case: precise-object-edit\nAsset type: photorealistic interior redesign concept for family planning\nInput images: Image 1 is the edit target, the lower-room listing photo\nPrimary request: Remove the bed and all existing movable furniture, rugs, decor, family photos and personal belongings, then redesign this exact room as a focused home office. Use one 60-inch desk with an ergonomic chair, concealed cable management, one low closed file cabinet, one narrow anchored bookshelf and one compact reading chair. Add one child/pet-safer plant on a stable raised surface. Use a restrained arch detail or geometric desk mat without text.\nStyle/medium: photorealistic, practical mid-budget home-office photography\nComposition/framing: preserve the exact camera angle, window, door, ceiling fixture and room proportions; keep the doorway and circulation clear\nLighting/mood: preserve natural daylight; focused, warm and uncluttered\nColor palette: warm white, walnut, muted green and charcoal accents\nMaterials/textures: matte wood, washable upholstery, low-pile rug\nConstraints: change only movable furnishings and decor; preserve architecture, room proportions, walls, window, door, flooring, ceiling and visible discoloration/repair area, fixture, baseboard heat, vents, trim and natural-light direction; do not conceal or cosmetically erase the ceiling area that requires moisture verification; no bed; no people, faces, names, addresses, family photographs, readable documents, Arabic, Qur'anic verses, sacred text, imitation calligraphy, logos, trademarks or watermarks\nAvoid: hiding the ceiling concern, oversized executive desk, multiple monitors dominating the room, open cable clutter, blocked heat or doorway, excess shelving, bedroom furniture"
+      "prompt": "Edit the exact ground bedroom into a digital creative office with exactly four separate monitors in a visible 2-by-2 grid on rated arms, a sit-stand desk, ergonomic chair, closed file cabinet, anchored shelf, cable management, warm bias light, abstract non-text geometric acoustic panels and raised plants. Preserve windows, heat, ceiling condition and door clearance.",
+      "alternatives": [
+        {
+          "title": "Lower-cost one-screen office",
+          "image": "room-ideas/generated/lower-office-concept.png",
+          "summary": "Start with the desk, chair and storage, then add displays only when work requires them."
+        }
+      ],
+      "variationTitle": "More layout variations",
+      "variationIntro": "Compare the options against verified room measurements before buying furniture."
     },
     {
-      "id": "screened-porch",
-      "title": "Screened porch — simple nature room",
-      "source": "listing-photos/photo-29.jpg",
-      "output": "room-ideas/generated/screened-porch-concept.webp",
-      "fallbackOutput": "room-ideas/generated/screened-porch-concept.png",
-      "budget": "$400–$1,000 after repairs",
-      "priority": "After roof and moisture clearance",
-      "summary": "A weather-tolerant family nature and game space, furnished only after the roof and wood are cleared.",
+      "id": "full-bath",
+      "title": "Full bathroom — repair-first cosmetic refresh",
+      "source": "listing-photos/photo-07.jpg",
+      "output": "room-ideas/generated/full-bath-refresh-concept.webp",
+      "fallbackOutput": "room-ideas/generated/full-bath-refresh-concept.png",
+      "budget": "$800–$3,000 cosmetic planning range",
+      "priority": "Phase 2",
+      "summary": "Keep plumbing locations and serviceable fixtures while improving storage, lighting, water efficiency and calm color.",
       "plan": [
-        "One weather-resistant table for meals, games and nature activities with six stackable chairs.",
-        "One storage bench for outdoor cushions and children’s nature supplies.",
-        "Two hanging or raised porch-suitable plants after checking species and placement.",
-        "No aquarium here because temperature swings and direct light make care harder.",
-        "Repair leaks, damaged wood, unsafe wiring or screens before furnishing."
+        "Resolve leaks, soft flooring, failed caulk or ventilation problems before cosmetic work.",
+        "Retain the tub, toilet and cabinet boxes if sound; repaint the vanity instead of replacing it.",
+        "Use an efficient LED vanity light, low-flow fixtures and a practical exhaust fan.",
+        "Refresh grout and caulk after the substrate is confirmed dry and sound.",
+        "Use washable low-emission paint and one high shelf rather than floor clutter."
       ],
-      "prompt": "Use case: precise-object-edit\nAsset type: photorealistic interior redesign concept for family planning\nInput images: Image 1 is the edit target, the screened-porch listing photo\nPrimary request: Remove all existing movable furniture, rugs, string lights, decor and personal belongings, then redesign this exact screened porch as a simple family nature, board-game and meal space. Use one weather-resistant rectangular table, six lightweight stackable chairs, one closed storage bench and two safely placed porch-suitable plants. Add a restrained geometric outdoor cushion pattern without text. Keep the concept visibly practical and easy to clear for maintenance.\nStyle/medium: photorealistic, attainable outdoor-room photography with realistic weather-resistant materials\nComposition/framing: preserve the exact wide camera view, screened walls, exposed roof structure and skylight; leave all doors and walkways clear\nLighting/mood: preserve outdoor daylight; fresh, relaxed and uncluttered\nColor palette: natural wood, charcoal, warm white and muted green\nMaterials/textures: powder-coated metal, sealed wood, washable outdoor fabric\nConstraints: change only movable furnishings and decor; preserve architecture, room proportions, screens, doors, flooring, exposed roof boards, beams, skylight, fixed wiring and natural-light direction; do not conceal stains or areas requiring moisture inspection; no aquarium; no people, faces, names, addresses, family photographs, readable documents, Arabic, Qur'anic verses, sacred text, imitation calligraphy, logos, trademarks or watermarks\nAvoid: hiding roof-board concerns, permanent string-light wiring, indoor upholstery, bulky sectional, blocked exits, fish tank, excessive planters, visual clutter"
+      "prompt": "Edit the exact full-bath listing photo without moving plumbing. Retain serviceable tub, toilet and vanity, repaint the vanity sage, add efficient lighting, low-flow fixtures, framed mirror, closed storage and warm off-white walls. Preserve architecture and do not hide damage."
+    },
+    {
+      "id": "half-bath",
+      "title": "Half bathroom — compact low-cost refresh",
+      "source": "listing-photos/photo-26.jpg",
+      "output": "room-ideas/generated/half-bath-refresh-concept.webp",
+      "fallbackOutput": "room-ideas/generated/half-bath-refresh-concept.png",
+      "budget": "$400–$1,500 cosmetic planning range",
+      "priority": "Phase 2",
+      "summary": "Paint, lighting, faucet and compact storage give the small bath a finished look without expanding it.",
+      "plan": [
+        "Keep the toilet and vanity locations to avoid plumbing cost.",
+        "Repaint the vanity and walls after repairing any moisture or surface defects.",
+        "Use one floating shelf, one framed mirror and concealed essentials to avoid clutter.",
+        "Choose a low-flow faucet and efficient LED fixture.",
+        "Keep the door and toilet clearance fully open."
+      ],
+      "prompt": "Edit the exact half-bath listing photo without moving plumbing or changing the footprint. Repaint the vanity blue-green, use warm off-white walls, framed mirror, efficient light, low-flow faucet, one floating shelf and restrained non-text geometric detail."
+    },
+    {
+      "id": "sunroom-aviary",
+      "title": "Sunroom — aviary and family relaxation",
+      "source": "listing-photos/photo-29.jpg",
+      "output": "room-ideas/generated/screened-porch-flight-aviary-concept.webp",
+      "fallbackOutput": "room-ideas/generated/screened-porch-flight-aviary-concept.png",
+      "budget": "$3,000–$15,000+ after enclosure and climate review",
+      "priority": "Phase 3",
+      "summary": "A divided flight enclosure gives cockatiels horizontal movement while retaining a calm, clean family sitting zone.",
+      "plan": [
+        "Repair roof or wood concerns before furnishing and verify whether the porch can be conditioned year-round.",
+        "Use a double-door safety entry, bird-safe mesh, washable floor and easy service access.",
+        "Keep the aviary separated from cooking fumes, ceiling-fan use, children’s unsupervised access and any hens.",
+        "Provide a separate quarantine cage indoors and a plan for offspring, veterinary care and winter outages.",
+        "Use only bird-safe plants after species verification; avoid toxic plants, treated branches and aerosol products."
+      ],
+      "prompt": "Edit the exact screened porch into a nature-focused cockatiel flight aviary plus separate family relaxation zone. Preserve structure and visible inspection areas. Show a secure double-door enclosure, bird-safe mesh, horizontal flight space, washable floor, service access and simple seating; no free-flying birds in the family zone.",
+      "alternatives": [
+        {
+          "title": "Smaller breeding-suite variation",
+          "image": "room-ideas/generated/screened-porch-breeding-suite-concept.png",
+          "summary": "A compact enclosed bird room leaves more of the porch available for family seating."
+        },
+        {
+          "title": "Relax-room-first variation",
+          "image": "room-ideas/generated/screened-porch-concept.png",
+          "summary": "Use the porch as a family room until repairs, insulation and climate control are proven."
+        }
+      ],
+      "variationTitle": "Aviary and relaxation variations",
+      "variationIntro": "Treat these as staged options. The screened porch must be dry, predator-secure and temperature-controlled before birds live there year-round."
+    },
+    {
+      "id": "rear-deck",
+      "title": "Rear deck — family dining, herbs and rain capture",
+      "source": "listing-photos/photo-31.jpg",
+      "output": "room-ideas/generated/deck-eco-family-concept.webp",
+      "fallbackOutput": "room-ideas/generated/deck-eco-family-concept.png",
+      "budget": "$700–$2,500 after structural repairs",
+      "priority": "Phase 3",
+      "summary": "Clean and refinish the existing deck, then add compact dining, shade, herbs, efficient light and controlled rain capture.",
+      "plan": [
+        "Have loose boards, rails, stairs and ledger connections repaired before finishing or furnishing.",
+        "Clean and refinish usable decking instead of replacing it solely for appearance.",
+        "Use one compact six-seat table and keep the door, grill and stair paths clear.",
+        "Add solar or low-voltage step lighting and railing herb planters.",
+        "Use a screened rain barrel only at a suitable downspout, with overflow directed safely away from the foundation."
+      ],
+      "prompt": "Edit the exact rear-deck listing photo while preserving the deck, house, door, stairs and railings. Show a repair-and-refinish approach with compact six-seat dining, shade umbrella, efficient step lights, herb planters, storage bench and safely routed rain barrel. No structural expansion."
+    },
+    {
+      "id": "side-garden",
+      "title": "Upper-lawn food garden — compact productive zone",
+      "source": "listing-photos/photo-37.jpg",
+      "output": "room-ideas/generated/upper-lawn-garden-overhead.png",
+      "budget": "$450–$1,400 DIY planning range",
+      "priority": "Phase 3",
+      "summary": "All food production uses the empty upper lawn around the marked 45.2% × 12.9% location; the side of the house and large family lawn remain clean and open.",
+      "plan": [
+        "Confirm the survey, utilities, drainage and at least six hours of summer sun before building beds.",
+        "Keep a broad lawn access path between the beds and the house, deck and mature tree line.",
+        "Start with two narrow raised beds and one short trellis in the marked upper-lawn zone.",
+        "Group herbs, berries and a lidded compost bin within the same compact garden footprint.",
+        "Keep the left-side lawn and the large right-side lawn open for children, access and flexible play."
+      ],
+      "prompt": "Edit the exact Photo 37 aerial view. Add a low-cost New Jersey food garden only in the empty upper lawn centered near x 45.2%, y 12.9%. Include two slim raised beds, one short trellis, herbs, berries, a mulch path and one lidded compost bin. Keep the side lawn and entire right-side family lawn clean and open.",
+      "alternatives": [
+        {
+          "title": "Earlier ground-level garden study",
+          "image": "room-ideas/generated/side-garden-concept.png",
+          "summary": "Retained for comparison; the compact aerial plan above is the selected direction."
+        },
+        {
+          "title": "Whole-yard overhead planning view",
+          "image": "room-ideas/generated/whole-yard-overhead-concept.png",
+          "summary": "Use this only for zoning ideas; verify the survey, dimensions, sunlight, utilities and setbacks."
+        }
+      ],
+      "variationTitle": "Garden planning views",
+      "variationIntro": "The ground-level image shows practical placement; the overhead concept helps organize zones but is not a measured survey."
+    }
+  ],
+  "photoVision": [
+    {
+      "number": 1,
+      "source": "listing-photos/photo-01.jpg",
+      "view": "Front elevation",
+      "direction": "Compare warm-white and light-sage paint; retain roof, brick and garage door.",
+      "roomId": "front-exterior"
+    },
+    {
+      "number": 2,
+      "source": "listing-photos/photo-02.jpg",
+      "view": "Dining angle 1",
+      "direction": "Use the six-seat dining concept and repaint walls warm ivory.",
+      "roomId": "dining-room"
+    },
+    {
+      "number": 3,
+      "source": "listing-photos/photo-03.jpg",
+      "view": "Sunroom angle 1",
+      "direction": "Plan staged relaxation first, then enclosed aviary after climate and roof work.",
+      "roomId": "sunroom-aviary"
+    },
+    {
+      "number": 4,
+      "source": "listing-photos/photo-04.jpg",
+      "view": "Breakfast nook",
+      "direction": "Use a compact homework table, storage bench and washable finishes.",
+      "roomId": "breakfast-nook"
+    },
+    {
+      "number": 5,
+      "source": "listing-photos/photo-05.jpg",
+      "view": "Small upstairs room",
+      "direction": "Remove the bed and create the two-person study room.",
+      "roomId": "upstairs-study"
+    },
+    {
+      "number": 6,
+      "source": "listing-photos/photo-06.jpg",
+      "view": "Stair and hall transition",
+      "direction": "Keep circulation open; use one wall color, efficient light and closed landing storage.",
+      "roomId": "prayer-hall"
+    },
+    {
+      "number": 7,
+      "source": "listing-photos/photo-07.jpg",
+      "view": "Full bathroom",
+      "direction": "Keep plumbing; repair moisture issues, repaint vanity and improve lighting/storage.",
+      "roomId": "full-bath"
+    },
+    {
+      "number": 8,
+      "source": "listing-photos/photo-08.jpg",
+      "view": "Front elevation angle 2",
+      "direction": "Use the selected exterior paint palette consistently on every elevation.",
+      "roomId": "front-exterior"
+    },
+    {
+      "number": 9,
+      "source": "listing-photos/photo-09.jpg",
+      "view": "Entry and family hall",
+      "direction": "Clear the front-door route and use low closed storage.",
+      "roomId": "family-hall"
+    },
+    {
+      "number": 10,
+      "source": "listing-photos/photo-10.jpg",
+      "view": "Family hall angle 2",
+      "direction": "Place sofa, mounted TV and the home’s one supported aquarium.",
+      "roomId": "family-hall"
+    },
+    {
+      "number": 11,
+      "source": "listing-photos/photo-11.jpg",
+      "view": "Family hall angle 3",
+      "direction": "Keep windows and baseboard/HVAC paths clear; use washable seating.",
+      "roomId": "family-hall"
+    },
+    {
+      "number": 12,
+      "source": "listing-photos/photo-12.jpg",
+      "view": "Vaulted second hall",
+      "direction": "Use separated prayer rugs, storage seating and raised plants.",
+      "roomId": "prayer-hall"
+    },
+    {
+      "number": 13,
+      "source": "listing-photos/photo-13.jpg",
+      "view": "Second hall angle 2",
+      "direction": "Preserve skylight and stairs; keep the central prayer floor flexible.",
+      "roomId": "prayer-hall"
+    },
+    {
+      "number": 14,
+      "source": "listing-photos/photo-14.jpg",
+      "view": "Connected living/dining view",
+      "direction": "Use one unified warm-neutral paint and repeat oak, sage and blue accents.",
+      "roomId": "dining-room"
+    },
+    {
+      "number": 15,
+      "source": "listing-photos/photo-15.jpg",
+      "view": "Dining room angle 2",
+      "direction": "Retain a right-sized six-seat table and one closed cabinet.",
+      "roomId": "dining-room"
+    },
+    {
+      "number": 16,
+      "source": "listing-photos/photo-16.jpg",
+      "view": "Dining room angle 3",
+      "direction": "Keep the exterior-door route and chair pull-out clearance open.",
+      "roomId": "dining-room"
+    },
+    {
+      "number": 17,
+      "source": "listing-photos/photo-17.jpg",
+      "view": "Kitchen angle 1",
+      "direction": "Retain stainless appliances and existing footprint; improve cabinet storage.",
+      "roomId": "kitchen-storage"
+    },
+    {
+      "number": 18,
+      "source": "listing-photos/photo-18.jpg",
+      "view": "Kitchen angle 2",
+      "direction": "Remove the white refrigerator and build the full-height pantry here.",
+      "roomId": "kitchen-storage"
+    },
+    {
+      "number": 19,
+      "source": "listing-photos/photo-19.jpg",
+      "view": "Kitchen angle 3",
+      "direction": "Use ceiling-height storage and LED task lighting without moving plumbing.",
+      "roomId": "kitchen-storage"
+    },
+    {
+      "number": 20,
+      "source": "listing-photos/photo-20.jpg",
+      "view": "Large bedroom angle 1",
+      "direction": "Use three separate storage beds with a clear closet aisle.",
+      "roomId": "large-three-bed-room"
+    },
+    {
+      "number": 21,
+      "source": "listing-photos/photo-21.jpg",
+      "view": "Large bedroom angle 2",
+      "direction": "Face drawers into open space and use wall cubbies instead of a dresser.",
+      "roomId": "large-three-bed-room"
+    },
+    {
+      "number": 22,
+      "source": "listing-photos/photo-22.jpg",
+      "view": "Large bedroom angle 3",
+      "direction": "Keep heat, windows and ceiling-fan sweep clear.",
+      "roomId": "large-three-bed-room"
+    },
+    {
+      "number": 23,
+      "source": "listing-photos/photo-23.jpg",
+      "view": "Medium bedroom angle 1",
+      "direction": "Use a compact queen storage bed and narrow anchored wardrobe.",
+      "roomId": "compact-adult-bedroom"
+    },
+    {
+      "number": 24,
+      "source": "listing-photos/photo-24.jpg",
+      "view": "Medium bedroom angle 2",
+      "direction": "Preserve closet operation, window access and a simple calm palette.",
+      "roomId": "compact-adult-bedroom"
+    },
+    {
+      "number": 25,
+      "source": "listing-photos/photo-25.jpg",
+      "view": "Additional bedroom angle",
+      "direction": "Use compact storage and the same washable bedroom palette; verify final room assignment.",
+      "roomId": "compact-adult-bedroom"
+    },
+    {
+      "number": 26,
+      "source": "listing-photos/photo-26.jpg",
+      "view": "Half bathroom",
+      "direction": "Keep plumbing and use a paint, light, faucet and shelf refresh.",
+      "roomId": "half-bath"
+    },
+    {
+      "number": 27,
+      "source": "listing-photos/photo-27.jpg",
+      "view": "Ground bedroom angle 1",
+      "direction": "Remove bed and install the four-screen creative office.",
+      "roomId": "ground-office"
+    },
+    {
+      "number": 28,
+      "source": "listing-photos/photo-28.jpg",
+      "view": "Ground bedroom angle 2",
+      "direction": "Keep windows, baseboard heat and ceiling inspection area open.",
+      "roomId": "ground-office"
+    },
+    {
+      "number": 29,
+      "source": "listing-photos/photo-29.jpg",
+      "view": "Sunroom angle 2",
+      "direction": "Use a secure flight enclosure plus separate family seating zone.",
+      "roomId": "sunroom-aviary"
+    },
+    {
+      "number": 30,
+      "source": "listing-photos/photo-30.jpg",
+      "view": "Sunroom angle 3",
+      "direction": "Retain a relax-room-first option until year-round bird conditions are proven.",
+      "roomId": "sunroom-aviary"
+    },
+    {
+      "number": 31,
+      "source": "listing-photos/photo-31.jpg",
+      "view": "Rear deck angle 1",
+      "direction": "Repair and refinish; add compact dining, shade, herbs and safe lighting.",
+      "roomId": "rear-deck"
+    },
+    {
+      "number": 32,
+      "source": "listing-photos/photo-32.jpg",
+      "view": "Rear deck angle 2",
+      "direction": "Keep stairs and grill clearance open; avoid costly deck expansion.",
+      "roomId": "rear-deck"
+    },
+    {
+      "number": 33,
+      "source": "listing-photos/photo-33.jpg",
+      "view": "Rear exterior angle 1",
+      "direction": "Carry the selected exterior color to the back after siding review.",
+      "roomId": "front-exterior"
+    },
+    {
+      "number": 34,
+      "source": "listing-photos/photo-34.jpg",
+      "view": "Rear yard angle 1",
+      "direction": "Keep central lawn open and move food beds to the perimeter.",
+      "roomId": "side-garden"
+    },
+    {
+      "number": 35,
+      "source": "listing-photos/photo-35.jpg",
+      "view": "Rear yard angle 2",
+      "direction": "Add native flowers, berries and protected raised beds along sunny edges.",
+      "roomId": "side-garden"
+    },
+    {
+      "number": 36,
+      "source": "listing-photos/photo-36.jpg",
+      "view": "Aerial property angle 1",
+      "direction": "Use the overhead concept for zones only; verify survey and utilities.",
+      "roomId": "side-garden"
+    },
+    {
+      "number": 37,
+      "source": "listing-photos/photo-37.jpg",
+      "view": "Overhead property",
+      "direction": "Use the empty upper lawn near the 45.2% × 12.9% marker for food beds; keep the side lawn and large family lawn clean and open.",
+      "roomId": "side-garden"
+    },
+    {
+      "number": 38,
+      "source": "listing-photos/photo-38.jpg",
+      "view": "Neighborhood aerial 1",
+      "direction": "Prioritize improvements within the existing footprint to control cost.",
+      "roomId": "front-exterior"
+    },
+    {
+      "number": 39,
+      "source": "listing-photos/photo-39.jpg",
+      "view": "Neighborhood aerial 2",
+      "direction": "Treat boundaries and setbacks as unverified until the survey is reviewed.",
+      "roomId": "side-garden"
     }
   ]
 }

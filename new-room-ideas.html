@@ -515,6 +515,126 @@
                 margin-top: 18px;
             }
 
+            .alternatives {
+                border-top: 1px solid var(--line);
+                margin-top: 22px;
+                padding-top: 20px;
+            }
+
+            .alternatives h3 {
+                font-family: Georgia, "Times New Roman", serif;
+                font-size: 1.45rem;
+                margin-bottom: 5px;
+            }
+
+            .alternatives > p {
+                color: var(--muted);
+                margin-bottom: 14px;
+            }
+
+            .alternative-grid {
+                display: grid;
+                gap: 12px;
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+
+            .alternative-grid .visual-image {
+                aspect-ratio: 3 / 2;
+            }
+
+            .alternative-note {
+                color: var(--muted);
+                font-size: 0.9rem;
+                margin: 0;
+                padding: 0 12px 14px;
+            }
+
+            .paint-plan {
+                margin-top: 28px;
+                padding: 28px;
+            }
+
+            .paint-plan > p,
+            .photo-review-heading p {
+                color: var(--muted);
+                line-height: 1.65;
+            }
+
+            .palette-strip {
+                display: grid;
+                grid-template-columns: repeat(5, minmax(0, 1fr));
+                gap: 10px;
+                margin: 22px 0;
+            }
+
+            .paint-swatch {
+                min-height: 118px;
+                border: 1px solid rgba(20, 65, 59, 0.12);
+                border-radius: 16px;
+                box-shadow: inset 0 0 0 999px rgba(255,255,255,.08);
+                color: #173c37;
+                display: flex;
+                flex-direction: column;
+                font-weight: 800;
+                justify-content: flex-end;
+                padding: 14px;
+            }
+
+            .paint-swatch small {
+                display: block;
+                font-weight: 650;
+                margin-top: 3px;
+                opacity: .76;
+            }
+
+            .eco-grid {
+                display: grid;
+                grid-template-columns: repeat(3, minmax(0, 1fr));
+                gap: 14px;
+                margin-top: 18px;
+            }
+
+            .eco-card {
+                background: var(--surface-2);
+                border: 1px solid rgba(20, 65, 59, 0.1);
+                border-radius: 16px;
+                padding: 18px;
+            }
+
+            .eco-card h3 { margin: 0 0 8px; }
+            .eco-card p { color: var(--muted); line-height: 1.55; margin: 0; }
+            .eco-card a { color: var(--primary-strong); font-weight: 800; }
+
+            .photo-review-heading { margin-top: 54px; }
+
+            .photo-vision-grid {
+                display: grid;
+                grid-template-columns: repeat(3, minmax(0, 1fr));
+                gap: 16px;
+                margin-top: 20px;
+            }
+
+            .photo-vision-card {
+                background: var(--surface);
+                border: 1px solid var(--line);
+                border-radius: 18px;
+                box-shadow: var(--shadow-soft);
+                overflow: hidden;
+            }
+
+            .photo-vision-card img {
+                aspect-ratio: 3 / 2;
+                display: block;
+                object-fit: cover;
+                width: 100%;
+            }
+
+            .photo-vision-copy { padding: 16px; }
+            .photo-vision-copy small { color: var(--primary-strong); font-weight: 850; letter-spacing: .05em; text-transform: uppercase; }
+            .photo-vision-copy h3 { font-size: 1.05rem; margin: 6px 0; }
+            .photo-vision-copy p { color: var(--muted); line-height: 1.5; margin: 0 0 12px; }
+            .photo-vision-copy a { color: var(--primary-strong); font-weight: 850; }
+
             .plan-box {
                 background: var(--surface-2);
                 border-radius: 12px;
@@ -604,6 +724,10 @@
                 color: #922;
             }
 
+            .tour-video { width: 100%; border-radius: 14px; background: #0b1719; box-shadow: var(--shadow); }
+            .tour-grid { display: grid; gap: 22px; grid-template-columns: minmax(0, 1.6fr) minmax(260px, .8fr); align-items: center; }
+            .tour-copy ol { padding-left: 1.2rem; color: var(--muted); }
+
             .page-footer {
                 border-top: 1px solid var(--line);
                 color: var(--muted);
@@ -642,9 +766,16 @@
                     grid-template-columns: 1fr;
                 }
 
+                .palette-strip,
+                .eco-grid,
+                .photo-vision-grid {
+                    grid-template-columns: 1fr 1fr;
+                }
+
                 .room-details {
                     grid-template-columns: 1fr;
                 }
+                .tour-grid { grid-template-columns: 1fr; }
             }
 
             @media (max-width: 620px) {
@@ -677,7 +808,11 @@
                     text-align: left;
                 }
 
-                .visual-pair {
+                .visual-pair,
+                .alternative-grid,
+                .palette-strip,
+                .eco-grid,
+                .photo-vision-grid {
                     grid-template-columns: 1fr;
                 }
 
@@ -827,9 +962,9 @@
 
         <header class="hero">
             <div class="container">
-                <p class="eyebrow">Family space plan · image-ready handoff</p>
-                <h1>New room ideas, without the clutter</h1>
-                <p class="hero-copy">Nine practical layouts for family connection, quiet prayer and reading, shared children’s rooms, focused work and everyday contact with nature.</p>
+                <p class="eyebrow">Full-property dream plan · all 39 listing photos reviewed</p>
+                <h1>Reimagine the whole house, one practical step at a time</h1>
+                <p class="hero-copy">Fifteen connected space plans cover the exterior, halls, kitchen, dining areas, bedrooms, office, bathrooms, sunroom aviary, deck and garden—while preserving every earlier concept.</p>
                 <div class="hero-actions">
                     <a class="button" href="./index.html#furniture">
                         <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m15 18-6-6 6-6"></path></svg>
@@ -847,9 +982,22 @@
             <section class="panel status-panel" aria-labelledby="concept-status-title">
                 <div>
                     <h2 id="concept-status-title">Concept image status</h2>
-                    <p>The source photos and full prompts are ready. Add accepted images under <code>room-ideas/generated/</code> and this page will show them automatically.</p>
+                    <p>Each unique space includes a selected concept and practical notes. Repeated listing angles are reviewed individually in the 39-photo index below.</p>
                 </div>
-                <div class="status-count" id="concept-status" aria-live="polite">Checking 9 concepts…</div>
+                <div class="status-count" id="concept-status" aria-live="polite">Checking 15 concepts…</div>
+            </section>
+
+            <section class="panel tour-grid" aria-labelledby="tour-title">
+                <video class="tour-video" controls preload="metadata" poster="./room-ideas/generated/exterior-warm-white-concept.png">
+                    <source src="./room-ideas/video/2700-dover-dream-home-tour.mp4" type="video/mp4" />
+                </video>
+                <div class="tour-copy">
+                    <p class="eyebrow">Floor-plan guided walkthrough</p>
+                    <h2 id="tour-title">A 45-second tour of the practical dream plan</h2>
+                    <p>The sequence follows the listing’s split-level circulation: arrival and shared rooms, kitchen and meals, bedroom level, work rooms, sunroom, deck, then the corrected upper-lawn garden.</p>
+                    <ol><li>Repair and paint first</li><li>Furnish rooms by purpose</li><li>Build the aviary only after enclosure and climate checks</li><li>Use the marked upper-lawn space for food beds and keep the family lawn open</li></ol>
+                    <p><a href="https://www.realtor.com/realestateandhomes-detail/2700-Dover-St_Piscataway_NJ_08854_M57648-04602" target="_blank" rel="noopener">Open the listing and floor plan</a></p>
+                </div>
             </section>
 
             <section class="principles" aria-label="Design principles">
@@ -861,7 +1009,7 @@
                 <article class="principle">
                     <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21c5-3 8-7 8-12V5l-8-3-8 3v4c0 5 3 9 8 12Z"></path><path d="m8.5 12 2.2 2.2 4.8-5"></path></svg>
                     <h2>Child-safe and washable</h2>
-                    <p>Two real beds in each shared room, anchored storage, rounded edges, controlled cords and clear exits.</p>
+                    <p>Three movable storage beds, anchored storage, rounded edges, controlled cords and clear exits.</p>
                 </article>
                 <article class="principle">
                     <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21V8M12 13c-5 0-8-3-8-8 5 0 8 3 8 8Zm0 4c5 0 8-3 8-8-5 0-8 3-8 8Z"></path></svg>
@@ -882,25 +1030,25 @@
                 <article class="panel phase">
                     <h3>Phase 1 · Sleep and meals</h3>
                     <ul>
-                        <li>Primary bed and new mattress</li>
-                        <li>Four safe children’s sleeping surfaces</li>
-                        <li>Six-seat dining table and chairs</li>
+                        <li>Three individual beds for the large bedroom</li>
+                        <li>Compact adult bed and mattresses</li>
+                        <li>Measure closet, drawer and door clearances</li>
                     </ul>
                 </article>
                 <article class="panel phase">
                     <h3>Phase 2 · Connection and work</h3>
                     <ul>
-                        <li>Family room essentials</li>
-                        <li>Quiet prayer and reading room</li>
-                        <li>Office after moisture clearance</li>
+                        <li>Family hall and prayer hall essentials</li>
+                        <li>Upstairs study room</li>
+                        <li>Four-screen office after moisture clearance</li>
                     </ul>
                 </article>
                 <article class="panel phase">
                     <h3>Phase 3 · Add slowly</h3>
                     <ul>
-                        <li>Breakfast/homework nook</li>
-                        <li>Porch after roof and wood checks</li>
-                        <li>Plants and one cycled aquarium</li>
+                        <li>Sunroom only after roof and climate checks</li>
+                        <li>Two starter garden beds and trellis</li>
+                        <li>Plants and one properly cycled aquarium</li>
                     </ul>
                 </article>
             </section>
@@ -909,15 +1057,33 @@
                 <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16v13H4V5Zm0 9c3-2 5 2 8 0s5 2 8 0"></path><path d="M8 18v3m8-3v3M7 10c1.5-1.5 3-1.5 4.5 0-1.5 1.5-3 1.5-4.5 0Z"></path></svg>
                 <div>
                     <h2 id="aquarium-title">One aquarium is enough</h2>
-                    <p>Plan one lidded 10–20 gallon planted tank on a purpose-built level stand in the family room, away from direct sun. An adult should cycle and maintain it, use GFCI protection and a drip loop, and confirm the floor and stand can carry the filled weight. The image is a layout concept—not an electrical, structural or animal-care approval.</p>
+                    <p>Plan one lidded 15–20 gallon planted tank on a purpose-built anchored stand in the family hall, away from direct sun. An adult should cycle and maintain it, use GFCI protection and a drip loop, and confirm the stand can carry the filled weight. Avoid adding another aquarium to the bedrooms.</p>
+                </div>
+            </section>
+
+            <section class="panel paint-plan" aria-labelledby="paint-plan-title">
+                <p class="eyebrow">Affordable color and eco plan</p>
+                <h2 id="paint-plan-title">One calm palette keeps the entire house connected</h2>
+                <p>Use warm ivory as the main wall color, then repeat sage, dusty blue, natural oak and charcoal in smaller amounts. This reduces leftover paint, makes rooms flow together and lets existing furniture move between rooms. Test large samples in morning and evening light before buying full quantities.</p>
+                <div class="palette-strip" aria-label="Whole-home paint palette">
+                    <div class="paint-swatch" style="background:#eee7d8">Warm ivory<small>Main walls</small></div>
+                    <div class="paint-swatch" style="background:#9aa58c">Soft sage<small>Vanities and accents</small></div>
+                    <div class="paint-swatch" style="background:#7890a0">Dusty blue<small>Doors and textiles</small></div>
+                    <div class="paint-swatch" style="background:#bb9068">Natural oak<small>Wood and storage</small></div>
+                    <div class="paint-swatch" style="background:#3f4c49;color:#fff">Soft charcoal<small>Hardware and office</small></div>
+                </div>
+                <div class="eco-grid">
+                    <article class="eco-card"><h3>Stage A · $1,500–$4,000</h3><p>Repair surfaces, paint priority rooms, change bulbs to efficient LEDs, add weather stripping and caulk confirmed air leaks. ENERGY STAR says sealing and insulation can save up to about 10% on annual energy bills. <a href="https://www.energystar.gov/saveathome/seal_insulate" target="_blank" rel="noopener">ENERGY STAR guidance</a>.</p></article>
+                    <article class="eco-card"><h3>Stage B · $5,000–$12,000</h3><p>Add the kitchen pantry, refinish cabinet boxes, refresh both bathrooms and repair/refinish the deck. Choose lower-emission products and ventilate well; EPA cautions that a “low VOC” label alone does not guarantee lower toxicity. <a href="https://www.epa.gov/indoor-air-quality-iaq/does-epa-regulate-volatile-organic-compounds-vocs-household-products" target="_blank" rel="noopener">EPA VOC explanation</a>.</p></article>
+                    <article class="eco-card"><h3>Stage C · after an energy audit</h3><p>Price insulation, air sealing, HVAC or heat-pump work only after the house is assessed. Check current utility and state eligibility before signing a contract. <a href="https://www.nj.gov/bpu/residential/program" target="_blank" rel="noopener">New Jersey residential programs</a>.</p></article>
                 </div>
             </section>
 
             <div class="section-heading">
                 <div>
-                    <p class="eyebrow">Nine rooms</p>
-                    <h2>Source photo, plan and generated concept</h2>
-                    <p>Each card preserves the photographed room and pairs it with a stable output filename. Missing images intentionally show a pending state.</p>
+                    <p class="eyebrow">Fifteen planned spaces</p>
+                    <h2>Source photo, selected concept and variations</h2>
+                    <p>Open any image for a larger view. Planning ranges are rough allowances, and every layout must be checked against measured dimensions before purchase.</p>
                 </div>
             </div>
 
@@ -927,6 +1093,18 @@
 
             <div class="room-list" id="room-list" aria-live="polite">
                 <section class="panel">Loading room plans…</section>
+            </div>
+
+            <div class="section-heading photo-review-heading">
+                <div>
+                    <p class="eyebrow">Every listing image accounted for</p>
+                    <h2>39-photo reimagination index</h2>
+                    <p>Repeated angles point back to one coordinated room plan. This prevents buying different furniture or paint for views of the same physical space.</p>
+                </div>
+            </div>
+
+            <div class="photo-vision-grid" id="photo-vision-list" aria-live="polite">
+                <section class="panel">Loading the photo-by-photo review…</section>
             </div>
 
             <section class="panel privacy-box" aria-labelledby="privacy-title">
@@ -945,11 +1123,12 @@
         <script>
             const roomList = document.getElementById("room-list");
             const roomJumps = document.getElementById("room-jumps");
+            const photoVisionList = document.getElementById("photo-vision-list");
             const statusLabel = document.getElementById("concept-status");
             const toast = document.getElementById("toast");
             let readyCount = 0;
             let checkedCount = 0;
-            let totalCount = 9;
+            let totalCount = 15;
 
             function escapeHtml(value) {
                 return String(value).replace(/[&<>"]/g, function (character) {
@@ -990,7 +1169,9 @@
                         image.alt = room.title + " generated room concept";
                         image.src = rootPath(source);
                         host.replaceChildren(image);
-                        host.closest("figure").querySelector("figcaption strong").textContent = "Generated concept ready";
+                        const caption = host.closest("figure").querySelector("figcaption");
+                        caption.querySelector("strong").textContent = "Generated concept ready";
+                        caption.querySelector("span").textContent = source.split("/").pop();
                     } else {
                         host.innerHTML = pendingMarkup(room.output);
                     }
@@ -1035,6 +1216,13 @@
                     const sourceName = room.source.split("/").pop();
                     const outputName = room.output.split("/").pop();
                     const plan = room.plan.map(function (item) { return "<li>" + escapeHtml(item) + "</li>"; }).join("");
+                    const alternatives = (room.alternatives || []).map(function (alternative) {
+                        const imageName = alternative.image.split("/").pop();
+                        return '<figure class="visual"><a class="visual-image" href="' + rootPath(alternative.image) + '" target="_blank" rel="noopener"><img src="' + rootPath(alternative.image) + '" alt="' + escapeHtml(alternative.title) + '" loading="lazy" width="1536" height="1024" /></a><figcaption><strong>' + escapeHtml(alternative.title) + '</strong><span>' + escapeHtml(imageName) + '</span></figcaption><p class="alternative-note">' + escapeHtml(alternative.summary) + '</p></figure>';
+                    }).join("");
+                    const alternativeTitle = room.variationTitle || "More layout variations";
+                    const alternativeIntro = room.variationIntro || "Compare each option against verified dimensions before buying furniture.";
+                    const alternativeSection = alternatives ? '<section class="alternatives"><h3>' + escapeHtml(alternativeTitle) + '</h3><p>' + escapeHtml(alternativeIntro) + '</p><div class="alternative-grid">' + alternatives + '</div></section>' : '';
                     return '<article class="panel room-card" id="' + escapeHtml(room.id) + '">' +
                         '<header class="room-head"><div><p class="room-number">Room ' + (index + 1) + ' of ' + data.rooms.length + '</p><h2>' + escapeHtml(room.title) + '</h2><p>' + escapeHtml(room.summary) + '</p></div>' +
                         '<div class="room-meta"><span class="badge">' + escapeHtml(room.priority) + '</span><small>' + escapeHtml(room.budget) + '</small></div></header>' +
@@ -1043,7 +1231,14 @@
                         '<figure class="visual"><div class="concept-host" data-concept="' + escapeHtml(room.id) + '">' + pendingMarkup(room.output) + '</div><figcaption><strong>Concept image pending</strong><span>' + escapeHtml(outputName) + '</span></figcaption></figure>' +
                         '</div>' +
                         '<div class="room-details"><section class="plan-box"><h3>Keep the plan focused</h3><ul>' + plan + '</ul></section>' +
-                        '<details><summary>Image-generation prompt</summary><div class="prompt-body"><pre>' + escapeHtml(room.prompt) + '</pre><button class="copy-button" type="button" data-copy-room="' + escapeHtml(room.id) + '">Copy image prompt</button></div></details></div>' +
+                        '<details><summary>Image-generation prompt</summary><div class="prompt-body"><pre>' + escapeHtml(room.prompt) + '</pre><button class="copy-button" type="button" data-copy-room="' + escapeHtml(room.id) + '">Copy image prompt</button></div></details></div>' + alternativeSection +
+                        '</article>';
+                }).join("");
+
+                photoVisionList.innerHTML = (data.photoVision || []).map(function (photo) {
+                    return '<article class="photo-vision-card">' +
+                        '<a href="' + rootPath(photo.source) + '" target="_blank" rel="noopener"><img src="' + rootPath(photo.source) + '" alt="Listing photo ' + photo.number + ': ' + escapeHtml(photo.view) + '" loading="lazy" width="1024" height="683" /></a>' +
+                        '<div class="photo-vision-copy"><small>Photo ' + photo.number + ' of ' + data.photoVision.length + '</small><h3>' + escapeHtml(photo.view) + '</h3><p>' + escapeHtml(photo.direction) + '</p><a href="#' + escapeHtml(photo.roomId) + '">Open its coordinated plan</a></div>' +
                         '</article>';
                 }).join("");
 
@@ -1061,7 +1256,7 @@
                 data.rooms.forEach(loadConcept);
             }
 
-            fetch("./room-ideas/manifest.json")
+            fetch("./room-ideas/manifest.json?v=7")
                 .then(function (response) {
                     if (!response.ok) throw new Error("Room manifest returned " + response.status);
                     return response.json();
